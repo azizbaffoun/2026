@@ -43,20 +43,27 @@
 
 /* Podcast Section Improvements */
 .podcast-section {
-  min-height: 600px;
   position: relative;
-  overflow: hidden;
+  margin-top: 0;
+  padding: 40px 0;
+  z-index: 1;
 }
 
+/* Remove heavy overlay */
+.podcast-section::before {
+  display: none;
+}
+
+/* Clean Podcast Container */
 .podcast-container {
-  min-height: 600px;
   position: relative;
+  z-index: 2;
 }
 
 .podcasts-wrapper {
   position: relative;
   z-index: 10;
-  min-height: 600px;
+  min-height: 400px;
 }
 
 .podcast-table {
@@ -72,7 +79,14 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 8px;
-  margin: 20px;
+  margin: 20px 0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.podcasts-title-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
 }
 
 .podcast-title {
@@ -190,94 +204,156 @@
   text-align: right;
 }
 
-/* Professional Services Introduction Banner */
+/* Clean Section Transitions - Subtle & Professional */
+
+/* First Section - Mission Section */
+.base-container {
+  direction: rtl;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+/* Remove heavy overlay */
+.base-container::after {
+  display: none;
+}
+
+/* Services Banner Section - Clean Approach */
+.about-us-banner-section {
+  position: relative;
+  padding: 40px 0;
+  margin-top: 0;
+  z-index: 2;
+}
+
+/* Remove heavy overlays */
+.about-us-banner-section::before,
+.about-us-banner-section::after {
+  display: none;
+}
+
+/* Mission Continuation - Clean Professional Look */
 .mission-continuation {
-  margin-top: 40px;
-  padding: 0;
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.08) 0%, rgba(0, 200, 100, 0.03) 100%);
-  border-radius: 24px;
-  border: 1px solid rgba(0, 255, 136, 0.15);
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 136, 0.06) 0%, 
+    rgba(0, 200, 100, 0.04) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 136, 0.12);
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  padding: 60px 40px;
+  margin: 40px 0;
+  position: relative;
+  overflow: visible;
   direction: rtl;
   text-align: right;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.3s ease;
+  z-index: 3;
 }
 
 .mission-continuation:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 50px rgba(0, 255, 136, 0.12);
-  border-color: rgba(0, 255, 136, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 255, 136, 0.18);
 }
 
+/* Services Banner Decoration - positioned to appear half outside */
+.services-banner-decoration {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 120px;
+  height: 120px;
+  opacity: 0.4;
+  z-index: 0;
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* Services Banner Header */
 .services-banner-header {
-  padding: 40px 50px 30px;
-  border-bottom: 1px solid rgba(0, 255, 136, 0.1);
-  background: rgba(255, 255, 255, 0.02);
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 0 20px;
   position: relative;
+  z-index: 2;
 }
 
 .services-header-content {
-  max-width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .services-banner-title {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--brand, #00ff88);
-  margin: 0 0 20px 0;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  line-height: 1.3;
+  color: #1e293b;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  position: relative;
 }
 
 .services-banner-title::before {
-  content: "🎯";
-  font-size: 2.5rem;
-  animation: pulse 2s infinite;
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #00ff88 0%, #00c864 100%);
+  border-radius: 2px;
 }
 
 .services-banner-description {
   font-size: 1.2rem;
-  line-height: 1.8;
-  color: #444;
+  line-height: 1.6;
+  color: #64748b;
   margin: 0;
-  font-weight: 500;
 }
 
-/* Services Banner Styles */
+/* Services Showcase */
 .services-showcase {
   margin: 40px 0;
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px 0;
+/* Webflow Slider Integration */
+.services-showcase .section-3 {
+  position: relative;
+  width: 100%;
 }
 
-.service-card {
+.services-showcase .slider01_comp {
+  position: relative;
+  background: transparent;
+  border-radius: 0;
+  padding: 20px 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.services-showcase .our-mission-decoration {
+  display: none;
+}
+
+.services-showcase .about-us-mission-card {
   background: #ffffff;
   border-radius: 16px;
-  padding: 25px 20px;
+  padding: 30px;
   text-align: center;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  min-height: 200px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 15px;
 }
 
-.service-card::before {
+.services-showcase .about-us-mission-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -290,156 +366,214 @@
   z-index: 1;
 }
 
-.service-card:hover {
+.services-showcase .about-us-mission-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
-.service-card:hover::before {
+.services-showcase .about-us-mission-card:hover::before {
   opacity: 1;
 }
 
-.service-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.services-showcase .our-mission-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
-  border-radius: 16px;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
+  margin-bottom: 20px;
   position: relative;
   z-index: 2;
+  filter: none;
 }
 
-.service-card:hover .service-icon-wrapper {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.15) 100%);
-  transform: scale(1.05);
-}
-
-.service-icon {
-  font-size: 1.8rem;
-  transition: all 0.3s ease;
-}
-
-.service-card:hover .service-icon {
-  transform: scale(1.1);
-}
-
-.service-title {
-  font-size: 1.2rem;
+.services-showcase .about-us-mission-card h3 {
+  font-size: 1.4rem;
   font-weight: 700;
   color: #1e293b;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   position: relative;
   z-index: 2;
   line-height: 1.3;
 }
 
-.service-description {
-  font-size: 0.9rem;
-  line-height: 1.5;
+.services-showcase .mission-card-paragraph {
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: #64748b;
   position: relative;
   z-index: 2;
   margin: 0;
 }
 
+/* Webflow Slider Navigation */
+.services-showcase .slider_pagination {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.services-showcase .w-slider-dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 255, 136, 0.3);
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.services-showcase .w-slider-dot.w-active {
+  background: #00ff88;
+  transform: scale(1.3);
+  box-shadow: 0 2px 8px rgba(0, 255, 136, 0.4);
+}
+
+.services-showcase .w-slider-dot:hover {
+  background: rgba(0, 255, 136, 0.6);
+  transform: scale(1.1);
+}
+
 /* Responsive Design */
 @media screen and (max-width: 991px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+  .mission-continuation {
+    padding: 40px 25px;
+    margin: 30px 15px;
   }
   
-  .service-card {
-    padding: 20px 15px;
-    min-height: 180px;
+  .services-banner-decoration {
+    width: 100px;
+    height: 100px;
+    top: -25px;
+    left: -25px;
   }
   
-  .service-icon-wrapper {
+  .services-banner-title {
+    font-size: 2.2rem;
+  }
+  
+  .services-banner-description {
+    font-size: 1.1rem;
+  }
+  
+  .services-showcase .slider01_comp {
+    padding: 15px 0;
+  }
+  
+  .services-showcase .about-us-mission-card {
+    padding: 25px 20px;
+    min-height: 280px;
+    margin: 0 10px;
+  }
+  
+  .services-showcase .our-mission-icon {
     width: 50px;
     height: 50px;
   }
   
-  .service-icon {
-    font-size: 1.6rem;
+  .services-showcase .about-us-mission-card h3 {
+    font-size: 1.3rem;
   }
   
-  .service-title {
-    font-size: 1.1rem;
-  }
-  
-  .service-description {
-    font-size: 0.85rem;
+  .services-showcase .mission-card-paragraph {
+    font-size: 0.9rem;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .mission-continuation {
+    padding: 30px 20px;
+    margin: 25px 10px;
   }
   
-  .service-card {
-    padding: 18px 15px;
-    min-height: 160px;
+  .services-banner-decoration {
+    width: 80px;
+    height: 80px;
+    top: -20px;
+    left: -20px;
   }
   
-  .service-icon-wrapper {
+  .services-banner-title {
+    font-size: 1.9rem;
+  }
+  
+  .services-banner-description {
+    font-size: 1rem;
+  }
+  
+  .services-showcase .slider01_comp {
+    padding: 10px 0;
+  }
+  
+  .services-showcase .about-us-mission-card {
+    padding: 20px 15px;
+    min-height: 260px;
+    margin: 0 8px;
+  }
+  
+  .services-showcase .our-mission-icon {
     width: 45px;
     height: 45px;
+    margin-bottom: 15px;
+  }
+  
+  .services-showcase .about-us-mission-card h3 {
+    font-size: 1.2rem;
     margin-bottom: 12px;
   }
   
-  .service-icon {
-    font-size: 1.4rem;
-  }
-  
-  .service-title {
-    font-size: 1rem;
-    margin-bottom: 8px;
-  }
-  
-  .service-description {
-    font-size: 0.8rem;
+  .services-showcase .mission-card-paragraph {
+    font-size: 0.85rem;
   }
 }
 
 @media screen and (max-width: 479px) {
+  .mission-continuation {
+    padding: 25px 15px;
+    margin: 20px 5px;
+  }
+  
+  .services-banner-decoration {
+    width: 60px;
+    height: 60px;
+    top: -15px;
+    left: -15px;
+  }
+  
+  .services-banner-title {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+  
+  .services-banner-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
   .services-showcase {
     margin: 30px 0;
   }
   
-  .services-grid {
-    gap: 10px;
-    padding: 15px 0;
+  .services-showcase .slider01_comp {
+    padding: 10px 0;
   }
   
-  .service-card {
-    padding: 15px 12px;
-    min-height: 140px;
+  .services-showcase .about-us-mission-card {
+    padding: 20px 15px;
+    min-height: 240px;
+    margin: 0 5px;
   }
   
-  .service-icon-wrapper {
+  .services-showcase .our-mission-icon {
     width: 40px;
     height: 40px;
+    margin-bottom: 12px;
+  }
+  
+  .services-showcase .about-us-mission-card h3 {
+    font-size: 1.1rem;
     margin-bottom: 10px;
   }
   
-  .service-icon {
-    font-size: 1.2rem;
-  }
-  
-  .service-title {
-    font-size: 0.95rem;
-    margin-bottom: 6px;
-  }
-  
-  .service-description {
-    font-size: 0.75rem;
-    line-height: 1.4;
+  .services-showcase .mission-card-paragraph {
+    font-size: 0.8rem;
+    line-height: 1.5;
   }
 }
 
@@ -461,10 +595,6 @@
 }
 
 /* RTL Layout for entire mission section */
-.base-container {
-  direction: rtl;
-}
-
 .base-container .about-us-mission-wrapper {
   text-align: right;
 }
@@ -472,4 +602,422 @@
 .base-container .paragraph-large {
   text-align: right;
   direction: rtl;
+}
+
+/* Services CTA */
+.services-cta {
+  padding: 40px 20px 0;
+  text-align: center;
+}
+
+.explore-services-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 35px;
+  background: linear-gradient(135deg, #3b82f6 0%, #9333ea 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.explore-services-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.explore-services-btn:hover::before {
+  left: 100%;
+}
+
+.explore-services-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #9333ea 0%, #3b82f6 100%);
+  color: white;
+  text-decoration: none;
+}
+
+.btn-text {
+  font-weight: 600;
+}
+
+.btn-icon {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.explore-services-btn:hover .btn-icon {
+  transform: translateX(-3px);
+}
+
+/* Podcast Section - Smooth Entry */
+.podcast-section {
+  position: relative;
+  background: linear-gradient(180deg, 
+    rgba(0, 255, 136, 0.02) 0%,
+    rgba(0, 0, 0, 0.02) 30%,
+    rgba(0, 0, 0, 0.05) 100%);
+  margin-top: -40px;
+  padding-top: 80px;
+  z-index: 1;
+}
+
+.podcast-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, 
+    rgba(0, 255, 136, 0.03) 0%,
+    transparent 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Enhanced Podcast Container */
+.podcast-container {
+  position: relative;
+  z-index: 2;
+}
+
+.podcasts-title-wrapper {
+  position: relative;
+  z-index: 20;
+  padding: 40px 50px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.95) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  margin: 20px;
+  border: 1px solid rgba(0, 255, 136, 0.1);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 255, 136, 0.05);
+  transition: all 0.3s ease;
+}
+
+.podcasts-title-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 255, 136, 0.1);
+}
+
+/* End of clean styles */
+
+/* Full Screen Responsive Design - All Sections */
+
+/* Base Container - Full Width Responsive */
+.base-container {
+  direction: rtl;
+  position: relative;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Mission Wrapper - Responsive */
+.about-us-mission-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  min-height: 50vh;
+  padding: 60px 0;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Services Banner Section - Full Screen Responsive */
+.about-us-banner-section {
+  position: relative;
+  padding: 40px 20px;
+  margin-top: 0;
+  z-index: 2;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Mission Continuation - Responsive Container */
+.mission-continuation {
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 136, 0.06) 0%, 
+    rgba(0, 200, 100, 0.04) 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 136, 0.12);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  padding: 60px 40px;
+  margin: 40px auto;
+  position: relative;
+  overflow: visible;
+  direction: rtl;
+  text-align: right;
+  transition: all 0.3s ease;
+  z-index: 3;
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+/* Podcast Section - Full Screen Responsive */
+.podcast-section {
+  position: relative;
+  margin-top: 0;
+  padding: 40px 20px;
+  z-index: 1;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  min-height: 60vh;
+}
+
+/* Podcast Container - Responsive */
+.podcast-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Podcast Wrapper - Responsive */
+.podcasts-wrapper {
+  position: relative;
+  z-index: 10;
+  min-height: 50vh;
+  width: 100%;
+}
+
+/* Podcast Title Wrapper - Responsive */
+.podcasts-title-wrapper {
+  position: relative;
+  z-index: 20;
+  padding: 40px 50px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  margin: 20px auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+/* Comprehensive Responsive Design */
+
+/* Ultra-wide screens (1920px+) */
+@media screen and (min-width: 1920px) {
+  .base-container {
+    padding: 80px 60px;
+  }
+  
+  .mission-continuation {
+    padding: 100px 80px;
+    max-width: 1600px;
+  }
+  
+  .podcast-container {
+    max-width: 1600px;
+  }
+  
+  .podcasts-title-wrapper {
+    padding: 80px 100px;
+    max-width: 1200px;
+  }
+  
+  .services-banner-title {
+    font-size: 3rem;
+  }
+  
+  .services-banner-description {
+    font-size: 1.4rem;
+  }
+}
+
+/* Large Desktop (1440px - 1919px) */
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  .base-container {
+    padding: 60px 40px;
+  }
+  
+  .mission-continuation {
+    padding: 80px 60px;
+    max-width: 1400px;
+  }
+  
+  .podcast-container {
+    max-width: 1400px;
+  }
+  
+  .podcasts-title-wrapper {
+    padding: 60px 80px;
+    max-width: 1000px;
+  }
+}
+
+/* Standard Desktop (1024px - 1439px) */
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .base-container {
+    padding: 50px 30px;
+  }
+  
+  .mission-continuation {
+    padding: 70px 50px;
+    max-width: 1200px;
+  }
+  
+  .podcast-container {
+    max-width: 1200px;
+  }
+  
+  .podcasts-title-wrapper {
+    padding: 50px 60px;
+    max-width: 900px;
+  }
+}
+
+/* Tablet Landscape (768px - 1023px) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .base-container {
+    padding: 40px 25px;
+  }
+  
+  .about-us-mission-wrapper {
+    min-height: 40vh;
+    padding: 50px 0;
+  }
+  
+  .mission-continuation {
+    padding: 50px 35px;
+    margin: 30px auto;
+  }
+  
+  .podcast-section {
+    min-height: 50vh;
+    padding: 30px 25px;
+  }
+  
+  .podcasts-title-wrapper {
+    padding: 35px 40px;
+    max-width: 700px;
+  }
+  
+  .services-banner-title {
+    font-size: 2.2rem;
+  }
+  
+  .services-banner-description {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablet Portrait (481px - 767px) */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .base-container {
+    padding: 30px 20px;
+  }
+  
+  .about-us-mission-wrapper {
+    min-height: 35vh;
+    padding: 40px 0;
+  }
+  
+  .mission-continuation {
+    padding: 40px 25px;
+    margin: 25px auto;
+  }
+  
+  .podcast-section {
+    min-height: 45vh;
+    padding: 25px 20px;
+  }
+  
+  .podcasts-title-wrapper {
+    padding: 30px 35px;
+    max-width: 600px;
+  }
+  
+  .services-banner-title {
+    font-size: 1.9rem;
+  }
+  
+  .services-banner-description {
+    font-size: 1rem;
+  }
+  
+  .services-banner-decoration {
+    width: 80px;
+    height: 80px;
+    top: -20px;
+    left: -20px;
+  }
+}
+
+/* Mobile (320px - 480px) */
+@media screen and (max-width: 480px) {
+  .base-container {
+    padding: 25px 15px;
+  }
+  
+  .about-us-mission-wrapper {
+    min-height: 30vh;
+    padding: 30px 0;
+  }
+  
+  .mission-continuation {
+    padding: 30px 20px;
+    margin: 20px auto;
+  }
+  
+  .podcast-section {
+    min-height: 40vh;
+    padding: 20px 15px;
+  }
+  
+  .podcasts-title-wrapper {
+    padding: 25px 30px;
+    max-width: 500px;
+  }
+  
+  .services-banner-title {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+  
+  .services-banner-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .services-banner-decoration {
+    width: 60px;
+    height: 60px;
+    top: -15px;
+    left: -15px;
+  }
+  
+  .podcast-title {
+    font-size: 1.8rem;
+  }
 } 

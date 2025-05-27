@@ -2781,6 +2781,199 @@
         min-height: 250px;
       }
     }
+    
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      .loading-text {
+        font-size: 0.9rem;
+        bottom: 30px;
+      }
+      
+      .main-fader {
+        bottom: 80px;
+      }
+      
+      .loader {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .particle {
+        width: 3px;
+        height: 3px;
+      }
+      
+      .brand-logo {
+        width: 120px;
+        height: 100px;
+        margin-bottom: 25px;
+      }
+      
+      .brand-title {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+      
+      .brand-slogan {
+        font-size: 1.8rem;
+        max-width: 95%;
+        padding: 0 20px;
+      }
+      
+      /* Video Section Mobile Styles */
+      .section-2 {
+        min-height: 60vh !important;
+        padding: 40px 0 !important;
+      }
+      
+      .background-video-2 {
+        height: 60vh !important;
+        min-height: 400px !important;
+      }
+      
+      .background-video-2 video {
+        object-fit: cover !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      
+      .video-counters-overlay {
+        padding: 20px !important;
+        gap: 30px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      
+      .counter-wrapper {
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center !important;
+      }
+      
+      .elementor-counter-number {
+        font-size: 2.5rem !important;
+      }
+      
+      .elementor-counter-title {
+        font-size: 1.2rem !important;
+        margin-top: 8px !important;
+      }
+      
+      .timer-left-decoration {
+        display: none !important;
+      }
+      
+      .home-3-timer-background {
+        opacity: 0.7 !important;
+      }
+    }
+    
+    @media screen and (max-width: 480px) {
+      .main-fader {
+        bottom: 60px;
+      }
+      
+      .loader {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .brand-title {
+        font-size: 2.8rem;
+      }
+      
+      .brand-slogan {
+        font-size: 1.5rem;
+      }
+      
+      .brand-logo {
+        width: 100px;
+        height: 85px;
+      }
+      
+      /* Video Section Small Mobile Styles */
+      .section-2 {
+        min-height: 50vh !important;
+        padding: 30px 0 !important;
+      }
+      
+      .background-video-2 {
+        height: 50vh !important;
+        min-height: 350px !important;
+      }
+      
+      .video-counters-overlay {
+        padding: 15px !important;
+        gap: 20px !important;
+      }
+      
+      .counter-wrapper {
+        max-width: 250px !important;
+        margin: 0 auto 15px auto !important;
+      }
+      
+      .elementor-counter-number {
+        font-size: 2rem !important;
+      }
+      
+      .elementor-counter-title {
+        font-size: 1rem !important;
+      }
+    }
+
+    @keyframes ballFadeIn {
+      0% { 
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+      }
+      100% { 
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+    }
+
+    /* Video Counters Overlay Base Styles */
+    .video-counters-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 10;
+      padding: 40px;
+    }
+
+    .counter-wrapper {
+      text-align: center;
+      color: white;
+    }
+
+    .elementor-counter-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #58bb4f;
+      display: block;
+      line-height: 1;
+    }
+
+    .elementor-counter-title {
+      font-size: 1.4rem;
+      color: white;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    .elementor-counter-number-prefix,
+    .elementor-counter-number-suffix {
+      color: #58bb4f;
+    }
+
+    /* Responsive */
   </style>
 
 </head>
@@ -3395,6 +3588,68 @@
       </div>
     </div>
   </section>
+
+  <section class="about-us-banner-section">
+    <div class="mission-continuation animate">
+      <img src="images/Union-1.png" loading="lazy" alt="" class="services-banner-decoration">
+      <div class="services-banner-header">
+        <div class="services-header-content">
+          <h3 class="services-banner-title">خدماتنا الاحترافية المتكاملة</h3>
+          <p class="services-banner-description">نحن في الوكالة نتولى إدارة شؤونه القانونية والإعلامية والصحية والاجتماعية في المجالات التالية:</p>
+        </div>
+      </div>
+      <section class="section-3">
+        <div data-delay="4000" data-animation="slide" class="slider01_comp w-slider" data-autoplay="false" data-easing="ease-out-quad" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
+          <div class="slider01_mask w-slider-mask">
+            <div class="slider01_slide w-slide">
+              <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="360c3636-3419-957c-4b9d-f26d4847625c" alt="" class="our-mission-icon">
+                <h3 data-w-id="360c3636-3419-957c-4b9d-f26d4847625d" style="opacity:0">🤝 إدارة العقود والمفاوضات</h3>
+                <p data-w-id="360c3636-3419-957c-4b9d-f26d4847625f" style="opacity:0" class="paragraph-large mission-card-paragraph">نحلل أداء اللاعب بدقة ونبرز مهاراته الاستثنائية لجذب عروض من أندية عالمية كبرى. فريقنا المحترف يضمن أفضل الصفقات المالية والرياضية لمستقبل مشرق.</p>
+              </div>
+            </div>
+            <div class="slider01_slide w-slide">
+              <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="60d7cd9b-2fa1-dff7-89a4-b8122c7c259d" alt="" class="our-mission-icon">
+                <h3 data-w-id="60d7cd9b-2fa1-dff7-89a4-b8122c7c259e" style="opacity:0">⚖️ الدعم القانوني المتخصص</h3>
+                <p data-w-id="60d7cd9b-2fa1-dff7-89a4-b8122c7c25a0" style="opacity:0" class="paragraph-large mission-card-paragraph">شراكة استراتيجية مع أفضل شركات المحاماة الرياضية لضمان حماية شاملة لحقوقك. نراجع كل بند في العقود ونضمن أقصى استفادة قانونية ومالية.</p>
+              </div>
+            </div>
+            <div class="slider01_slide w-slide">
+              <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="89ca6e20-f08e-315b-fc86-d78745e9a6b9" alt="" class="our-mission-icon">
+                <h3 data-w-id="89ca6e20-f08e-315b-fc86-d78745e9a6ba" style="opacity:0">🎯 التطوير الثقافي والفني</h3>
+                <p data-w-id="89ca6e20-f08e-315b-fc86-d78745e9a6bc" style="opacity:0" class="paragraph-large mission-card-paragraph">برامج تدريبية متقدمة مع خبراء دوليين لصقل المهارات التكتيكية والفنية. نطور قدراتك التواصلية والثقافية لتكون نجماً عالمياً حقيقياً.</p>
+              </div>
+            </div>
+            <div class="slider01_slide w-slide">
+              <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="b5cf77fa-8a78-6007-7106-2f3234390703" alt="" class="our-mission-icon">
+                <h3 data-w-id="b5cf77fa-8a78-6007-7106-2f3234390704" style="opacity:0">💪 التطوير الذهني والبدني</h3>
+                <p data-w-id="b5cf77fa-8a78-6007-7106-2f3234390706" style="opacity:0" class="paragraph-large mission-card-paragraph">منهجية علمية متطورة للياقة البدنية والذهنية مع أخصائيين معتمدين. برامج غذائية مخصصة وتدريب نفسي لتحقيق الذروة في الأداء الرياضي.</p>
+              </div>
+            </div>
+            <div class="slider01_slide w-slide">
+              <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="51be28a2-f51e-e41b-86c2-0b17894d091d" alt="" class="our-mission-icon">
+                <h3 data-w-id="51be28a2-f51e-e41b-86c2-0b17894d091e" style="opacity:0">🧠 الدعم النفسي والاجتماعي</h3>
+                <p data-w-id="51be28a2-f51e-e41b-86c2-0b17894d0920" style="opacity:0" class="paragraph-large mission-card-paragraph">فريق من علماء النفس الرياضي لمواجهة ضغوط الشهرة والمنافسة. نبني شخصيتك القيادية ونساعدك في إدارة الحياة الاجتماعية بحكمة واتزان.</p>
+              </div>
+            </div>
+            <div class="slider01_slide w-slide">
+              <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="15c7fffd-a223-1e7e-9098-5d991a2a58fb" alt="" class="our-mission-icon">
+                <h3 data-w-id="15c7fffd-a223-1e7e-9098-5d991a2a58fc" style="opacity:0">🌍 تنمية العلاقات الدولية</h3>
+                <p data-w-id="15c7fffd-a223-1e7e-9098-5d991a2a58fe" style="opacity:0" class="paragraph-large mission-card-paragraph">شبكة عالمية من الشراكات الاستراتيجية مع أكبر الأندية والوكالات الأوروبية. نفتح لك أبواب الاحتراف في أقوى الدوريات العالمية.</p>
+              </div>
+            </div>
+            <div class="slider01_slide w-slide">
+              <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="8190058a-e50d-af8e-2e05-3d9891baedc9" alt="" class="our-mission-icon">
+                <h3 data-w-id="8190058a-e50d-af8e-2e05-3d9891baedca" style="opacity:0">💰 إدارة الاستثمارات المالية</h3>
+                <p data-w-id="8190058a-e50d-af8e-2e05-3d9891baedcc" style="opacity:0" class="paragraph-large mission-card-paragraph">استراتيجيات استثمارية ذكية مع خبراء ماليين معتمدين. نبني لك إمبراطورية مالية متنوعة تضمن ثروة مستدامة حتى بعد اعتزال كرة القدم.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider_pagination w-slider-nav w-slider-nav-invert w-round"></div>
+        </div>
+      </section>
+    </div>
+  </section>
   <div class="w-layout-blockcontainer base-container w-container">
     <div class="about-us-mission-wrapper text-content-improved">
       <p data-w-id="b6068495-1a91-7d21-8487-c5eaae8b0685" class="uppercase-paragraph green-paragraph">رؤيتنا</p>
@@ -3404,141 +3659,6 @@
       </div>
     </div>
   </div>
-  <section class="about-us-banner-section">
-    <section class="section-3">
-      <div data-delay="4000" data-animation="slide" class="slider01_comp w-slider" data-autoplay="false" data-easing="ease-out-quad" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true"><img src="images/Union-1.png" loading="lazy" alt="" class="our-mission-decoration">
-        <div class="slider01_mask w-slider-mask">
-          <div class="slider01_slide w-slide">
-            <div class="mission-continuation animate">
-              <div class="services-banner-header">
-                <div class="services-header-content">
-                  <h3 class="services-banner-title">خدماتنا الاحترافية المتكاملة</h3>
-                  <p class="services-banner-description">نحن في الوكالة نتولى إدارة شؤونه القانونية والإعلامية والصحية والاجتماعية في المجالات التالية:</p>
-                </div>
-              </div>
-              <div class="services-showcase">
-                <div class="services-grid">
-                  <div class="service-card">
-                    <div class="service-icon-wrapper">
-                      <div class="service-icon">📋</div>
-                    </div>
-                    <h4 class="service-title">إدارة العقود والمفاوضات</h4>
-                    <p class="service-description">نحلل أداء اللاعب بدقة ونبرز مهاراته الاستثنائية لجذب عروض من أندية عالمية كبرى.</p>
-                  </div>
-                  <div class="service-card">
-                    <div class="service-icon-wrapper">
-                      <div class="service-icon">⚖️</div>
-                    </div>
-                    <h4 class="service-title">الدعم القانوني المتخصص</h4>
-                    <p class="service-description">شراكة استراتيجية مع أفضل شركات المحاماة الرياضية لضمان حماية شاملة لحقوقك.</p>
-                  </div>
-                  <div class="service-card">
-                    <div class="service-icon-wrapper">
-                      <div class="service-icon">🎯</div>
-                    </div>
-                    <h4 class="service-title">التطوير الثقافي والفني</h4>
-                    <p class="service-description">برامج تدريبية متقدمة مع خبراء دوليين لصقل المهارات التكتيكية والفنية.</p>
-                  </div>
-                  <div class="service-card">
-                    <div class="service-icon-wrapper">
-                      <div class="service-icon">💪</div>
-                    </div>
-                    <h4 class="service-title">التطوير الذهني والبدني</h4>
-                    <p class="service-description">منهجية علمية متطورة للياقة البدنية والذهنية مع أخصائيين معتمدين.</p>
-                  </div>
-                  <div class="service-card">
-                    <div class="service-icon-wrapper">
-                      <div class="service-icon">🧠</div>
-                    </div>
-                    <h4 class="service-title">الدعم النفسي والاجتماعي</h4>
-                    <p class="service-description">فريق من علماء النفس الرياضي لمواجهة ضغوط الشهرة والمنافسة.</p>
-                  </div>
-                  <div class="service-card">
-                    <div class="service-icon-wrapper">
-                      <div class="service-icon">🌍</div>
-                    </div>
-                    <h4 class="service-title">تنمية العلاقات الدولية</h4>
-                    <p class="service-description">شبكة عالمية من الشراكات الاستراتيجية مع أكبر الأندية والوكالات الأوروبية.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="services-cta">
-                <a href="#services-slider" class="explore-services-btn">
-                  <span class="btn-text">استكشف خدماتنا التفصيلية</span>
-                  <span class="btn-icon">→</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="slider01_slide w-slide">
-            <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="360c3636-3419-957c-4b9d-f26d4847625c" alt="" class="our-mission-icon">
-              <h3 data-w-id="360c3636-3419-957c-4b9d-f26d4847625d" style="opacity:0">🤝 إدارة العقود والمفاوضات</h3>
-              <p data-w-id="360c3636-3419-957c-4b9d-f26d4847625f" style="opacity:0" class="paragraph-large mission-card-paragraph">نحلل أداء اللاعب بدقة ونبرز مهاراته الاستثنائية لجذب عروض من أندية عالمية كبرى. فريقنا المحترف يضمن أفضل الصفقات المالية والرياضية لمستقبل مشرق.</p>
-            </div>
-          </div>
-          <div class="slider01_slide w-slide">
-            <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="60d7cd9b-2fa1-dff7-89a4-b8122c7c259d" alt="" class="our-mission-icon">
-              <h3 data-w-id="60d7cd9b-2fa1-dff7-89a4-b8122c7c259e" style="opacity:0">⚖️ الدعم القانوني المتخصص</h3>
-              <p data-w-id="60d7cd9b-2fa1-dff7-89a4-b8122c7c25a0" style="opacity:0" class="paragraph-large mission-card-paragraph">شراكة استراتيجية مع أفضل شركات المحاماة الرياضية لضمان حماية شاملة لحقوقك. نراجع كل بند في العقود ونضمن أقصى استفادة قانونية ومالية.</p>
-            </div>
-          </div>
-          <div class="slider01_slide w-slide">
-            <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="89ca6e20-f08e-315b-fc86-d78745e9a6b9" alt="" class="our-mission-icon">
-              <h3 data-w-id="89ca6e20-f08e-315b-fc86-d78745e9a6ba" style="opacity:0">🎯 التطوير الثقافي والفني</h3>
-              <p data-w-id="89ca6e20-f08e-315b-fc86-d78745e9a6bc" style="opacity:0" class="paragraph-large mission-card-paragraph">برامج تدريبية متقدمة مع خبراء دوليين لصقل المهارات التكتيكية والفنية. نطور قدراتك التواصلية والثقافية لتكون نجماً عالمياً حقيقياً.</p>
-            </div>
-          </div>
-          <div class="slider01_slide w-slide">
-            <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="b5cf77fa-8a78-6007-7106-2f3234390703" alt="" class="our-mission-icon">
-              <h3 data-w-id="b5cf77fa-8a78-6007-7106-2f3234390704" style="opacity:0">💪 التطوير الذهني والبدني</h3>
-              <p data-w-id="b5cf77fa-8a78-6007-7106-2f3234390706" style="opacity:0" class="paragraph-large mission-card-paragraph">منهجية علمية متطورة للياقة البدنية والذهنية مع أخصائيين معتمدين. برامج غذائية مخصصة وتدريب نفسي لتحقيق الذروة في الأداء الرياضي.</p>
-            </div>
-          </div>
-          <div class="slider01_slide w-slide">
-            <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="51be28a2-f51e-e41b-86c2-0b17894d091d" alt="" class="our-mission-icon">
-              <h3 data-w-id="51be28a2-f51e-e41b-86c2-0b17894d091e" style="opacity:0">🧠 الدعم النفسي والاجتماعي</h3>
-              <p data-w-id="51be28a2-f51e-e41b-86c2-0b17894d0920" style="opacity:0" class="paragraph-large mission-card-paragraph">فريق من علماء النفس الرياضي لمواجهة ضغوط الشهرة والمنافسة. نبني شخصيتك القيادية ونساعدك في إدارة الحياة الاجتماعية بحكمة واتزان.</p>
-            </div>
-          </div>
-          <div class="slider01_slide w-slide">
-            <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="15c7fffd-a223-1e7e-9098-5d991a2a58fb" alt="" class="our-mission-icon">
-              <h3 data-w-id="15c7fffd-a223-1e7e-9098-5d991a2a58fc" style="opacity:0">🌍 تنمية العلاقات الدولية</h3>
-              <p data-w-id="15c7fffd-a223-1e7e-9098-5d991a2a58fe" style="opacity:0" class="paragraph-large mission-card-paragraph">شبكة عالمية من الشراكات الاستراتيجية مع أكبر الأندية والوكالات الأوروبية. نفتح لك أبواب الاحتراف في أقوى الدوريات العالمية.</p>
-            </div>
-          </div>
-          <div class="slider01_slide w-slide">
-            <div class="about-us-mission-card"><img src="images/eye1.svg" loading="lazy" style="opacity:0" data-w-id="8190058a-e50d-af8e-2e05-3d9891baedc9" alt="" class="our-mission-icon">
-              <h3 data-w-id="8190058a-e50d-af8e-2e05-3d9891baedca" style="opacity:0">💰 إدارة الاستثمارات المالية</h3>
-              <p data-w-id="8190058a-e50d-af8e-2e05-3d9891baedcc" style="opacity:0" class="paragraph-large mission-card-paragraph">استراتيجيات استثمارية ذكية مع خبراء ماليين معتمدين. نبني لك إمبراطورية مالية متنوعة تضمن ثروة مستدامة حتى بعد اعتزال كرة القدم.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="slider_pagination w-slider-nav w-slider-nav-invert w-round"></div>
-      </div>
-    </section>
-  </section>
-  <section class="podcast-section">
-    <div data-w-id="8b4830f2-c2c1-5b18-32a1-74a667dbba0d" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="w-layout-blockcontainer full-width-container podcast-container w-container">
-      <div class="podcasts-wrapper">
-        <div class="podcast-table">
-          <div id="w-node-_8b4830f2-c2c1-5b18-32a1-74a667dbba10-8aba9450" class="rectangle left-bottom"></div>
-          <div class="podcasts-text-wrapper">
-            <div class="rectangle left-bottom"></div>
-            <div class="rectangle right-top"></div>
-            <div class="rectangle right-bottom"></div>
-            <div class="rectangle left"></div>
-          </div>
-          <div class="podcasts-title-wrapper">
-            <h2 data-w-id="8b4830f2-c2c1-5b18-32a1-74a667dbba19" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="podcast-title">نحن نؤمن بأن النجاح في عالم الرياضة لا يعتمد فقط على الأداء، بل يحتاج إلى إدارة متكاملة.</h2>
-          </div>
-        </div>
-        <div class="rectangle right-top"></div>
-        <div class="rectangle right-bottom"></div>
-      </div>
-      <div class="absolute-photo-wrapper"></div>
-    </div>
-  </section>
   <section data-w-id="9e0d1648-b9a5-8947-3780-e60b9bdb4873" style="opacity:0" class="section">
     <div class="w-layout-blockcontainer base-container w-container">
       <div class="our-values-title-wrapper">
@@ -3618,164 +3738,10 @@
       </div>
     </div>
   </section>
-  <section class="about-matches-section">
-    <div class="trapezoid-home-3"></div><img src="images/Background-pattern-1.png" loading="lazy" sizes="(max-width: 1919px) 100vw, 1920px" srcset="images/Background-pattern-1-p-500.png 500w, images/Background-pattern-1-p-800.png 800w, images/Background-pattern-1-p-1080.png 1080w, images/Background-pattern-1-p-1600.png 1600w, images/Background-pattern-1.png 1920w" alt="" class="background-pattern">
-    <div class="w-layout-blockcontainer base-container w-container">
-      <div data-w-id="9b19996c-49ee-4b40-b8a6-0caef7b78607" class="what-s-treanding-block"><img src="images/chris-chow-t7S1YrU8kx0-unsplash-1_1chris-chow-t7S1YrU8kx0-unsplash-1.webp" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940px" srcset="images/chris-chow-t7S1YrU8kx0-unsplash-1_1chris-chow-t7S1YrU8kx0-unsplash-1.webp 500w, images/chris-chow-t7S1YrU8kx0-unsplash-1_1chris-chow-t7S1YrU8kx0-unsplash-1.webp 800w, images/chris-chow-t7S1YrU8kx0-unsplash-1_1chris-chow-t7S1YrU8kx0-unsplash-1.webp 1080w, images/chris-chow-t7S1YrU8kx0-unsplash-1_1chris-chow-t7S1YrU8kx0-unsplash-1.webp 1920w" alt="Photo of an American football game." class="what-s-trending-image"><img src="images/Union-1.png" loading="lazy" alt="" class="what-s-trending-decoration">
-        <div class="what-s-trending-text">
-          <p data-w-id="27e70318-b4a5-5518-1219-ef13fe61f58e" class="uppercase-paragraph green-paragraph">WHAT&#x27;S TRENDING</p>
-          <div class="trending-heading-wrapper">
-            <h2 data-w-id="f977848b-7857-d570-3157-439c83227d63">Ranking every match</h2>
-          </div>
-          <p data-w-id="a28a81d1-8d28-1f37-e17d-757a07c08b3e" class="paragraph-large">We strive to inspire and empower individuals through the world of sports. We aim to motivate, encourage, and foster a community of relentless achievers.</p>
-          <div class="home-3-read-more-button-wrapper">
-            <a data-w-id="93b115ca-1ea1-ae3a-b6d5-38abfe583970" href="about-us.html" class="primary-button w-button">Read More</a>
-          </div>
-        </div>
-      </div>
-      <div data-w-id="0e88ce6a-bc89-2fbe-17d6-95117c997671" class="explore-the-fetures-block"><img src="images/Mask-group-2.png" loading="lazy" sizes="(max-width: 665px) 100vw, 665px" srcset="images/Mask-group-2-p-500.png 500w, images/Mask-group-2.png 665w" alt="Photo of an American football game." class="explore-the-features-photo">
-        <div class="explore-the-features-text">
-          <p data-w-id="b220c290-3d8e-cd8e-2a18-ec0fb9a7fbd1" class="uppercase-paragraph green-paragraph">EXPLORE the features</p>
-          <div class="trending-heading-wrapper">
-            <h2 data-w-id="b220c290-3d8e-cd8e-2a18-ec0fb9a7fbd4">Then meets now</h2>
-          </div>
-          <p data-w-id="b220c290-3d8e-cd8e-2a18-ec0fb9a7fbd6" class="paragraph-large">We strive to inspire and empower individuals through the world of sports. We aim to motivate, encourage, and foster a community of relentless achievers.</p>
-          <div class="home-3-read-more-button-wrapper">
-            <a data-w-id="b220c290-3d8e-cd8e-2a18-ec0fb9a7fbd9" href="about-us.html" class="primary-button w-button">Read More</a>
-          </div>
-        </div><img src="images/Union-1.png" loading="lazy" alt="" class="explore-the-features-decoration">
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="w-layout-blockcontainer base-container home-3-news-title-container w-container">
-      <h2 data-w-id="a029c5d1-abb3-98fb-e16c-e49fc6d734db">Latest team updates</h2>
-    </div>
-    <div data-w-id="270ca014-0ebf-18a7-a8dd-c2ed7fd61a84" class="w-layout-blockcontainer full-width-container home-3-news-container w-container">
-      <div class="collection-list-wrapper-3 w-dyn-list">
-        <div role="list" class="collection-list-2 w-dyn-items w-row">
-          <div role="listitem" class="collection-item-6 w-dyn-item w-col w-col-4">
-            <a data-w-id="296af7d3-775f-972b-4f91-1edfe629b2bb" href="#" class="news-link w-inline-block">
-              <div class="news-photo-wrapper">
-                <div class="rectangle right-bottom"></div>
-                <div class="rectangle left"></div>
-                <div class="rectangle right-top"></div>
-                <div class="rectangle left-bottom"></div><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" width="Auto" height="Auto" alt="" class="news-photo w-dyn-bind-empty">
-              </div>
-            </a>
-            <div class="home-3-news-wrapper">
-              <div class="home-3-news-text-wrspper">
-                <a data-w-id="e21ce95e-00f9-6ac1-8157-d90501dcaa3f" href="#" class="large-link"></a>
-                <p data-w-id="0ba4fefa-25e6-9968-77ee-a78fb0c7b87b" class="w-dyn-bind-empty"></p>
-              </div>
-              <div data-w-id="64a7a2f0-512a-d31c-134a-644d9a825f06" class="link-date-wrapper">
-                <a href="https://x.com/VSportkSA/status/1926706138684256629" class="link-with-icon">Read More<span class="text-button-icon"></span></a>
-                <p class="paragraph-brand-color w-dyn-bind-empty"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="w-dyn-empty">
-          <div>No items found.</div>
-        </div>
-      </div>
-      <div class="line"></div>
-      <a data-w-id="f418d178-7b79-f994-e602-e2bae89b01cd" href="news.html" class="primary-button w-button">All News</a>
-    </div>
-  </section>
-  <section class="home-3-podcust-section">
-    <div class="w-layout-blockcontainer full-width-container w-container">
-      <div data-w-id="1335181e-87ee-5b8d-6127-0c374b4ae45b" class="home-3-podcast">
-        <p data-w-id="7f963363-3487-86c3-5233-3fc0f21c21e0" class="uppercase-paragraph green-paragraph">LISTEN our latest podcasts</p>
-        <h2 data-w-id="adb554d4-7edb-9f9c-b927-533d8935b1bd" class="podcast-title text-center">Giving up is simply not an option<span class="brand-color-span">.</span></h2>
-        <a href="#" data-w-id="f4aa838a-1b41-d692-ad13-e2cbacdaf4a9" style="background-color:rgb(199,248,73)" class="button-with-icon w-inline-block w-lightbox">
-          <h6 class="button-text">Listen Podcasts</h6><img src="images/play-1.svg" loading="lazy" style="filter:invert(0%)" alt="Play Icon" class="play-icon">
-          <script type="application/json" class="w-json">{
-  "items": [
-    {
-      "url": "https://www.youtube.com/watch?v=wper5VebCqk",
-      "originalUrl": "https://www.youtube.com/watch?v=wper5VebCqk",
-      "width": 940,
-      "height": 528,
-      "thumbnailUrl": "https://i.ytimg.com/vi/wper5VebCqk/hqdefault.jpg",
-      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2Fwper5VebCqk%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dwper5VebCqk&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fwper5VebCqk%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
-      "type": "video"
-    }
-  ],
-  "group": ""
-}</script>
-        </a>
-      </div>
-    </div>
-  </section>
-  <section class="section-without-bottom-space">
-    <div class="w-layout-blockcontainer base-container w-container">
-      <div class="section-title-wrapper home-1-result-title-wrapper">
-        <h2 data-w-id="d7780110-73fa-2ef8-fb77-8c14932c36f6">Latest results of our matches</h2>
-        <a data-w-id="d7780110-73fa-2ef8-fb77-8c14932c36f8" href="match-results.html" class="primary-button w-button">View All Results</a>
-      </div>
-    </div>
-    <div data-w-id="d7780110-73fa-2ef8-fb77-8c14932c36fa" class="w-layout-blockcontainer full-width-container w-container">
-      <div class="hero-screen-wrapper">
-        <div class="decorative-line"></div>
-        <div class="decorative-line top"></div>
-        <div class="decorative-line center"></div>
-        <div class="results-collection-list-wrapper w-dyn-list">
-          <div role="list" class="result-collection-list w-dyn-items w-row">
-            <div role="listitem" class="result-collection-item w-dyn-item w-col w-col-4">
-              <a href="#" class="match-result-wrapper right w-inline-block">
-                <div class="rectangle right-top"></div>
-                <div class="rectangle left"></div>
-                <div class="result-date">
-                  <p class="uppercase-paragraph green-paragraph w-dyn-bind-empty"></p>
-                  <p class="brand-color-paragraph results-dot">•</p>
-                  <p class="uppercase-paragraph green-paragraph w-dyn-bind-empty"></p>
-                </div>
-                <div class="match-result"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="team-logo-large w-dyn-bind-empty">
-                  <h2 class="h2-green w-dyn-bind-empty"></h2>
-                  <div class="colon">
-                    <div class="rectangle center"></div>
-                    <div class="rectangle center"></div>
-                  </div><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="team-logo-large w-dyn-bind-empty">
-                  <h2 class="h2-green w-dyn-bind-empty"></h2>
-                </div>
-                <p class="uppercase-paragraph green-paragraph w-dyn-bind-empty"></p>
-                <div class="rectangle right-bottom"></div>
-                <div class="rectangle left-bottom"></div>
-              </a>
-            </div>
-          </div>
-          <div class="empty-state w-dyn-empty">
-            <div>No items found.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section-without-bottom-space">
-    <div class="w-layout-blockcontainer full-width-container w-container">
-      <a href="#" data-w-id="ef10ea07-2641-80ad-4aa3-5171f58f2343" class="lightbox-link-2 w-inline-block w-lightbox">
-        <div class="play-wrapper"><img src="images/play-1.svg" loading="lazy" alt="Play Icon" class="play-button-icon">
-          <div class="play-button"></div>
-          <div class="play-button-hover"></div>
-        </div>
-        <script type="application/json" class="w-json">{
-  "items": [
-    {
-      "url": "https://www.youtube.com/watch?v=hEGQZeBBvsA",
-      "originalUrl": "https://www.youtube.com/watch?v=hEGQZeBBvsA",
-      "width": 940,
-      "height": 528,
-      "thumbnailUrl": "https://i.ytimg.com/vi/hEGQZeBBvsA/hqdefault.jpg",
-      "html": "<iframe class=\"embedly-embed\" src=\"//cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FhEGQZeBBvsA%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DhEGQZeBBvsA&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FhEGQZeBBvsA%2Fhqdefault.jpg&key=96f1f04c5f4143bcb0f2e68c87d65feb&type=text%2Fhtml&schema=youtube\" width=\"940\" height=\"528\" scrolling=\"no\" title=\"YouTube embed\" frameborder=\"0\" allow=\"autoplay; fullscreen; encrypted-media; picture-in-picture;\" allowfullscreen=\"true\"></iframe>",
-      "type": "video"
-    }
-  ],
-  "group": ""
-}</script>
-      </a>
-    </div>
-  </section>
+
+ 
+
+  
   <section class="section">
     <div class="w-layout-blockcontainer full-width-container partners-block-container w-container">
       <div class="partners-wrapper home-3-partners">
@@ -3862,9 +3828,9 @@
         </div>
         <div class="footer-rights-wrapper">
           <div class="footer-rights">
-            <a href="https://wcopilot.com/templates" target="_blank" class="footer-copyright-link">Template</a> by <a href="https://wcopilot.com/" target="_blank" class="footer-copyright-link">wCopilot</a>
+            <a href="https://www.facebook.com/aziz.baffoun.90templates" target="_blank" class="footer-copyright-link">Template</a> by <a href="https://www.facebook.com/aziz.baffoun.90" target="_blank" class="footer-copyright-link">lbaff</a>
           </div>
-          <div class="footer-rights">Powered by <a href="https://webflow.com/" target="_blank" class="footer-copyright-link">Webflow</a>
+          <div class="footer-rights">Powered by <a href="https://www.facebook.com/aziz.baffoun.90" target="_blank" class="footer-copyright-link">lbaff</a>
           </div>
         </div>
       </div>
@@ -4052,11 +4018,9 @@
         }
         
         if (isInIframe) {
-          // If in iframe, start animations immediately
-          console.log('Detected iframe loading, starting hero animations immediately');
-          setTimeout(animateHeroElements, 300);
-          // Also trigger again after a delay for safety
-          setTimeout(animateHeroElements, 1000);
+          // If in iframe, wait for restart message instead of starting immediately
+          console.log('Detected iframe loading, waiting for restart message...');
+          // Don't start animations automatically - wait for parent message
         } else {
           // If not in iframe, use intersection observer
           if (heroSection) {
@@ -4172,6 +4136,8 @@
         
         // If in iframe, also trigger after a delay
         if (isInIframe) {
+          // Commented out automatic iframe animations - wait for restart message instead
+          /*
           setTimeout(() => {
             if (!podcastSection.classList.contains('podcast-animated')) {
               console.log('Iframe detected, triggering podcast animations with delay...');
@@ -4179,6 +4145,8 @@
               triggerPodcastAnimations();
             }
           }, 2000);
+          */
+          console.log('Iframe detected for podcast section, waiting for restart message...');
         }
         
         // Also trigger immediately if podcast section is already in view
@@ -4318,11 +4286,14 @@
           const triggerDelay = isInIframe ? 800 : 500;
           setTimeout(() => {
             const rect = bannerSection.getBoundingClientRect();
-            if (isInIframe || (rect.top < window.innerHeight && rect.bottom > 0)) {
+            // Only trigger automatically if NOT in iframe, or if in iframe and banner is in view
+            if (!isInIframe && (rect.top < window.innerHeight && rect.bottom > 0)) {
               if (!bannerSection.classList.contains('banner-animated')) {
                 bannerSection.classList.add('banner-animated');
                 triggerBannerAnimations();
               }
+            } else if (isInIframe) {
+              console.log('Banner section in iframe, waiting for restart message...');
             }
           }, triggerDelay);
         }
@@ -4739,6 +4710,112 @@
       
       // Also initialize after a short delay
       setTimeout(initializeValuesAnimations, 1600);
+      
+      // Animation restart functionality for iframe transitions
+      function restartAllAnimations() {
+        console.log('Restarting all animations due to iframe visibility...');
+        
+        // Remove all existing animate classes
+        const animatedElements = document.querySelectorAll('.animate');
+        animatedElements.forEach(element => {
+          element.classList.remove('animate');
+        });
+        
+        // Remove all animation state classes
+        const sections = [
+          '.home3-banner-section',
+          '.podcast-section', 
+          '.original-podcast-section',
+          '.home3-lineup-section',
+          '.about-us-banner-section',
+          '.section',
+          '.about-us-mission-wrapper'
+        ];
+        
+        sections.forEach(selector => {
+          const section = document.querySelector(selector);
+          if (section) {
+            section.classList.remove('hero-fully-animated', 'podcast-animated', 'lineup-animated', 
+                                     'about-us-animated', 'transition-animated', 'mission-animated', 
+                                     'values-animated');
+          }
+        });
+        
+        // Reset counter states
+        const counters = document.querySelectorAll('.counter-number');
+        counters.forEach(counter => {
+          counter.textContent = '0';
+          counter.classList.remove('counted');
+        });
+        
+        // Restart animations with proper delays
+        setTimeout(() => {
+          console.log('Restarting banner animations...');
+          initializeBannerAnimations();
+        }, 300);
+        
+        setTimeout(() => {
+          console.log('Restarting hero animations...');
+          initializeHeroAnimations();
+        }, 500);
+        
+        setTimeout(() => {
+          console.log('Restarting counter animations...');
+          initializeCounters();
+        }, 800);
+        
+        setTimeout(() => {
+          console.log('Restarting podcast animations...');
+          initializePodcastAnimations();
+        }, 1200);
+        
+        setTimeout(() => {
+          console.log('Restarting lineup animations...');
+          initializeLineupAnimations();
+        }, 1600);
+        
+        setTimeout(() => {
+          console.log('Restarting about us animations...');
+          initializeAboutUsBannerAnimations();
+        }, 2000);
+        
+        setTimeout(() => {
+          console.log('Restarting mission animations...');
+          initializeMissionBannerAnimations();
+        }, 2400);
+        
+        setTimeout(() => {
+          console.log('Restarting values animations...');
+          initializeValuesAnimations();
+        }, 2800);
+        
+        console.log('All animation restarts scheduled');
+      }
+      
+      // Listen for messages from parent window (intro page)
+      window.addEventListener('message', function(event) {
+        // Verify message origin for security (optional)
+        // if (event.origin !== window.location.origin) return;
+        
+        if (event.data && event.data.type === 'RESTART_ANIMATIONS') {
+          console.log('Received restart animations message from parent window');
+          restartAllAnimations();
+        }
+      });
+      
+      // Also restart animations if page becomes visible after being hidden
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+          console.log('Page became visible, checking if animations need restart...');
+          // Small delay to ensure page is fully visible
+          setTimeout(() => {
+            const isInIframe = window.self !== window.top;
+            if (isInIframe) {
+              restartAllAnimations();
+            }
+          }, 500);
+        }
+      });
     });
   </script>
   <script src="js/custom-animations.js"></script>

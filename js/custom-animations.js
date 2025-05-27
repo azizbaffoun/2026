@@ -158,25 +158,23 @@
   function cleanupTextContent() {
     console.log('Starting text content cleanup...');
     
-    // Clean up text content in mission cards
-    const missionCards = document.querySelectorAll('.mission-card-paragraph');
-    missionCards.forEach(card => {
-      if (card.textContent) {
-        card.textContent = card.textContent.replace(/\s+/g, ' ').trim();
-        card.classList.add('clean-text');
-      }
-    });
-
-    // Clean up other paragraph content
-    const paragraphs = document.querySelectorAll('.paragraph-large');
-    paragraphs.forEach(p => {
-      if (p.textContent && !p.classList.contains('clean-text')) {
-        p.textContent = p.textContent.replace(/\s+/g, ' ').trim();
-        p.classList.add('clean-text');
-      }
-    });
-
-    console.log('Text content cleaned up');
+    // Clean up text content in mission wrapper
+    const missionWrapper = document.querySelector('.about-us-mission-wrapper');
+    if (missionWrapper) {
+      const paragraphs = missionWrapper.querySelectorAll('.paragraph-large');
+      paragraphs.forEach(p => {
+        if (p.textContent.includes('نؤمن في وكالة سبورت فيجن')) {
+          const cleanText = p.textContent
+            .replace(/\s+/g, ' ')
+            .replace(/\n/g, ' ')
+            .trim();
+          p.innerHTML = cleanText;
+          p.classList.add('clean-text');
+        }
+      });
+      
+      console.log('Text content cleaned up');
+    }
   }
 
   // Initialize all animations
