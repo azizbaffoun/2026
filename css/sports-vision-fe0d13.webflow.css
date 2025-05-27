@@ -1,4 +1,20 @@
 @font-face {
+  font-family: 'Riyad Bank';
+  src: url('../fonts/font/riyad-bank-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Riyad Bank';
+  src: url('../fonts/font/riyad-bank-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Helveticaneuelt Arabic 55 Roman";
   src: url('../fonts/HELVETICANEUELT-ARABIC-55-ROMAN.TTF') format("truetype");
   font-weight: 400;
@@ -1300,7 +1316,7 @@
 body {
   background-color: var(--black);
   color: var(--white);
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 16px;
   line-height: 1em;
 }
@@ -1309,7 +1325,7 @@ h1 {
   color: var(--white);
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 70px;
   font-weight: 600;
   line-height: 1em;
@@ -1320,7 +1336,7 @@ h2 {
   flex: 1;
   margin-top: 10px;
   margin-bottom: 0;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 52px;
   font-weight: 600;
   line-height: 1em;
@@ -1329,7 +1345,7 @@ h2 {
 h3 {
   color: var(--white);
   margin-top: 10px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 34px;
   font-weight: 600;
   line-height: 1em;
@@ -1339,7 +1355,7 @@ h4 {
   color: var(--white);
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 26px;
   font-weight: 600;
   line-height: 1em;
@@ -1349,7 +1365,7 @@ h5 {
   color: var(--white);
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.2em;
@@ -1362,7 +1378,7 @@ h6 {
   text-transform: uppercase;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.5em;
@@ -1372,7 +1388,7 @@ p {
   color: var(--white-0-55);
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5em;
@@ -1381,7 +1397,7 @@ p {
 a {
   color: var(--white);
   align-items: center;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.2em;
@@ -1409,7 +1425,7 @@ ul {
 
 li {
   align-items: center;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 20px;
   font-weight: 400;
   line-height: 1.5em;
@@ -1673,7 +1689,7 @@ blockquote {
   justify-content: flex-end;
   align-items: center;
   padding: 14px 30px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
   font-weight: 500;
   transition: all .35s;
@@ -2106,7 +2122,7 @@ blockquote {
   min-height: 48px;
   margin-bottom: 10px;
   padding: 14px 10px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 16px;
   line-height: 1.2em;
 }
@@ -2173,7 +2189,7 @@ blockquote {
   height: auto;
   margin-bottom: 0;
   padding: 14px 24px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
 }
 
@@ -2665,7 +2681,7 @@ blockquote {
   height: auto;
   margin-bottom: 0;
   padding: 14px 22px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 16px;
   line-height: 1em;
 }
@@ -2766,7 +2782,7 @@ blockquote {
   height: 46px;
   margin-bottom: 0;
   padding: 14px 20px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
   line-height: 1.2em;
   transition: all .32s;
@@ -3387,7 +3403,7 @@ blockquote {
   background-color: var(--black);
   letter-spacing: .5px;
   padding: 14px 30px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
   transition: all .35s;
 }
@@ -4354,9 +4370,8 @@ blockquote {
   border-bottom: 2px solid var(--brand);
   padding-top: 60px;
   padding-bottom: 60px;
-  position: absolute;
-  bottom: 0;
-  left: 50px;
+  position: relative;
+  z-index: 15;
 }
 
 .podcasts-title-wrapper.home-2 {
@@ -5314,7 +5329,7 @@ blockquote {
   background-color: var(--brand);
   color: var(--black);
   padding: 50px 50px 0 0;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
   font-weight: 500;
 }
@@ -5326,7 +5341,7 @@ blockquote {
   padding-top: 20px;
   padding-bottom: 0;
   padding-right: 20px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
   font-weight: 400;
 }
@@ -5358,6 +5373,7 @@ blockquote {
   max-width: 900px;
   position: absolute;
   inset: 0% 0% 0% auto;
+  z-index: 1;
 }
 
 .podcast-table {
@@ -5370,6 +5386,7 @@ blockquote {
   min-height: 555px;
   display: grid;
   position: relative;
+  z-index: 10;
 }
 
 .hero-screen-wrapper {
@@ -5488,7 +5505,7 @@ blockquote {
   margin-bottom: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 70px;
   font-weight: 600;
   line-height: 1em;
@@ -5580,7 +5597,7 @@ blockquote {
 
 .large-text-wrapper {
   color: var(--brand);
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 120px;
   font-weight: 600;
   line-height: 1em;
@@ -6617,7 +6634,7 @@ blockquote {
 .team-result {
   color: var(--brand);
   align-self: center;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 90px;
   font-weight: 600;
   line-height: 1em;
@@ -6762,7 +6779,7 @@ blockquote {
   color: var(--paragraph-gray);
   letter-spacing: 1px;
   height: 100%;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
   line-height: 1.5em;
 }
@@ -6805,7 +6822,7 @@ blockquote {
 
 .player-infographics {
   text-align: center;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 60px;
   font-weight: 500;
   line-height: 1.2em;
@@ -6954,7 +6971,7 @@ blockquote {
 
 .home-3-team-points {
   color: var(--brand);
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 48px;
   font-weight: 600;
   line-height: 1em;
@@ -7288,7 +7305,7 @@ blockquote {
   height: 50px;
   margin-bottom: 0;
   padding: 14px 20px;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.2em;
@@ -7343,7 +7360,7 @@ blockquote {
   background-color: #ffdede00;
   margin-top: 40px;
   padding-left: 0;
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
 }
 
 .form-block {
@@ -7471,7 +7488,7 @@ blockquote {
 }
 
 .field-label {
-  font-family: Inter Tight, sans-serif;
+  font-family: 'Riyad Bank', Inter Tight, sans-serif;
   font-weight: 400;
 }
 
@@ -14800,7 +14817,7 @@ blockquote {
 
   .mobile-large-text {
     color: var(--brand);
-    font-family: Inter Tight, sans-serif;
+    font-family: 'Riyad Bank', Inter Tight, sans-serif;
     font-size: 60px;
     font-weight: 600;
     line-height: 1em;

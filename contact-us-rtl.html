@@ -18,6 +18,392 @@
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+  <style>
+    /* Custom CSS to center navbar buttons */
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .menu-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex: 1;
+      flex-wrap: nowrap;
+    }
+    
+    .nav-dropdown,
+    .nav-link {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      margin: 0;
+    }
+    
+    .nav-dropdown-toggle {
+      white-space: nowrap;
+    }
+    
+    .nav-item-title {
+      white-space: nowrap;
+    }
+    
+    /* Ensure proper spacing and alignment for RTL */
+    .nav-menu-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      flex-direction: row-reverse;
+      padding: 0 20px;
+      max-width: 100vw;
+      overflow: hidden;
+    }
+    
+    /* Position logo on the right for RTL */
+    .nav-menu-wrapper > img {
+      order: 1;
+      flex-shrink: 0;
+      max-width: 120px;
+    }
+    
+    /* Position mobile menu button on the left for RTL */
+    .menu-button {
+      order: 3;
+      flex-shrink: 0;
+    }
+    
+    /* Center the navigation menu */
+    .nav-menu {
+      order: 2;
+      flex: 1;
+      max-width: calc(100% - 240px);
+    }
+    
+    /* Mobile RTL fixes */
+    @media screen and (max-width: 991px) {
+      .nav-menu-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        padding: 15px !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        min-height: 60px !important;
+        position: relative !important;
+      }
+      
+      /* Hamburger button on the LEFT - centered vertically */
+      .menu-button {
+        order: 1 !important;
+        margin: 0 !important;
+        width: 40px !important;
+        height: 40px !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        z-index: 10002 !important;
+        background: transparent !important;
+        border: none !important;
+      }
+      
+      /* Logo on the RIGHT - centered vertically */
+      .nav-menu-wrapper > img {
+        order: 3 !important;
+        margin: 0 !important;
+        width: 80px !important;
+        height: auto !important;
+        flex-shrink: 0 !important;
+        display: block !important;
+      }
+      
+      /* Hide desktop navigation */
+      .nav-menu {
+        order: 2 !important;
+        position: absolute !important;
+        background: transparent !important;
+        display: none !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+      }
+      
+      /* Hide desktop menu items on mobile */
+      .menu-wrap {
+        display: none !important;
+      }
+      
+      /* Hide brand link on mobile */
+      .brand {
+        display: none !important;
+      }
+    }
+    
+    /* Hide duplicate tablet menu that's causing layout issues */
+    .menu-wrap .tablet-menu {
+      display: none;
+    }
+    
+    /* Mobile menu styling - Hidden by default */
+    .tablet-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+      direction: rtl;
+      text-align: right;
+      background-color: rgba(0, 0, 0, 0.95);
+      min-height: 100vh;
+    }
+    
+    .mobile-menu-header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      direction: rtl;
+      min-height: 80px;
+      flex-shrink: 0;
+    }
+    
+    .tablet-menu .close-menu-button {
+      position: relative;
+      top: auto;
+      left: auto;
+      z-index: 1000;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    
+    .mobile-nav-links {
+      display: flex !important;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 0;
+      padding-top: 20px;
+      direction: rtl;
+      width: 100%;
+      flex: 1;
+    }
+    
+    .mobile-nav-link {
+      display: block !important;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: right;
+      font-size: 20px;
+      color: white !important;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .mobile-nav-link:hover,
+    .mobile-nav-link.w--current {
+      color: #c7f849 !important;
+      background-color: rgba(199, 248, 73, 0.1);
+      padding-right: 10px;
+    }
+    
+    /* Desktop styles - hide mobile menu completely */
+    @media screen and (min-width: 992px) {
+      .tablet-menu {
+        display: none !important;
+      }
+      
+      .w-nav-overlay {
+        display: none !important;
+      }
+      
+      .w-nav-menu {
+        background-color: transparent !important;
+        position: static !important;
+        height: auto !important;
+      }
+      
+      .menu-wrap {
+        display: flex !important;
+      }
+    }
+    
+    /* Reset mobile menu default state */
+    .w-nav-menu {
+      background-color: transparent;
+    }
+    
+    /* Hide mobile menu by default */
+    .w-nav-overlay {
+      display: none !important;
+    }
+    
+    /* Mobile menu functionality */
+    @media screen and (max-width: 991px) {
+      /* Default mobile state - menu hidden */
+      .w-nav-menu {
+        position: absolute !important;
+        background: transparent !important;
+        display: none !important;
+        height: auto !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+      }
+      
+      .tablet-menu {
+        display: none !important;
+      }
+      
+      /* Webflow overlay - full page coverage */
+      .w-nav-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background-color: rgba(0, 0, 0, 0.95) !important;
+        z-index: 99999 !important;
+        display: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      
+      /* When menu is opened - override Webflow's inline styles */
+      .w-nav-overlay[style*="display: block"] {
+        display: block !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        left: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+      }
+      
+      /* Force full width even when Webflow sets width: 0px */
+      .w-nav-overlay[style*="width: 0px"] {
+        width: 100vw !important;
+      }
+      
+      /* Override any inline width styles */
+      .w-nav-overlay[style] {
+        width: 100vw !important;
+        height: 100vh !important;
+        left: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        position: fixed !important;
+        overflow: visible !important;
+      }
+      
+      /* Target the specific animation type */
+      .w-nav[data-animation='over-left'] .w-nav-overlay {
+        width: 100vw !important;
+        height: 100vh !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+      }
+      
+      /* Force override with maximum specificity */
+      .navbar-absolute.w-nav[data-animation='over-left'] .w-nav-overlay[style] {
+        width: 100vw !important;
+        height: 100vh !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        overflow: visible !important;
+      }
+      
+      .w-nav-overlay .w-nav-menu {
+        position: static !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background-color: transparent !important;
+        display: flex !important;
+        flex-direction: column !important;
+        transform: translateX(0) !important;
+        transition: none !important;
+        box-shadow: none !important;
+      }
+      
+      .w-nav-overlay .tablet-menu {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+      }
+      
+      .w-nav-overlay .menu-wrap {
+        display: none !important;
+      }
+      
+      /* Ensure navbar wrapper is below mobile menu when opened */
+      .nav-menu-wrapper {
+        position: relative !important;
+        z-index: 1000 !important;
+        background: transparent !important;
+      }
+      
+      /* When mobile menu is open, hide the navbar */
+      .w-nav-overlay[style*="display: block"] ~ .nav-menu-wrapper {
+        z-index: 999 !important;
+      }
+      
+      /* Make hamburger button clickable and properly styled */
+      .menu-button {
+        cursor: pointer !important;
+        z-index: 10002 !important;
+        position: relative !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+      }
+      
+      .menu-button:hover {
+        opacity: 0.8 !important;
+      }
+    }
+    
+    @media screen and (max-width: 991px) {
+      .menu-wrap {
+        justify-content: center;
+        gap: 20px;
+      }
+      
+      /* Show mobile menu on tablet/mobile */
+      .nav-menu {
+        direction: rtl;
+        text-align: right;
+      }
+    }
+    
+    @media screen and (max-width: 767px) {
+      .menu-wrap {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
 
 </head>
 <body>
@@ -26,72 +412,34 @@
       <a href="home-1.html" class="brand w-nav-brand"></a>
       <nav role="navigation" class="nav-menu w-nav-menu">
         <div class="tablet-menu">
-          <a href="home-1.html" class="brand-tablet w-nav-brand"><img loading="lazy" height="30" alt="Logo" src="images/SPORT-CLUB.png" class="logo-sport-club"></a>
-          <div class="close-menu-button w-nav-button"><img loading="lazy" src="images/close-btn.svg" alt="Close icon" class="nav-close-icon"></div>
-        </div>
-        <div class="menu-wrap">
-
-          <div data-delay="0" data-hover="true" data-w-id="0dd50dad-cd77-f1d4-eca8-2c4f53039e0b" class="nav-dropdown w-dropdown">
-            <div class="nav-dropdown-toggle w-dropdown-toggle">
-              <p class="nav-item-title">جميع الصفحات</p>
-              <div class="nav-dropdown-icon w-icon-dropdown-toggle"></div>
-            </div>
-            <nav class="nav-dropdown-list megamenu w-dropdown-list">
-              <div class="nav-dropdown-link-wrapper">
-                <a href="contact-us.html" class="nav-dropdown-link w-dropdown-link"><span class="nav-dropdown-link-line"> </span>تواصل معنا</a>
-                              </div>
-              
-              <div class="nav-dropdown-link-wrapper">
-                <a href="our-ownership-rlt.html" class="nav-dropdown-link w-dropdown-link"><span class="nav-dropdown-link-line"> </span>الادارة</a>
-                <a href="our-players-rtl.html" class="nav-dropdown-link w-dropdown-link"><span class="nav-dropdown-link-line"> </span>اللاعبون</a>
-                 </div>
-
-              <div class="nav-dropdown-toggle nav-home-con w-dropdown-toggle">
-                <div class="nav-dropdown-link-wrapper">
-
-                <p href="home-1-rtl.html" class="nav-item-title home-title">الصفحة الرئيسية</p>
-
-                <a href="about-us-rtl.html" class="nav-dropdown-link w-dropdown-link"><span class="nav-dropdown-link-line"> </span>نبذة عن الوكالة</a>
-              </div>
-              </div>
-            </nav>
+          <div class="mobile-menu-header">
+            <div class="close-menu-button w-nav-button"><img loading="lazy" src="images/close-btn.svg" alt="Close icon" class="nav-close-icon"></div>
           </div>
           
-          <div data-delay="0" data-hover="true" data-w-id="99a785bb-58ae-5924-da41-5ee8d315343e" class="nav-dropdown w-dropdown">
-            <div class="nav-dropdown-toggle w-dropdown-toggle">
-              <p class="nav-item-title">الوكالة</p>
-              <div class="nav-dropdown-icon w-icon-dropdown-toggle"></div>
-            </div>
-            <nav class="nav-dropdown-list megamenu w-dropdown-list">
-              <div class="nav-dropdown-link-wrapper">
-                <a href="about-us-rtl.html" class="nav-dropdown-link w-dropdown-link"><span class="nav-dropdown-link-line"> </span>نبذة عن الوكالة</a>
-                <a href="our-ownership-rlt.html" class="nav-dropdown-link w-dropdown-link"><span class="nav-dropdown-link-line"> </span>الادارة</a>
-                <a href="our-players-rtl.html" class="nav-dropdown-link w-dropdown-link"><span class="nav-dropdown-link-line"> </span>اللاعبون</a>
-                </div>
-              
-            </nav>
+          <!-- Mobile Navigation Links -->
+          <div class="mobile-nav-links">
+            <a href="contact-us-rtl.html" class="nav-link mobile-nav-link">تواصل معنا</a>
+            <a href="our-ownership-rlt.html" class="nav-link mobile-nav-link">الادارة</a>
+            <a href="our-players-rtl.html" class="nav-link mobile-nav-link">لاعبينا</a>
+            <a href="about-us-rtl.html" aria-current="page" class="nav-link mobile-nav-link w--current">الوكالة</a>
+            <a href="home-3-rtl.html" class="nav-link mobile-nav-link">الصفحة الرئيسية</a>
           </div>
-<div class="tablet-menu">
-          <a href="home-1.html" aria-current="page" class="brand-tablet w-nav-brand w--current"><img loading="lazy" alt="Logo" src="images/SPORT-CLUB.png" class="logo-sport-club"></a>
-          <div class="close-menu-button w-nav-button"><img loading="lazy" src="images/close-btn.svg" alt="Close icon" class="nav-close-icon"></div>
         </div>
         <div class="menu-wrap">
-          <a href="home-1-rtl.html" aria-current="page" class="nav-link w--current">الصفحة الرئيسية</a>
+          <a href="contact-us-rtl.html" class="nav-link">تواصل معنا</a>
+          <a href="our-ownership-rlt.html" class="nav-link">الادارة</a>
+          <a href="our-players-rtl.html" class="nav-link">لاعبينا</a>
+          <a href="about-us-rtl.html" aria-current="page" class="nav-link w--current">الوكالة</a>
+          <a href="home-3-rtl.html" class="nav-link">الصفحة الرئيسية</a>
          
           <div data-w-id="3a8af854-e49c-0eec-4064-fce9cc1b13cb" class="button-header-wrapper hidden-desktop">
             <a href="contact-us-rtl.html" class="primary-button header-button w-button">تواصل معنا</a>
           </div>
-        </div>
       </nav>
-      <div class="header-right-block-wrapper">
-        <div data-w-id="ba67b287-f196-4627-29a8-f080f7e8b220" class="button-header-wrapper">
-          <a href="contact-us-rtl.html" class="primary-button header-button w-button">تواصل معنا</a>
-        </div>
-      </div>
+
       <div class="menu-button w-nav-button"><img loading="lazy" height="Auto" alt="Menu icon" src="images/menu-btn.svg" class="image-burger"></div>
     </div>
   </div>
-
   <section>
     <div class="w-layout-blockcontainer full-width-container w-container">
       <div class="pages-banner news-banner">
