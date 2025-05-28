@@ -12,6 +12,8 @@
   <link href="css/sports-vision-fe0d13.webflow.css" rel="stylesheet" type="text/css">
   <link href="css/custom-animations.css" rel="stylesheet" type="text/css">
   <link href="css/players-navbar-fix.css" rel="stylesheet" type="text/css">
+  <link href="css/slider-rtl-fix.css" rel="stylesheet" type="text/css">
+
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -3183,7 +3185,7 @@ html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .br
 
   <!-- Lottie Player Script -->
   <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-
+  <script src="js/slider-rtl-fix.js"></script>
 </head>
 <body>
   <div data-animation="over-left" class="navbar-absolute about-us-navbar w-nav" data-easing2="ease" data-easing="ease" data-collapse="medium" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
@@ -3197,17 +3199,19 @@ html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .br
           
           <!-- Mobile Navigation Links -->
           <div class="mobile-nav-links">
-            <a href="contact-us-rtl.html" class="nav-link mobile-nav-link">تواصل معنا</a>
-            <a href="our-players-rtl.html" class="nav-link mobile-nav-link">لاعبينا</a>
-            <a href="about-us-rtl.html" aria-current="page" class="nav-link mobile-nav-link w--current">الوكالة</a>
             <a href="home-3-rtl.html" class="nav-link mobile-nav-link">الصفحة الرئيسية</a>
+            <a href="about-us-rtl.html" aria-current="page" class="nav-link mobile-nav-link w--current">الوكالة</a>
+            <a href="our-players-rtl.html" class="nav-link mobile-nav-link">لاعبينا</a>
+
+            <a href="contact-us-rtl.html" class="nav-link mobile-nav-link">تواصل معنا</a>
           </div>
         </div>
         <div class="menu-wrap">
-          <a href="contact-us-rtl.html" class="nav-link">تواصل معنا</a>
-          <a href="our-players-rtl.html" class="nav-link">لاعبينا</a>
-          <a href="about-us-rtl.html" aria-current="page" class="nav-link w--current">الوكالة</a>
           <a href="home-3-rtl.html" class="nav-link">الصفحة الرئيسية</a>
+          <a href="about-us-rtl.html" aria-current="page" class="nav-link w--current">الوكالة</a>
+          <a href="our-players-rtl.html" class="nav-link">لاعبينا</a>
+
+          <a href="contact-us-rtl.html" class="nav-link">تواصل معنا</a>
          
           <div data-w-id="3a8af854-e49c-0eec-4064-fce9cc1b13cb" class="button-header-wrapper hidden-desktop">
             <a href="contact-us-rtl.html" class="primary-button header-button w-button">تواصل معنا</a>
@@ -3423,9 +3427,7 @@ html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .br
                     </a>
                   </div>
                 </div>
-                <div class="empty-state-4 w-dyn-empty">
-                  <div>No items found.</div>
-                </div>
+
               </div>
               <div class="cart-wrapper">
                 <div data-open-product="" data-wf-cart-type="rightSidebar" data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper" data-node-type="commerce-cart-wrapper">
@@ -3870,7 +3872,6 @@ html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .br
     </div>
     
     <div class="about-us-mission-wrapper text-content-improved">
-      <p data-w-id="b6068495-1a91-7d21-8487-c5eaae8b0685" class="uppercase-paragraph green-paragraph">رؤيتنا</p>
       <div class="about-us-mission-title">
         <h2 data-w-id="b6068495-1a91-7d21-8487-c5eaae8b0688" class="about-us-heading"><span class="text-span-8"><br><br>ما الذي يميز<em><br>                </em>وكالة  سبورتس فيجن؟</span></h2>
         <p data-w-id="b6068495-1a91-7d21-8487-c5eaae8b068a" class="paragraph-large">نؤمن في وكالة  سبورتس فيجن بأن اللاعب مشروع متكامل و دورنا لا يتوقف عند جلب العقود وإدارة شؤون الانتقال بين الأندية. بل یمتد إلى تقديم دعم متكامل بما في ذلك مواجهة الضغوط الإعلامية والجماھيرية والإدارية الكبيرة لتمكينه من التركيز على أدائه داخل المستطيل الأخضر فقط.<br>     </p>

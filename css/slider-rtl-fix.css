@@ -1,0 +1,264 @@
+/* ULTIMATE SIMPLE 3-CARD SLIDER FIX */
+
+/* Container setup */
+.section-3 {
+  direction: rtl !important;
+  text-align: right !important;
+  overflow: hidden !important;
+}
+
+.slider01_comp {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  direction: ltr !important;
+  position: relative !important;
+}
+
+.slider01_mask {
+  width: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  height: auto !important;
+}
+
+/* FORCE EXACTLY 3 CARDS VISIBLE */
+.w-slider-mask .w-slider-nav,
+.slider01_list {
+  display: flex !important;
+  flex-direction: row !important;
+  transition: transform 0.5s ease !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  transform: translateX(0) !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Each slide is exactly 1/3 width - NO EXCEPTIONS */
+.slider01_slide {
+  flex: 0 0 33.333333% !important;
+  width: 33.333333% !important;
+  min-width: 33.333333% !important;
+  max-width: 33.333333% !important;
+  margin: 0 !important;
+  padding: 0 10px !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  position: relative !important;
+  direction: rtl !important;
+  min-height: 400px !important;
+  list-style: none !important;
+  transform: none !important;
+  float: none !important;
+  clear: none !important;
+}
+
+/* Override ANY Webflow inline styles */
+.slider01_slide[style] {
+  flex: 0 0 33.333333% !important;
+  width: 33.333333% !important;
+  min-width: 33.333333% !important;
+  max-width: 33.333333% !important;
+  transform: none !important;
+  display: block !important;
+}
+
+/* Mission cards - perfect fit */
+.about-us-mission-card {
+  direction: rtl !important;
+  text-align: right !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  min-height: 380px !important;
+  background: linear-gradient(135deg, rgba(88, 187, 79, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%) !important;
+  border: 2px solid rgba(88, 187, 79, 0.3) !important;
+  border-radius: 20px !important;
+  padding: 25px 20px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(15px) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.about-us-mission-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: rgba(88, 187, 79, 0.6) !important;
+  box-shadow: 0 20px 60px rgba(88, 187, 79, 0.2) !important;
+}
+
+.our-mission-icon {
+  width: 50px !important;
+  height: 50px !important;
+  filter: brightness(0) saturate(100%) invert(55%) sepia(85%) saturate(463%) hue-rotate(80deg) brightness(103%) contrast(95%) !important;
+  margin-bottom: 15px !important;
+  transition: all 0.3s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.about-us-mission-card:hover .our-mission-icon {
+  transform: scale(1.1) rotate(5deg) !important;
+}
+
+.about-us-mission-card h3 {
+  color: #58bb4f !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  margin: 0 0 12px 0 !important;
+  text-shadow: 0 2px 10px rgba(88, 187, 79, 0.3) !important;
+  flex-shrink: 0 !important;
+}
+
+.about-us-mission-card:hover h3 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 15px rgba(88, 187, 79, 0.5) !important;
+}
+
+.about-us-mission-card .mission-card-paragraph {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  flex-grow: 1 !important;
+}
+
+.about-us-mission-card:hover .mission-card-paragraph {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+/* Hide arrows */
+.w-slider-arrow-left,
+.w-slider-arrow-right {
+  display: none !important;
+}
+
+/* Pagination */
+.slider_pagination {
+  direction: ltr !important;
+  text-align: center !important;
+  margin-top: 30px !important;
+  padding: 20px 0 !important;
+}
+
+.w-slider-dot {
+  background: rgba(255, 255, 255, 0.3) !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  margin: 0 6px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.w-slider-dot:hover {
+  background: rgba(88, 187, 79, 0.7) !important;
+  transform: scale(1.1) !important;
+}
+
+.w-slider-dot.w-active {
+  background: #58bb4f !important;
+  transform: scale(1.3) !important;
+  box-shadow: 0 0 20px rgba(88, 187, 79, 0.5) !important;
+}
+
+/* FORCE OVERRIDE WEBFLOW TRANSFORMS */
+.w-slider-mask[style*="transform"] {
+  transform: none !important;
+}
+
+.slider01_list[style*="transform"] {
+  transform: translateX(0) !important;
+}
+
+/* Responsive - 2 cards on tablet */
+@media screen and (max-width: 991px) {
+  .slider01_slide {
+    flex: 0 0 50% !important;
+    width: 50% !important;
+    min-width: 50% !important;
+    max-width: 50% !important;
+    padding: 0 8px !important;
+  }
+  
+  .slider01_slide[style] {
+    flex: 0 0 50% !important;
+    width: 50% !important;
+    min-width: 50% !important;
+    max-width: 50% !important;
+  }
+  
+  .about-us-mission-card {
+    padding: 20px 15px !important;
+    min-height: 350px !important;
+  }
+  
+  .about-us-mission-card h3 {
+    font-size: 18px !important;
+  }
+  
+  .about-us-mission-card .mission-card-paragraph {
+    font-size: 13px !important;
+  }
+}
+
+/* Responsive - 1 card on mobile */
+@media screen and (max-width: 767px) {
+  .slider01_slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 15px !important;
+  }
+  
+  .slider01_slide[style] {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .about-us-mission-card {
+    padding: 20px 15px !important;
+    min-height: 320px !important;
+  }
+  
+  .about-us-mission-card h3 {
+    font-size: 16px !important;
+  }
+  
+  .about-us-mission-card .mission-card-paragraph {
+    font-size: 12px !important;
+  }
+  
+  .our-mission-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* NUCLEAR OPTION - Override everything */
+.w-slider-mask[style],
+.slider01_list[style],
+.slider01_slide[style] {
+  height: auto !important;
+}
+
+.slider01_list,
+.w-slider-nav {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+} 
