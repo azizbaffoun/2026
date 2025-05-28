@@ -1,15 +1,16 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sun May 25 2025 22:16:24 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="68330f6d37cebb73932af0c3" data-wf-site="6822c54974afef131c86bfa5" lang="en">
+<html data-wf-page="68330f6d37cebb73932af0c3" data-wf-site="6822c54974afef131c86bfa5" lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
-  <title>Our Players rtl</title>
-  <meta content="Our Players rtl" property="og:title">
-  <meta content="Our Players rtl" property="twitter:title">
+  <title>لاعبونا - Our Players</title>
+  <meta content="لاعبونا - Our Players" property="og:title">
+  <meta content="لاعبونا - Our Players" property="twitter:title">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/sports-vision-fe0d13.webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/custom-animations.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -19,12 +20,187 @@
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
   <style>
+    /* RTL Layout Styles */
+    html {
+      direction: rtl;
+    }
+    
+    body {
+      direction: rtl;
+      text-align: right;
+    }
+    
+    /* Force paragraph visibility */
+    .our-team-paragraph-wrapper {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      animation: none !important;
+    }
+    
+    .our-team-paragraph-wrapper .paragraph-large {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    
+    /* Green Divider Styles */
+    .green-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 30px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: dividerSlideUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
+      direction: ltr; /* Override RTL for centered design */
+    }
+    
+    .divider-line {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #5ab94e, transparent);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .divider-line::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(90, 185, 78, 0.8), transparent);
+      animation: dividerShimmer 2s ease-in-out infinite;
+    }
+    
+    .divider-dot {
+      width: 8px;
+      height: 8px;
+      background: #5ab94e;
+      border-radius: 50%;
+      margin: 0 15px;
+      position: relative;
+      box-shadow: 0 0 10px rgba(90, 185, 78, 0.5);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    
+    .divider-dot::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: rgba(90, 185, 78, 0.3);
+      border-radius: 50%;
+      animation: dotRipple 2s ease-in-out infinite;
+    }
+    
+    /* Divider Animations */
+    @keyframes dividerSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes dividerShimmer {
+      0% {
+        left: -100%;
+      }
+      50% {
+        left: 100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+    
+    @keyframes dotPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(90, 185, 78, 0.5);
+      }
+      50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px rgba(90, 185, 78, 0.8);
+      }
+    }
+    
+    @keyframes dotRipple {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+      }
+    }
+    
+    /* Navigation RTL adjustments */
+    .nav-menu-wrapper {
+      order: 2;
+    }
+    
+    .button-header-wrapper {
+      order: 1;
+    }
+    
+    .brand {
+      order: 3;
+    }
+    
+    /* Ensure all text elements are RTL */
+    .nav-link,
+    .nav-dropdown-link,
+    .footer-link,
+    .paragraph-large,
+    .section-title,
+    h1, h2, h3, h4, h5, h6,
+    p, span, div {
+      direction: rtl;
+      text-align: right;
+    }
+    
+    /* Animation adjustments for RTL */
+    @keyframes slideInFromLeft {
+      from {
+        transform: translateX(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    .animate-slide-left {
+      animation: slideInFromLeft 0.8s ease-out;
+    }
+    
+    /* RTL Base Styles */
+    * {
+      direction: rtl;
+    }
+    
+    body {
+      direction: rtl;
+      text-align: right;
+    }
+    
     /* Custom CSS to center navbar buttons */
     .nav-menu {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
+      direction: rtl;
     }
     
     .menu-wrap {
@@ -34,6 +210,7 @@
       gap: 24px;
       flex: 1;
       flex-wrap: nowrap;
+      direction: rtl;
     }
     
     .nav-dropdown,
@@ -42,14 +219,17 @@
       align-items: center;
       white-space: nowrap;
       margin: 0;
+      direction: rtl;
     }
     
     .nav-dropdown-toggle {
       white-space: nowrap;
+      direction: rtl;
     }
     
     .nav-item-title {
       white-space: nowrap;
+      direction: rtl;
     }
     
     /* Ensure proper spacing and alignment for RTL */
@@ -58,22 +238,23 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      flex-direction: row-reverse;
+      flex-direction: row;
       padding: 0 20px;
       max-width: 100vw;
       overflow: hidden;
+      direction: rtl;
     }
     
     /* Position logo on the right for RTL */
     .nav-menu-wrapper > img {
-      order: 1;
+      order: 3;
       flex-shrink: 0;
       max-width: 120px;
     }
     
     /* Position mobile menu button on the left for RTL */
     .menu-button {
-      order: 3;
+      order: 1;
       flex-shrink: 0;
     }
     
@@ -403,6 +584,88 @@
         gap: 15px;
       }
     }
+    
+    .players-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 15px;
+      margin: 40px 0;
+    }
+    
+    .players-loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .loading-ball {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+    
+    .loading-ball svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+    
+    .loading-ball path {
+      animation-duration: 1s;
+      animation-name: ballPulse;
+      animation-iteration-count: infinite;
+      fill: #5ab94e;
+    }
+    
+    .loading-ball .ball-path-0 { animation-delay: -0.125s; }
+    .loading-ball .ball-path-1 { animation-delay: -0.25s; }
+    .loading-ball .ball-path-2 { animation-delay: -0.375s; }
+    .loading-ball .ball-path-3 { animation-delay: -0.5s; }
+    .loading-ball .ball-path-4 { animation-delay: -0.625s; }
+    .loading-ball .ball-path-5 { animation-delay: -0.75s; }
+    .loading-ball .ball-path-6 { animation-delay: -0.875s; }
+    .loading-ball .ball-path-7 { animation-delay: -1s; }
+    .loading-ball .ball-path-8 { animation-delay: -0.3s; }
+    .loading-ball .ball-path-9 { animation-delay: -0.7s; }
+    
+    @keyframes ballPulse {
+      0% { 
+        opacity: 0.1; 
+        transform: scale(0.95);
+      }
+      30% { 
+        opacity: 0.8; 
+        transform: scale(1.05);
+      }
+      100% { 
+        opacity: 0.1; 
+        transform: scale(0.95);
+      }
+    }
+    
+    .loading-text {
+      color: #5ab94e;
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      animation: loadingTextPulse 2s ease-in-out infinite;
+      direction: rtl;
+    }
+    
+    @keyframes loadingTextPulse {
+      0%, 100% {
+        opacity: 0.7;
+        transform: translateY(0);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-2px);
+      }
+    }
   </style>
 
 </head>
@@ -443,6 +706,24 @@
   <section>
     <div class="w-layout-blockcontainer full-width-container w-container">
       <div class="pages-banner our-team-banner">
+        <!-- Floating Decorative Elements -->
+        <div class="floating-elements">
+          <div class="floating-shape shape-1"></div>
+          <div class="floating-shape shape-2"></div>
+          <div class="floating-shape shape-3"></div>
+          <div class="floating-shape shape-4"></div>
+        </div>
+        
+        <!-- Animated Grid Pattern -->
+        <div class="animated-grid-pattern"></div>
+        
+        <!-- Moving Light Rays -->
+        <div class="light-rays">
+          <div class="light-ray ray-1"></div>
+          <div class="light-ray ray-2"></div>
+          <div class="light-ray ray-3"></div>
+        </div>
+        
         <div class="decorative-banner-lines inner-page-banner-lines">
           <div class="rectangle right-bottom"></div>
           <div class="rectangle left-bottom"></div>
@@ -454,11 +735,32 @@
     </div>
   </section>
   <section class="section">
-    <div data-w-id="19b29c4c-e5c5-d215-1dd9-eb2cd6333471" style="opacity:0" class="w-layout-blockcontainer full-width-container our-team-container w-container"><img src="images/Union-1.png" loading="lazy" alt="" class="our-team-page-decoration">
+    <div data-w-id="19b29c4c-e5c5-d215-1dd9-eb2cd6333471" style="opacity:0" class="w-layout-blockcontainer full-width-container our-team-container w-container">
+      <!-- Enhanced Background Effects -->
+      <div class="team-bg-effects">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+        <div class="particle-system">
+          <div class="particle particle-1"></div>
+          <div class="particle particle-2"></div>
+          <div class="particle particle-3"></div>
+          <div class="particle particle-4"></div>
+          <div class="particle particle-5"></div>
+        </div>
+      </div>
+      
+      <img src="images/Union-1.png" loading="lazy" alt="" class="our-team-page-decoration">
       <div class="dark-gray-background"></div>
       <div class="our-team-block">
         <div class="our-team-text-wrapper our-team-page">
           <h2>لاعبونا</h2>
+          <!-- Green Divider -->
+          <div class="green-divider">
+            <div class="divider-line"></div>
+            <div class="divider-dot"></div>
+            <div class="divider-line"></div>
+          </div>
           <div class="our-team-paragraph-wrapper">
             <p class="paragraph-large">يقف وراء سبورتس فيجين فريق متفانٍ من الأفراد الشغوفين بالرياضة والتحفيز وإحداث تأثير إيجابي. تعرّف على الوجوه التي تقود مهمتنا إلى الأمام.
 
@@ -466,6 +768,25 @@
           </div>
         </div>
         <div class="players-cards-wrapper" id="players-cards-wrapper">
+          <!-- Loading Animation -->
+          <div class="players-loading" id="players-loading">
+            <div class="loading-ball">
+              <svg viewBox="0 0 164.83 151.5" xmlns="http://www.w3.org/2000/svg">
+                <path class="ball-path-0" d="M117.24,69.24A8,8,0,0,0,115.67,67c-4.88-4-9.8-7.89-14.86-11.62A4.93,4.93,0,0,0,96.93,55c-5.76,1.89-11.4,4.17-17.18,6a4.36,4.36,0,0,0-3.42,4.12c-1,6.89-2.1,13.76-3,20.66a4,4,0,0,0,1,3.07c5.12,4.36,10.39,8.61,15.68,12.76a3.62,3.62,0,0,0,2.92.75c6.29-2.66,12.52-5.47,18.71-8.36a3.49,3.49,0,0,0,1.68-2.19c1.34-7.25,2.54-14.55,3.9-22.58Z" fill="#5ab94e" />
+                <path class="ball-path-1" d="M97.55,38.68A43.76,43.76,0,0,1,98,33.44c.41-2.36-.5-3.57-2.57-4.64C91.1,26.59,87,24,82.66,21.82a6.18,6.18,0,0,0-4-.71C73.45,22.55,68.32,24.25,63.22,26c-3.63,1.21-6.08,3.35-5.76,7.69a26.67,26.67,0,0,1-.6,4.92c-1.08,8.06-1.08,8.08,5.86,11.92,3.95,2.19,7.82,5.75,11.94,6.08s8.76-2.41,13.12-3.93c9.33-3.29,9.33-3.3,9.78-14Z" fill="#5ab94e" />
+                <path class="ball-path-2" d="M66.11,126.56c5.91-.91,11.37-1.7,16.81-2.71a3.3,3.3,0,0,0,1.87-2.17c1-4.06,1.73-8.19,2.84-12.24.54-2-.11-3-1.55-4.15-5-4-9.9-8.12-15-12a6.19,6.19,0,0,0-4.15-1.1c-5.35.66-10.7,1.54-16,2.54A4,4,0,0,0,48.34,97a109.13,109.13,0,0,0-3,12.19,4.47,4.47,0,0,0,1.34,3.6c5.54,4.36,11.23,8.53,16.91,12.69a10.84,10.84,0,0,0,2.57,1.11Z" fill="#5ab94e" />
+                <path class="ball-path-3" d="M127.42,104.12c4.1-2.1,8-3.93,11.72-6a6,6,0,0,0,2.27-3,58.22,58.22,0,0,0,3.18-29.92c-.26-1.7-8-7.28-9.71-6.85A5,5,0,0,0,133,59.65c-2.81,2.49-5.71,4.88-8.33,7.56a9.46,9.46,0,0,0-2.47,4.4c-1.29,6.49-2.38,13-3.35,19.55a5.73,5.73,0,0,0,.83,3.91c2.31,3.08,5,5.88,7.7,9Z" fill="#5ab94e" />
+                <path class="ball-path-4" d="M52.58,29.89c-2.15-.36-3.78-.54-5.39-.9-2.83-.64-4.92.1-7,2.32A64.1,64.1,0,0,0,26.09,54.64c-2.64,7.92-2.62,7.84,5.15,10.87,1.76.69,2.73.45,3.93-1C39.79,59,44.54,53.65,49.22,48.2a4.2,4.2,0,0,0,1.13-2c.8-5.32,1.49-10.68,2.24-16.34Z" fill="#5ab94e" />
+                <path class="ball-path-5" fill="#5ab94e" d="M23,68.13c0,2.51,0,4.7,0,6.87a60.49,60.49,0,0,0,9.75,32.15c1.37,2.13,6.4,3,7,1.2,1.55-5,2.68-10.2,3.82-15.34.13-.58-.58-1.38-.94-2.06-2.51-4.77-5.47-9.38-7.45-14.37C32.94,71,28.22,69.84,23,68.13Z" />
+                <path class="ball-path-6" fill="#5ab94e" d="M83.91,12.86c-.32.36-.66.71-1,1.07.9,1.13,1.57,2.62,2.73,3.33,4.71,2.84,9.56,5.48,14.39,8.1a9.29,9.29,0,0,0,3.13.83c5.45.69,10.89,1.38,16.35,1.94a10.41,10.41,0,0,0,3.07-.71c-11.48-9.9-24.26-14.61-38.71-14.56Z" />
+                <path class="ball-path-7" fill="#5ab94e" d="M66.28,132.51c13.36,3.78,25.62,3.5,38-.9C91.68,129.59,79.36,128,66.28,132.51Z" />
+                <path class="ball-path-8" fill="#5ab94e" d="M127.2,30.66l-1.27.37a18.58,18.58,0,0,0,1,3.08c3,5.52,6.21,10.89,8.89,16.54,1.34,2.83,3.41,3.82,6.49,4.9a60.38,60.38,0,0,0-15.12-24.9Z" />
+                <path class="ball-path-9" fill="#5ab94e" d="M117.35,125c5.58-2.32,16.9-13.84,18.1-19.2-2.41,1.46-5.18,2.36-6.78,4.23-4.21,5-7.89,10.37-11.32,15Z" />
+              </svg>
+            </div>
+            <div class="loading-text">جاري تحميل اللاعبين...</div>
+          </div>
+          
           <div class="w-dyn-list">
             <div role="list" class="collection-list-6 w-dyn-items">
               <div role="listitem" class="w-dyn-item">
@@ -589,70 +910,181 @@
     const db = firebase.firestore();
 
     document.addEventListener("DOMContentLoaded", function() {
+      // Make all hidden elements visible with animations
+      const hiddenElements = document.querySelectorAll('[style*="opacity:0"], [style*="opacity: 0"]');
+      
+      // Animate elements in sequence
+      hiddenElements.forEach((element, index) => {
+        setTimeout(() => {
+          element.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }, index * 200);
+      });
+      
       // Make the main section visible first
       const mainSection = document.querySelector('[data-w-id="19b29c4c-e5c5-d215-1dd9-eb2cd6333471"]');
       if (mainSection) {
         mainSection.style.opacity = '1';
       }
       
-      db.collection("players").get().then((querySnapshot) => {
-        const players = [];
-        querySnapshot.forEach((doc) => players.push(doc.data()));
-        console.log("Players from Firebase:", players); // Debug log
+      // Specifically target the paragraph wrapper that's hidden by CSS
+      const paragraphWrapper = document.querySelector('.our-team-paragraph-wrapper');
+      if (paragraphWrapper) {
+        // Force immediate visibility
+        paragraphWrapper.style.opacity = '1';
+        paragraphWrapper.style.transform = 'translateY(0)';
+        paragraphWrapper.style.animation = 'none';
+        paragraphWrapper.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         
-        // Get the container where we'll add player cards
-        const playersContainer = document.querySelector('#players-cards-wrapper .collection-list-6.w-dyn-items');
-        if (!playersContainer) {
-          console.error("Players container not found");
-          return;
+        // Also target the paragraph inside
+        const paragraph = paragraphWrapper.querySelector('.paragraph-large');
+        if (paragraph) {
+          paragraph.style.opacity = '1';
+          paragraph.style.transform = 'translateY(0)';
         }
-        
-        // Clear existing content
-        playersContainer.innerHTML = '';
-        
-        // Create a player card for each player
-        players.forEach((player, index) => {
-          const fullName = `${player.first_name || ""} ${player.last_name || ""}`.trim();
+      }
+      
+      // Make the title visible
+      const pageTitle = document.querySelector('[data-w-id="640b4d7a-fe1d-7bf3-0fcb-bc763c3ca269"]');
+      if (pageTitle) {
+        setTimeout(() => {
+          pageTitle.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          pageTitle.style.opacity = '1';
+          pageTitle.style.transform = 'translateY(0)';
+        }, 300);
+      }
+      
+      // Make form elements visible
+      const formElements = document.querySelectorAll('[data-w-id="273a5b27-00d1-b149-7510-75b0799292bc"], [data-w-id="273a5b27-00d1-b149-7510-75b0799292be"]');
+      formElements.forEach((element, index) => {
+        setTimeout(() => {
+          element.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }, 800 + (index * 200));
+      });
+      
+      // Show loading animation
+      const loadingElement = document.getElementById('players-loading');
+      const playersContainer = document.querySelector('#players-cards-wrapper .collection-list-6.w-dyn-items');
+      
+      if (loadingElement) {
+        loadingElement.style.display = 'flex';
+      }
+      
+      // Enhanced loading with staggered animations
+      setTimeout(() => {
+        db.collection("players").get().then((querySnapshot) => {
+          const players = [];
+          querySnapshot.forEach((doc) => players.push(doc.data()));
+          console.log("Players from Firebase:", players); // Debug log
           
-          // Create the player card HTML
-          const playerCard = document.createElement('div');
-          playerCard.setAttribute('role', 'listitem');
-          playerCard.className = 'w-dyn-item';
+          if (!playersContainer) {
+            console.error("Players container not found");
+            return;
+          }
           
-          playerCard.innerHTML = `
-            <div data-w-id="80290e41-4e11-49df-7b77-b514cdcb766a" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="team-member-wrapper">
-              <a href="#" class="team-member-photo w-inline-block">
-                <img src="${player.image || 'https://via.placeholder.com/271x281?text=No+Image'}" 
-                     loading="lazy" 
-                     alt="${fullName} Photo" 
-                     class="team-member-photo"
-                     onerror="this.src='https://via.placeholder.com/271x281?text=No+Image'">
-              </a>
-              <div class="our-team-member-name-wrapper">
-                <div class="member-name-wrapper">
-                  <a href="#" class="member-name-link">${fullName}</a>
-                </div>
-                <p class="uppercase-paragraph">${player.position || ''}</p>
-                <div class="players-social-media-wrapper">
-                  <a href="${player.instagram || 'https://www.instagram.com/'}" target="_blank" class="player-social-media-icon instagram-icon w-inline-block"></a>
-                  <a href="${player.facebook || 'https://www.facebook.com/'}" target="_blank" class="player-social-media-icon facebook-icon w-inline-block"></a>
-                  <a href="${player.twitter || 'https://twitter.com/'}" target="_blank" class="player-social-media-icon x-icon w-inline-block"></a>
+          // Hide loading animation
+          if (loadingElement) {
+            loadingElement.style.opacity = '0';
+            setTimeout(() => {
+              loadingElement.style.display = 'none';
+            }, 500);
+          }
+          
+          // Clear existing content
+          playersContainer.innerHTML = '';
+          
+          // Create a player card for each player with staggered animation
+          players.forEach((player, index) => {
+            const fullName = `${player.first_name || ""} ${player.last_name || ""}`.trim();
+            
+            // Create the player card HTML
+            const playerCard = document.createElement('div');
+            playerCard.setAttribute('role', 'listitem');
+            playerCard.className = 'w-dyn-item';
+            
+            playerCard.innerHTML = `
+              <div data-w-id="80290e41-4e11-49df-7b77-b514cdcb766a" 
+                   style="opacity: 0; transform: translateY(40px) scale(0.95);" 
+                   class="team-member-wrapper player-card-${index}">
+                <a href="#" class="team-member-photo w-inline-block">
+                  <img src="${player.image || 'https://via.placeholder.com/271x281?text=No+Image'}" 
+                       loading="lazy" 
+                       alt="${fullName} Photo" 
+                       class="team-member-photo"
+                       onerror="this.src='https://via.placeholder.com/271x281?text=No+Image'">
+                </a>
+                <div class="our-team-member-name-wrapper">
+                  <div class="member-name-wrapper">
+                    <a href="#" class="member-name-link">${fullName}</a>
+                  </div>
+                  <p class="uppercase-paragraph">${player.position || ''}</p>
+                  <div class="players-social-media-wrapper">
+                    <a href="${player.instagram || 'https://www.instagram.com/'}" target="_blank" 
+                       class="player-social-media-icon instagram-icon w-inline-block"></a>
+                    <a href="${player.facebook || 'https://www.facebook.com/'}" target="_blank" 
+                       class="player-social-media-icon facebook-icon w-inline-block"></a>
+                    <a href="${player.twitter || 'https://twitter.com/'}" target="_blank" 
+                       class="player-social-media-icon x-icon w-inline-block"></a>
+                  </div>
                 </div>
               </div>
-            </div>
-          `;
+            `;
+            
+            // Add the player card to the container
+            playersContainer.appendChild(playerCard);
+            
+            // Animate the card in with delay
+            setTimeout(() => {
+              const cardElement = playerCard.querySelector('.team-member-wrapper');
+              if (cardElement) {
+                cardElement.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                cardElement.style.opacity = '1';
+                cardElement.style.transform = 'translateY(0) scale(1)';
+                
+                // Add enhanced hover effects
+                cardElement.addEventListener('mouseenter', function() {
+                  this.style.transform = 'translateY(-10px) scale(1.02)';
+                  this.style.boxShadow = '0 20px 40px rgba(90, 185, 78, 0.15)';
+                });
+                
+                cardElement.addEventListener('mouseleave', function() {
+                  this.style.transform = 'translateY(0) scale(1)';
+                  this.style.boxShadow = 'none';
+                });
+              }
+            }, 200 + (index * 150)); // Staggered animation
+            
+            console.log(`✅ Added player card for: ${fullName}`);
+          });
           
-          // Add the player card to the container
-          playersContainer.appendChild(playerCard);
+          // Animate pagination after all cards are loaded
+          setTimeout(() => {
+            const pagination = document.querySelector('.our-players-pagination');
+            if (pagination) {
+              pagination.style.opacity = '1';
+              pagination.style.transform = 'translateY(0)';
+            }
+          }, 200 + (players.length * 150) + 500);
           
-          console.log(`✅ Added player card for: ${fullName}`);
+          console.log(`🎉 Successfully created ${players.length} player cards with enhanced animations`);
+          
+        }).catch(error => {
+          console.error("Error fetching players:", error);
+          
+          // Hide loading and show error message
+          if (loadingElement) {
+            loadingElement.innerHTML = `
+              <div class="error-message">
+                <div class="error-icon">⚠️</div>
+                <div class="error-text">حدث خطأ في تحميل اللاعبين</div>
+              </div>
+            `;
+          }
         });
-        
-        console.log(`🎉 Successfully created ${players.length} player cards`);
-        
-      }).catch(error => {
-        console.error("Error fetching players:", error);
-      });
+      }, 1000); // Delay to show loading animation
     });
   </script>
   <!-- End Firebase Player Fetch -->
@@ -660,6 +1092,7 @@
 
   <script src="js/hide-menu-items.js" type="text/javascript"></script>
 
+  <script src="js/animations.js" type="text/javascript"></script>
 
 </body>
 </html>

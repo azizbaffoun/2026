@@ -1,0 +1,486 @@
+:root {
+    --rotate-speed: 40;
+    --count: 5; /* Updated to 5 cards */
+    --easeInOutSine: cubic-bezier(0.37, 0, 0.63, 1);
+    --easing: cubic-bezier(0.000, 0.37, 1.000, 0.63);
+    --brand-color: #5ab94e; /* Sports Vision brand color */
+    --brand-dark: #0e0e0e;
+    --brand-light: #f5f5f5;
+}
+
+.services-carousel-section {
+    padding: 80px 0;
+    background: #0e0e0e;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    min-height: 600px;
+}
+
+.carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.carousel-title {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.carousel-subtitle {
+    color: #5ab94e;
+    font-size: 1.2rem;
+    margin-bottom: 60px;
+    font-weight: 400;
+}
+
+.void {
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    direction: ltr; /* Reset direction for carousel mechanics */
+}
+
+ul:hover * {
+    animation-play-state: paused;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+}
+
+li {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    animation: rotateCW calc(var(--rotate-speed) * 1s) var(--easing) infinite;
+}
+
+.card {
+    width: 27%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 24px;
+    gap: 8px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px 16px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333 !important;
+    animation: rotateCCW calc(var(--rotate-speed) * 1s) var(--easing) infinite;
+    direction: rtl;
+    text-align: right;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform-origin: 50% 250px;
+    overflow: visible;
+}
+
+.card:hover {
+    border-color: var(--brand-color);
+    transform: scale(1.05);
+    box-shadow: 0px 8px 24px rgba(90, 185, 78, 0.3), 0px 24px 48px rgba(90, 185, 78, 0.2);
+}
+
+.services-carousel-section .card a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px;
+}
+
+.services-carousel-section .card .service-name {
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    color: #5ab94e !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.services-carousel-section .card .service-description {
+    color: #333333 !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Additional specificity for the carousel section */
+.services-carousel-section .void .crop ul li .card a span {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.services-carousel-section .void .crop ul li .card a span.service-name {
+    color: #5ab94e !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+}
+
+.services-carousel-section .void .crop ul li .card a span.service-description {
+    color: #333333 !important;
+    font-size: 13px !important;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+li:nth-child(1) {
+    transform: translateY(-50%) rotate(0deg);
+}
+
+li:nth-child(1) .card {
+    animation-delay: 0s;
+}
+
+li:nth-child(2) {
+    transform: translateY(-50%) rotate(72deg);
+}
+
+li:nth-child(2), li:nth-child(2) .card {
+    animation-delay: calc((var(--rotate-speed)/var(--count)) * -1s);
+}
+
+li:nth-child(3) {
+    transform: translateY(-50%) rotate(144deg);
+}
+
+li:nth-child(3), li:nth-child(3) .card {
+    animation-delay: calc((var(--rotate-speed)/var(--count)) * -2s);
+}
+
+li:nth-child(4) {
+    transform: translateY(-50%) rotate(216deg);
+}
+
+li:nth-child(4), li:nth-child(4) .card {
+    animation-delay: calc((var(--rotate-speed)/var(--count)) * -3s);
+}
+
+li:nth-child(5) {
+    transform: translateY(-50%) rotate(288deg);
+}
+
+li:nth-child(5), li:nth-child(5) .card {
+    animation-delay: calc((var(--rotate-speed)/var(--count)) * -4s);
+}
+
+@keyframes rotateCW {
+    from {
+        transform: translate3d(0px, -50%, -1px) rotate(-45deg);
+    }
+    to {
+        transform: translate3d(0px, -50%, 0px) rotate(-315deg);
+    }
+}
+
+@keyframes rotateCCW {
+    from {
+        transform: rotate(45deg);
+    }
+    to {
+        transform: rotate(315deg);
+    }
+}
+
+@keyframes pulseGlow {
+    from {
+        background-size: 60%;
+    }
+    to {
+        background-size: 100%;
+    }
+}
+
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 230px;
+    background: linear-gradient(135deg, var(--brand-color), #4a9f42);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 8px 25px rgba(90, 185, 78, 0.3);
+    animation: pulseGlow 3s ease-in-out infinite;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    direction: rtl;
+}
+
+.center-circle::before {
+    content: "خدماتنا";
+    position: absolute;
+}
+
+.second-circle {
+    position: absolute;
+    width: 40%;
+    aspect-ratio: 1 / 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #F5F4FE;
+    opacity: 0.5;
+    box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3), 0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+    border-radius: 50%;
+}
+
+.last-circle {
+    position: absolute;
+    width: 66%;
+    aspect-ratio: 1 / 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #F5F4FE;
+    opacity: 0.25;
+    box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3), 0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+    border-radius: 50%;
+}
+
+/* RTL: Show carousel on left, mask on right */
+.crop {
+    -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0));
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    animation: pulseGlow 5s linear infinite alternate;
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    background-image: radial-gradient(100% 50% at 0% 50%, rgba(90, 185, 78, 0.25) 0%, rgba(90, 185, 78, 0.247904) 11.79%, rgba(90, 185, 78, 0.241896) 21.38%, rgba(90, 185, 78, 0.2324) 29.12%, rgba(90, 185, 78, 0.219837) 35.34%, rgba(90, 185, 78, 0.20463) 40.37%, rgba(90, 185, 78, 0.1872) 44.56%, rgba(90, 185, 78, 0.16797) 48.24%, rgba(90, 185, 78, 0.147363) 51.76%, rgba(90, 185, 78, 0.1258) 55.44%, rgba(90, 185, 78, 0.103704) 59.63%, rgba(90, 185, 78, 0.0814963) 64.66%, rgba(90, 185, 78, 0.0596) 70.88%, rgba(90, 185, 78, 0.038437) 78.62%, rgba(90, 185, 78, 0.0184296) 88.21%, rgba(90, 185, 78, 0) 100%);
+}
+
+.mask:after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    left: 0;
+    display: block;
+    background-image: linear-gradient(180deg, rgba(90, 185, 78, 0) 0%, #5ab94e 50%, rgba(90, 185, 78, 0) 100%);
+}
+
+/* Override any potential text hiding from webflow or other CSS */
+.services-carousel-section * {
+    text-indent: 0 !important;
+}
+
+.services-carousel-section .card * {
+    text-indent: 0 !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+}
+
+/* Ensure no text is hidden by transforms or positioning */
+.services-carousel-section .card a span {
+    transform: none !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .services-carousel-section {
+        padding: 60px 0;
+    }
+    
+    .carousel-title {
+        font-size: 2rem;
+    }
+    
+    .carousel-subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+    
+    .void {
+        max-width: 600px;
+    }
+    
+    .card {
+        width: 35%;
+        padding: 20px;
+        font-size: 12px;
+    }
+    
+    .service-name {
+        font-size: 16px;
+    }
+    
+    .center-circle {
+        width: 180px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .void {
+        max-width: 400px;
+    }
+    
+    .card {
+        width: 40%;
+        padding: 16px;
+    }
+    
+    .service-name {
+        font-size: 14px;
+    }
+    
+    .center-circle {
+        width: 140px;
+        font-size: 14px;
+    }
+}
+
+/* MAXIMUM SPECIFICITY OVERRIDES FOR WEBFLOW CONFLICTS */
+body .services-carousel-section .carousel-container .void .crop ul li .card a span.service-name {
+    color: #5ab94e !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    clip: auto !important;
+    position: relative !important;
+    z-index: 999 !important;
+}
+
+body .services-carousel-section .carousel-container .void .crop ul li .card a span.service-description {
+    color: #333333 !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    clip: auto !important;
+    position: relative !important;
+    z-index: 999 !important;
+}
+
+/* Force override any webflow hiding techniques */
+.services-carousel-section .card a span {
+    text-indent: 0 !important;
+    font-size: inherit !important;
+    color: inherit !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    transform: none !important;
+    clip-path: none !important;
+    mask: none !important;
+    -webkit-mask: none !important;
+}
+
+/* Override any potential webflow text hiding */
+.services-carousel-section * {
+    text-indent: 0 !important;
+    color: inherit !important;
+}
+
+/* Ensure cards have proper background and are visible */
+.services-carousel-section .card {
+    background: #FFFFFF !important;
+    color: #333333 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* CRITICAL: Override webflow.css .w-richtext figure div rule */
+.services-carousel-section .card a span,
+.services-carousel-section .card a span.service-name,
+.services-carousel-section .card a span.service-description,
+.services-carousel-section .void .crop ul li .card a span,
+.services-carousel-section .void .crop ul li .card a span.service-name,
+.services-carousel-section .void .crop ul li .card a span.service-description {
+    font-size: 16px !important;
+    color: #5ab94e !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    text-indent: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    transform: none !important;
+    clip-path: none !important;
+    mask: none !important;
+    -webkit-mask: none !important;
+    -webkit-text-fill-color: #5ab94e !important;
+    text-decoration: none !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
+.services-carousel-section .card a span.service-description {
+    color: #333333 !important;
+    -webkit-text-fill-color: #333333 !important;
+    font-size: 13px !important;
+    margin-top: 5px !important;
+} 
