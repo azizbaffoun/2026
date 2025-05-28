@@ -11,6 +11,9 @@
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/sports-vision-fe0d13.webflow.css" rel="stylesheet" type="text/css">
   <link href="css/carousel.css" rel="stylesheet" type="text/css">
+  <link href="css/players-navbar-fix.css" rel="stylesheet" type="text/css">
+  <link href="css/custom-animations.css" rel="stylesheet" type="text/css">
+  <link href="css/team-section.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -144,7 +147,211 @@
         display: none !important;
       }
     }
-    
+    /* CRITICAL RTL NAVBAR FIX - MAXIMUM SPECIFICITY */
+html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 0 20px !important;
+  position: relative !important;
+}
+
+/* FORCE LOGO TO RIGHT SIDE USING MARGIN */
+html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu-wrapper > img {
+  position: absolute !important;
+  right: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+  z-index: 10 !important;
+}
+
+/* FORCE MENU BUTTON TO LEFT SIDE USING MARGIN */
+html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .menu-button {
+  position: absolute !important;
+  left: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+  z-index: 10 !important;
+}
+
+/* CENTER NAVIGATION */
+html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: center !important;
+  margin: 0 120px !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* HIDE BRAND LINK */
+html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .brand {
+  display: none !important;
+}
+
+/* CRITICAL MOBILE RTL FIX - OVERRIDE ALL EXISTING MOBILE STYLES */
+@media screen and (max-width: 991px) {
+  /* Mobile navbar container - force RTL layout */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 20px !important;
+    position: relative !important;
+    min-height: 70px !important;
+    direction: ltr !important; /* Force LTR for proper positioning */
+  }
+  
+  /* MOBILE MENU BUTTON - ABSOLUTE LEFT POSITIONING */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .menu-button {
+    position: absolute !important;
+    left: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    order: 1 !important;
+    margin: 0 !important;
+    z-index: 10002 !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  /* MOBILE LOGO - ABSOLUTE RIGHT POSITIONING */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu-wrapper > img {
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    order: 3 !important;
+    margin: 0 !important;
+    width: 80px !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
+    z-index: 10001 !important;
+  }
+  
+  /* HIDE DESKTOP NAVIGATION ON MOBILE */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu {
+    display: none !important;
+  }
+  
+  /* HIDE DESKTOP MENU WRAP ON MOBILE */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .menu-wrap {
+    display: none !important;
+  }
+  
+  /* MOBILE OVERLAY - FULL SCREEN RTL */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .w-nav-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.95) !important;
+    z-index: 99999 !important;
+    display: none !important;
+    direction: rtl !important;
+  }
+  
+  /* WHEN MOBILE MENU IS OPEN */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .w-nav-overlay[style*="display: block"] {
+    display: block !important;
+  }
+  
+  /* MOBILE MENU CONTENT STRUCTURE */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .w-nav-overlay .w-nav-menu {
+    position: static !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background: transparent !important;
+    display: flex !important;
+    flex-direction: column !important;
+    direction: rtl !important;
+  }
+  
+  /* TABLET MENU CONTAINER */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .w-nav-overlay .tablet-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    direction: rtl !important;
+    text-align: right !important;
+  }
+  
+  /* MOBILE MENU HEADER */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-menu-header {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    direction: rtl !important;
+    min-height: 80px !important;
+  }
+  
+  /* CLOSE BUTTON */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .close-menu-button {
+    width: 30px !important;
+    height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 10003 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  /* MOBILE NAVIGATION LINKS CONTAINER */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-nav-links {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 20px 0 !important;
+    direction: rtl !important;
+    width: 100% !important;
+    flex: 1 !important;
+  }
+  
+  /* INDIVIDUAL MOBILE LINKS */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-nav-link {
+    display: block !important;
+    padding: 20px 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    text-align: right !important;
+    font-size: 20px !important;
+    color: white !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    width: 100% !important;
+    direction: rtl !important;
+  }
+  
+  /* MOBILE LINK HOVER AND CURRENT STATE */
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-nav-link:hover,
+  html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-nav-link.w--current {
+    color: #c7f849 !important;
+    background-color: rgba(199, 248, 73, 0.1) !important;
+    padding-right: 30px !important;
+  }
+}
     /* Hide duplicate tablet menu that's causing layout issues */
     .menu-wrap .tablet-menu {
       display: none;
@@ -403,6 +610,99 @@
         gap: 15px;
       }
     }
+    
+    /* Ownership Section Styles */
+    .ownership-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .ownership-header {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .ownership-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #c7f849;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 8px rgba(199, 248, 73, 0.3);
+      position: relative;
+      letter-spacing: normal;
+    }
+    
+    .ownership-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #c7f849, #5ab94e);
+      border-radius: 2px;
+    }
+    
+    .ownership-description {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #e0e0e0;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      direction: rtl;
+      letter-spacing: normal;
+    }
+    
+    /* Animation keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* Responsive styles */
+    @media screen and (max-width: 768px) {
+      .ownership-title {
+        font-size: 2.5rem;
+      }
+      
+      .ownership-description {
+        font-size: 1rem;
+        padding: 0 20px;
+      }
+      
+      .ownership-section {
+        padding: 60px 0;
+      }
+    }
+    
+    /* Fix letter spacing for owner cards */
+    .owner-card .h6-white,
+    .owner-card .uppercase-paragraph {
+      letter-spacing: normal !important;
+    }
   </style>
 
 </head>
@@ -419,7 +719,6 @@
           <!-- Mobile Navigation Links -->
           <div class="mobile-nav-links">
             <a href="contact-us-rtl.html" class="nav-link mobile-nav-link">تواصل معنا</a>
-            <a href="our-ownership-rlt.html" class="nav-link mobile-nav-link">الادارة</a>
             <a href="our-players-rtl.html" class="nav-link mobile-nav-link">لاعبينا</a>
             <a href="about-us-rtl.html" aria-current="page" class="nav-link mobile-nav-link w--current">الوكالة</a>
             <a href="home-3-rtl.html" class="nav-link mobile-nav-link">الصفحة الرئيسية</a>
@@ -427,7 +726,6 @@
         </div>
         <div class="menu-wrap">
           <a href="contact-us-rtl.html" class="nav-link">تواصل معنا</a>
-          <a href="our-ownership-rlt.html" class="nav-link">الادارة</a>
           <a href="our-players-rtl.html" class="nav-link">لاعبينا</a>
           <a href="about-us-rtl.html" aria-current="page" class="nav-link w--current">الوكالة</a>
           <a href="home-3-rtl.html" class="nav-link">الصفحة الرئيسية</a>
@@ -514,7 +812,7 @@
   
   
 
-
+<!--
  <section class="podcast-section">
     <div data-w-id="96429d68-9f72-22d1-4492-59049a6d08b0" style="opacity:0" class="w-layout-blockcontainer full-width-container podcast-container w-container">
       <div class="podcasts-wrapper">
@@ -558,7 +856,7 @@
     </div>
     <div class="section-connector"></div>
   </section> 
- 
+ -->
   <section class="our-team-section">
     <div data-w-id="d232433e-1b8f-e72c-763e-02f6bd9c0826" style="opacity:0" class="w-layout-blockcontainer full-width-container about-us-team-container w-container">
       
@@ -767,18 +1065,86 @@
   </section>
  
 -->
-  <section class="section">
-    <div class="w-layout-blockcontainer full-width-container partners-block-container w-container">
-      <div class="partners-wrapper home-3-partners">
-        <div class="rectangle left"></div>
-        <div class="rectangle right-bottom"></div>
-        <div class="rectangle right-top"></div>
-        <div class="rectangle left-bottom"></div>
-        <h6 data-w-id="292e2913-1a15-4520-50bb-08aa1d3b5774" style="opacity:0" class="heading">Our partners</h6>
-        <div data-w-id="292e2913-1a15-4520-50bb-08aa1d3b5776" style="opacity:0" class="w-layout-grid partners-logo-grid"><img src="images/Fictional-company-logo-7.png" loading="lazy" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b5777-cfe2eca5" alt="Company Logo"><img src="images/Fictional-company-logo-1.png" loading="lazy" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b5778-cfe2eca5" alt="Company Logo"><img src="images/Fictional-company-logo-2.png" loading="lazy" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b5779-cfe2eca5" alt="Company Logo"><img src="images/Fictional-company-logo-3.png" loading="lazy" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b577a-cfe2eca5" alt="Company Logo"><img src="images/Fictional-company-logo-4.png" loading="lazy" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b577b-cfe2eca5" alt="Company Logo"><img src="images/Fictional-company-logo-5.png" loading="lazy" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b577c-cfe2eca5" alt="Company Logo"><img src="images/Fictional-company-logo-6.png" loading="lazy" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b577d-cfe2eca5" alt="Company Logo"><img src="images/Fictional-company-logo-7.png" loading="lazy" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b577e-cfe2eca5" alt="Company Logo"><img src="images/Fictional-company-logo-8.png" loading="lazy" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b577f-cfe2eca5" alt="Company Logo"><img src="images/Fictional-company-logo-9.png" loading="lazy" width="140" id="w-node-_292e2913-1a15-4520-50bb-08aa1d3b5780-cfe2eca5" alt="Company Logo" class="logo-image"></div>
+<section class="ownership-section">
+  <div class="w-layout-blockcontainer full-width-container w-container">
+    <!-- Title and Description -->
+    <div class="ownership-header">
+      <h2 data-w-id="ownership-title" style="opacity:0" class="ownership-title">الادارة</h2>
+      <p data-w-id="ownership-description" style="opacity:0" class="ownership-description">فريق إداري متميز من أربعة قادة محترفين يديرون ويشرفون على جميع عمليات الوكالة بخبرة وكفاءة عالية، حيث يعملون معاً لضمان تحقيق أهدافنا الاستراتيجية وتقديم أفضل الخدمات لعملائنا ولاعبينا.</p>
+    </div>
+    
+    <div data-w-id="7bd55b61-3182-3cae-fc62-3c576147a878" class="full-width-owner-table-wrapper">
+      <div class="line ownership-line"></div>
+      <div class="owners-table">
+        <div data-w-id="46bceb33-b3c9-13aa-3570-4111de2f04f6" class="owner-card">
+          <div class="rectangle right-top"></div>
+          <div class="rectangle left"></div><img src="images/منصور-الظفيري-copy.png" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940px" srcset="images/منصور-الظفيري-copy-p-500.png 500w, images/منصور-الظفيري-copy-p-800.png 800w, images/منصور-الظفيري-copy-p-1080.png 1080w, images/منصور-الظفيري-copy-p-1600.png 1600w, images/منصور-الظفيري-copy-p-2000.png 2000w, images/منصور-الظفيري-copy-p-2600.png 2600w, images/منصور-الظفيري-copy.png 2876w" alt="" class="owner-photo">
+          <div class="owner-name-wrapper">
+            <div class="rectangle right-top"></div>
+            <div class="rectangle right-bottom"></div>
+            <div class="rectangle left-bottom"></div>
+            <div class="rectangle left"></div>
+            <h6 data-w-id="0a67b7b6-4cfb-6e9a-0853-1f2dc7f02f46" class="h6-white">منصور الظفيري</h6>
+            <p data-w-id="0a67b7b6-4cfb-6e9a-0853-1f2dc7f02f48" class="uppercase-paragraph">مسؤول العمليات</p>
+          </div>
+        </div>
+        <div id="w-node-e5f968f8-2ee0-6913-4137-5eb558b95002-1c86c005" data-w-id="e5f968f8-2ee0-6913-4137-5eb558b95002" class="owner-card"><img src="images/يوسف.png" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940px" srcset="images/يوسف-p-500.png 500w, images/يوسف-p-800.png 800w, images/يوسف-p-1080.png 1080w, images/يوسف-p-1600.png 1600w, images/يوسف-p-2000.png 2000w, images/يوسف-p-2600.png 2600w, images/يوسف.png 2876w" alt="" class="owner-photo">
+          <div class="owner-name-wrapper">
+            <h6 data-w-id="e5f968f8-2ee0-6913-4137-5eb558b95005" class="h6-white">يوسف بن طالب</h6>
+            <p data-w-id="e5f968f8-2ee0-6913-4137-5eb558b95007" class="uppercase-paragraph">مدير تطوير الأعمال</p>
+            <div class="rectangle left"></div>
+            <div class="rectangle left-bottom"></div>
+            <div class="rectangle right-bottom"></div>
+            <div class="rectangle right-top"></div>
+          </div>
+          <div class="rectangle left"></div>
+          <div class="rectangle right-top"></div>
+        </div>
+        <div data-w-id="352898de-f7ee-84ca-daf7-1bc53f6a0391" class="owner-card"><img src="images/Rectangle-23.png" loading="lazy" alt="" class="owner-photo">
+          <div class="owner-name-wrapper">
+            <h6 data-w-id="352898de-f7ee-84ca-daf7-1bc53f6a0394" class="h6-white">خالد الشهري</h6>
+            <p data-w-id="352898de-f7ee-84ca-daf7-1bc53f6a0396" class="uppercase-paragraph">المدير التنفيذي</p>
+            <div class="rectangle left"></div>
+            <div class="rectangle left-bottom"></div>
+            <div class="rectangle right-bottom"></div>
+            <div class="rectangle right-top"></div>
+          </div>
+          <div class="rectangle left"></div>
+          <div class="rectangle right-top"></div>
+        </div>
+        <div data-w-id="70d3ad5e-1ddf-d1ee-e699-7cee99c604a6" class="owner-card">
+          <div class="rectangle right-top"></div>
+          <div class="rectangle left"></div><img src="images/ذياب-البندر.png" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 991px) 95vw, 940px" srcset="images/ذياب-البندر-p-500.png 500w, images/ذياب-البندر-p-800.png 800w, images/ذياب-البندر-p-1080.png 1080w, images/ذياب-البندر-p-1600.png 1600w, images/ذياب-البندر-p-2000.png 2000w, images/ذياب-البندر-p-2600.png 2600w, images/ذياب-البندر.png 2876w" alt="" class="owner-photo">
+          <div class="owner-name-wrapper">
+            <div class="rectangle right-top"></div>
+            <div class="rectangle right-bottom"></div>
+            <div class="rectangle left-bottom"></div>
+            <div class="rectangle left"></div>
+            <h6 data-w-id="70d3ad5e-1ddf-d1ee-e699-7cee99c604af" class="h6-white">ذياب البندر</h6>
+            <p data-w-id="70d3ad5e-1ddf-d1ee-e699-7cee99c604b1" class="uppercase-paragraph">رئيس مجلس الإدارة</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="section">
+  <div class="w-layout-blockcontainer full-width-container partners-block-container w-container">
+    <div class="partners-wrapper home-3-partners">
+      <div class="rectangle left"></div>
+              <div class="rectangle right-bottom"></div>
+              <div class="rectangle right-top"></div>
+      <div class="rectangle left-bottom"></div>
+      <h6 data-w-id="b74d266c-66de-023d-761d-af25e53b8b0d">شركاؤنا</h6>
+      <div data-w-id="b74d266c-66de-023d-761d-af25e53b8b0f" class="w-layout-grid partners-logo-grid"><img src="templates/p1.png" loading="lazy" id="w-node-b74d266c-66de-023d-761d-af25e53b8b10-8aba9450" alt="Company Logo">
+        <img src="templates/p2.png" loading="lazy" id="w-node-b74d266c-66de-023d-761d-af25e53b8b11-8aba9450" alt="Company Logo">
+        <img src="templates/p5.png" loading="lazy" id="w-node-b74d266c-66de-023d-761d-af25e53b8b14-8aba9450" alt="Company Logo">
+        <img src="templates/p4.png" loading="lazy" id="w-node-b74d266c-66de-023d-761d-af25e53b8b15-8aba9450" alt="Company Logo"></div>
+            </div>
+
+          </div>
+</section>
   <section class="form-section">
     <div data-w-id="f6481d1c-d23d-6785-7124-2b4da538988a" style="opacity:0" class="w-layout-blockcontainer base-container w-container">
       <div class="form-wrapper">
@@ -859,6 +1225,22 @@
     document.addEventListener('DOMContentLoaded', function() {
       const animatedElements = document.querySelectorAll('.podcast-container, .about-us-team-container');
       animatedElements.forEach(el => observer.observe(el));
+
+      // Ownership section animations
+      const ownershipTitle = document.querySelector('[data-w-id="ownership-title"]');
+      const ownershipDescription = document.querySelector('[data-w-id="ownership-description"]');
+      
+      if (ownershipTitle && ownershipDescription) {
+        // Animate title
+        setTimeout(() => {
+          ownershipTitle.style.animation = 'fadeInUp 1s ease-out forwards';
+        }, 200);
+        
+        // Animate description
+        setTimeout(() => {
+          ownershipDescription.style.animation = 'fadeInUp 1s ease-out forwards';
+        }, 600);
+      }
 
       // Smooth scroll enhancement
       const sections = document.querySelectorAll('section');

@@ -11,6 +11,7 @@
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/sports-vision-fe0d13.webflow.css" rel="stylesheet" type="text/css">
   <link href="css/custom-animations.css" rel="stylesheet" type="text/css">
+  <link href="css/players-navbar-fix.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -20,14 +21,236 @@
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
   <style>
-    /* RTL Layout Styles */
-    html {
+    /* CRITICAL RTL NAVBAR FIX - MAXIMUM SPECIFICITY */
+    html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu-wrapper {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
+      width: 100% !important;
+      padding: 0 20px !important;
+      position: relative !important;
+    }
+    
+    /* FORCE LOGO TO RIGHT SIDE USING MARGIN */
+    html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu-wrapper > img {
+      position: absolute !important;
+      right: 20px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      z-index: 10 !important;
+    }
+    
+    /* FORCE MENU BUTTON TO LEFT SIDE USING MARGIN */
+    html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .menu-button {
+      position: absolute !important;
+      left: 20px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      z-index: 10 !important;
+    }
+    
+    /* CENTER NAVIGATION */
+    html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu {
+      flex: 1 !important;
+      display: flex !important;
+      justify-content: center !important;
+      margin: 0 120px !important;
+      position: relative !important;
+      z-index: 5 !important;
+    }
+    
+    /* HIDE BRAND LINK */
+    html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .brand {
+      display: none !important;
+    }
+    
+    /* CRITICAL MOBILE RTL FIX - OVERRIDE ALL EXISTING MOBILE STYLES */
+    @media screen and (max-width: 991px) {
+      /* Mobile navbar container - force RTL layout */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 0 20px !important;
+        position: relative !important;
+        min-height: 70px !important;
+        direction: ltr !important; /* Force LTR for proper positioning */
+      }
+      
+      /* MOBILE MENU BUTTON - ABSOLUTE LEFT POSITIONING */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .menu-button {
+        position: absolute !important;
+        left: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        order: 1 !important;
+        margin: 0 !important;
+        z-index: 10002 !important;
+        width: 40px !important;
+        height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        background: transparent !important;
+        border: none !important;
+      }
+      
+      /* MOBILE LOGO - ABSOLUTE RIGHT POSITIONING */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu-wrapper > img {
+        position: absolute !important;
+        right: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        order: 3 !important;
+        margin: 0 !important;
+        width: 80px !important;
+        height: auto !important;
+        flex-shrink: 0 !important;
+        z-index: 10001 !important;
+      }
+      
+      /* HIDE DESKTOP NAVIGATION ON MOBILE */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu {
+        display: none !important;
+      }
+      
+      /* HIDE DESKTOP MENU WRAP ON MOBILE */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .menu-wrap {
+        display: none !important;
+      }
+      
+      /* MOBILE OVERLAY - FULL SCREEN RTL */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .w-nav-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background-color: rgba(0, 0, 0, 0.95) !important;
+        z-index: 99999 !important;
+        display: none !important;
+        direction: rtl !important;
+      }
+      
+      /* WHEN MOBILE MENU IS OPEN */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .w-nav-overlay[style*="display: block"] {
+        display: block !important;
+      }
+      
+      /* MOBILE MENU CONTENT STRUCTURE */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .w-nav-overlay .w-nav-menu {
+        position: static !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background: transparent !important;
+        display: flex !important;
+        flex-direction: column !important;
+        direction: rtl !important;
+      }
+      
+      /* TABLET MENU CONTAINER */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .w-nav-overlay .tablet-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        direction: rtl !important;
+        text-align: right !important;
+      }
+      
+      /* MOBILE MENU HEADER */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-menu-header {
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        padding: 20px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        direction: rtl !important;
+        min-height: 80px !important;
+      }
+      
+      /* CLOSE BUTTON */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .close-menu-button {
+        width: 30px !important;
+        height: 30px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        z-index: 10003 !important;
+        background: transparent !important;
+        border: none !important;
+      }
+      
+      /* MOBILE NAVIGATION LINKS CONTAINER */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-nav-links {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        padding: 20px 0 !important;
+        direction: rtl !important;
+        width: 100% !important;
+        flex: 1 !important;
+      }
+      
+      /* INDIVIDUAL MOBILE LINKS */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-nav-link {
+        display: block !important;
+        padding: 20px 20px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        text-align: right !important;
+        font-size: 20px !important;
+        color: white !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+        width: 100% !important;
+        direction: rtl !important;
+      }
+      
+      /* MOBILE LINK HOVER AND CURRENT STATE */
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-nav-link:hover,
+      html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .mobile-nav-link.w--current {
+        color: #c7f849 !important;
+        background-color: rgba(199, 248, 73, 0.1) !important;
+        padding-right: 30px !important;
+      }
+    }
+    
+    /* RTL Base Styles */
+    * {
       direction: rtl;
     }
     
     body {
       direction: rtl;
       text-align: right;
+    }
+    
+    .nav-dropdown,
+    .nav-link {
+      white-space: nowrap;
+      direction: rtl;
+    }
+    
+    .nav-dropdown-toggle {
+      white-space: nowrap;
+      direction: rtl;
+    }
+    
+    .nav-item-title {
+      white-space: nowrap;
+      direction: rtl;
     }
     
     /* Force paragraph visibility */
@@ -145,7 +368,48 @@
     
     /* Navigation RTL adjustments */
     .nav-menu-wrapper {
-      order: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      flex-direction: row-reverse;
+      padding: 0 20px;
+      max-width: 100vw;
+      overflow: hidden;
+    }
+    
+    /* Position logo on the right for RTL */
+    .nav-menu-wrapper > img {
+      order: 1;
+      flex-shrink: 0;
+      max-width: 120px;
+    }
+    
+    
+    /* Position mobile menu button on the left for RTL */
+    .menu-button {
+      order: 1 !important;
+      flex-shrink: 0 !important;
+      margin-right: auto !important;
+      margin-left: 0 !important;
+    }
+    
+    /* Center the navigation menu */
+    .nav-menu {
+      order: 2 !important;
+      flex: 1 !important;
+      max-width: calc(100% - 240px) !important;
+      display: flex !important;
+      justify-content: center !important;
+    }
+    
+    /* Menu wrap RTL */
+    .menu-wrap {
+      display: flex !important;
+      flex-direction: row-reverse !important;
+      gap: 30px !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
     
     .button-header-wrapper {
@@ -184,87 +448,6 @@
       animation: slideInFromLeft 0.8s ease-out;
     }
     
-    /* RTL Base Styles */
-    * {
-      direction: rtl;
-    }
-    
-    body {
-      direction: rtl;
-      text-align: right;
-    }
-    
-    /* Custom CSS to center navbar buttons */
-    .nav-menu {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      direction: rtl;
-    }
-    
-    .menu-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 24px;
-      flex: 1;
-      flex-wrap: nowrap;
-      direction: rtl;
-    }
-    
-    .nav-dropdown,
-    .nav-link {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      margin: 0;
-      direction: rtl;
-    }
-    
-    .nav-dropdown-toggle {
-      white-space: nowrap;
-      direction: rtl;
-    }
-    
-    .nav-item-title {
-      white-space: nowrap;
-      direction: rtl;
-    }
-    
-    /* Ensure proper spacing and alignment for RTL */
-    .nav-menu-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      flex-direction: row;
-      padding: 0 20px;
-      max-width: 100vw;
-      overflow: hidden;
-      direction: rtl;
-    }
-    
-    /* Position logo on the right for RTL */
-    .nav-menu-wrapper > img {
-      order: 3;
-      flex-shrink: 0;
-      max-width: 120px;
-    }
-    
-    /* Position mobile menu button on the left for RTL */
-    .menu-button {
-      order: 1;
-      flex-shrink: 0;
-    }
-    
-    /* Center the navigation menu */
-    .nav-menu {
-      order: 2;
-      flex: 1;
-      max-width: calc(100% - 240px);
-    }
-    
     /* Mobile RTL fixes */
     @media screen and (max-width: 991px) {
       .nav-menu-wrapper {
@@ -276,6 +459,7 @@
         width: 100% !important;
         min-height: 60px !important;
         position: relative !important;
+        direction: rtl !important;
       }
       
       /* Hamburger button on the LEFT - centered vertically */
@@ -452,13 +636,6 @@
         left: 0 !important;
         right: 0 !important;
         bottom: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        background-color: rgba(0, 0, 0, 0.95) !important;
-        z-index: 99999 !important;
-        display: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
       }
       
       /* When menu is opened - override Webflow's inline styles */
@@ -585,6 +762,18 @@
       }
     }
     
+    /* Essential non-navbar styles only */
+    .nav-link,
+    .nav-dropdown-link,
+    .footer-link,
+    .paragraph-large,
+    .section-title,
+    h1, h2, h3, h4, h5, h6,
+    p, span, div {
+      direction: rtl;
+      text-align: right;
+    }
+    
     .players-loading {
       display: flex;
       flex-direction: column;
@@ -648,23 +837,12 @@
     }
     
     .loading-text {
-      color: #5ab94e;
-      font-size: 18px;
+      color: #c7f849;
+      font-size: 1.2rem;
       font-weight: 600;
       text-align: center;
-      animation: loadingTextPulse 2s ease-in-out infinite;
-      direction: rtl;
-    }
-    
-    @keyframes loadingTextPulse {
-      0%, 100% {
-        opacity: 0.7;
-        transform: translateY(0);
-      }
-      50% {
-        opacity: 1;
-        transform: translateY(-2px);
-      }
+      margin-top: 10px;
+      opacity: 0.8;
     }
   </style>
 
@@ -682,22 +860,20 @@
           <!-- Mobile Navigation Links -->
           <div class="mobile-nav-links">
             <a href="contact-us-rtl.html" class="nav-link mobile-nav-link">تواصل معنا</a>
-            <a href="our-ownership-rlt.html" class="nav-link mobile-nav-link">الادارة</a>
-            <a href="our-players-rtl.html" class="nav-link mobile-nav-link">لاعبينا</a>
-            <a href="about-us-rtl.html" aria-current="page" class="nav-link mobile-nav-link w--current">الوكالة</a>
+            <a href="our-players-rtl.html" class="nav-link mobile-nav-link w--current">لاعبينا</a>
+            <a href="about-us-rtl.html" class="nav-link mobile-nav-link">الوكالة</a>
             <a href="home-3-rtl.html" class="nav-link mobile-nav-link">الصفحة الرئيسية</a>
           </div>
         </div>
         <div class="menu-wrap">
           <a href="contact-us-rtl.html" class="nav-link">تواصل معنا</a>
-          <a href="our-ownership-rlt.html" class="nav-link">الادارة</a>
-          <a href="our-players-rtl.html" class="nav-link">لاعبينا</a>
-          <a href="about-us-rtl.html" aria-current="page" class="nav-link w--current">الوكالة</a>
+          <a href="our-players-rtl.html" class="nav-link w--current">لاعبينا</a>
+          <a href="about-us-rtl.html" class="nav-link">الوكالة</a>
           <a href="home-3-rtl.html" class="nav-link">الصفحة الرئيسية</a>
-         
-          <div data-w-id="3a8af854-e49c-0eec-4064-fce9cc1b13cb" class="button-header-wrapper hidden-desktop">
-            <a href="contact-us-rtl.html" class="primary-button header-button w-button">تواصل معنا</a>
-          </div>
+        </div>
+        <div data-w-id="3a8af854-e49c-0eec-4064-fce9cc1b13cb" class="button-header-wrapper hidden-desktop">
+          <a href="contact-us-rtl.html" class="primary-button header-button w-button">تواصل معنا</a>
+        </div>
       </nav>
 
       <div class="menu-button w-nav-button"><img loading="lazy" height="Auto" alt="Menu icon" src="images/menu-btn.svg" class="image-burger"></div>

@@ -5066,13 +5066,7 @@ blockquote {
   position: relative;
 }
 
-.navbar-home-2 {
-  background-color: var(--white);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-}
+
 
 .hero-screen-section {
   direction: rtl;
