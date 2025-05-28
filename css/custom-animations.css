@@ -331,6 +331,35 @@
   overflow: visible;
 }
 
+/* Multi-slide display configuration */
+.services-showcase .slider01_mask {
+  overflow: visible !important;
+  height: auto !important;
+}
+
+.services-showcase .slider01_slide {
+  width: 33.333% !important;
+  display: inline-block !important;
+  vertical-align: top !important;
+  float: right !important; /* RTL layout */
+  box-sizing: border-box !important;
+  position: relative !important;
+  transform: none !important;
+}
+
+/* Ensure proper clearfix for floated elements */
+.services-showcase .slider01_mask::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Adjust slider navigation for better visibility */
+.services-showcase .w-slider-nav {
+  position: relative !important;
+  margin-top: 40px !important;
+}
+
 .services-showcase .our-mission-decoration {
   display: none;
 }
@@ -456,6 +485,11 @@
     padding: 15px 0;
   }
   
+  /* Show 2 cards on tablet */
+  .services-showcase .slider01_slide {
+    width: 50% !important;
+  }
+  
   .services-showcase .about-us-mission-card {
     padding: 25px 20px;
     min-height: 280px;
@@ -499,6 +533,11 @@
   
   .services-showcase .slider01_comp {
     padding: 10px 0;
+  }
+  
+  /* Show 1 card on mobile */
+  .services-showcase .slider01_slide {
+    width: 100% !important;
   }
   
   .services-showcase .about-us-mission-card {
@@ -552,6 +591,11 @@
   
   .services-showcase .slider01_comp {
     padding: 10px 0;
+  }
+  
+  /* Show 1 card on small mobile */
+  .services-showcase .slider01_slide {
+    width: 100% !important;
   }
   
   .services-showcase .about-us-mission-card {
@@ -717,6 +761,70 @@
   box-shadow: 
     0 15px 40px rgba(0, 0, 0, 0.15),
     0 0 0 1px rgba(0, 255, 136, 0.1);
+}
+
+/* Vision Section with Lottie Animation */
+.vision-animation-wrapper {
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.vision-animation-wrapper dotlottie-player {
+  width: 500px !important;
+  height: 500px !important;
+  filter: drop-shadow(0 10px 30px rgba(88, 187, 79, 0.3));
+}
+
+/* Adjust the base container to accommodate the animation */
+.base-container {
+  position: relative;
+  overflow: visible;
+}
+
+/* Responsive adjustments for the Lottie animation */
+@media screen and (max-width: 1200px) {
+  .vision-animation-wrapper {
+    left: 18%;
+  }
+  
+  .vision-animation-wrapper dotlottie-player {
+    width: 450px !important;
+    height: 450px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .vision-animation-wrapper {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .vision-animation-wrapper dotlottie-player {
+    width: 400px !important;
+    height: 400px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .vision-animation-wrapper dotlottie-player {
+    width: 350px !important;
+    height: 350px !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .vision-animation-wrapper dotlottie-player {
+    width: 300px !important;
+    height: 300px !important;
+  }
 }
 
 /* End of clean styles */
