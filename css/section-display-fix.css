@@ -1,0 +1,145 @@
+/**
+ * Section Display Fix - Forces sections to display properly
+ * Overrides any issues caused by other CSS/JS
+ */
+
+/* Fix all sections to ensure they're visible */
+section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 100px !important;
+}
+
+/* Fix specifically for home-3-banner-section */
+.home3-banner-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  padding: 100px 0 !important;
+  background-color: #141414 !important;
+  overflow: visible !important;
+}
+
+/* Fix hero section */
+.hero-screen-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: visible !important;
+}
+
+/* Fix lineup section */
+.home-1-lineup-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: visible !important;
+}
+
+/* Fix triangles */
+.home-3-left-triangle,
+.home-3-right-triangle {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  z-index: 0 !important;
+}
+
+/* Fix banner images */
+.home-3-banner-right-image,
+.home-3-banner-left-image {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  z-index: 1 !important;
+}
+
+/* Fix containers */
+.w-container,
+.full-width-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Fix banner text wrapper */
+.home-3-banner-text-wrapper {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 3 !important;
+  text-align: center !important;
+}
+
+/* Fix welcome container to ensure it's visible */
+.arabic-welcome-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  margin: 30px auto !important;
+  text-align: center !important;
+  max-width: 100% !important;
+  direction: rtl !important;
+}
+
+.arabic-welcome-text {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-size: 3.5rem !important;
+  font-weight: bold !important;
+  color: #fff !important;
+  text-shadow: 0 0 15px rgba(88, 187, 79, 0.8) !important;
+  margin: 0 auto !important;
+  direction: rtl !important;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 991px) {
+  .home3-banner-section,
+  .hero-screen-section {
+    padding: 60px 20px !important;
+  }
+  
+  .arabic-welcome-text {
+    font-size: 3rem !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .home3-banner-section,
+  .hero-screen-section {
+    padding: 40px 15px !important;
+  }
+  
+  .arabic-welcome-text {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .home3-banner-section,
+  .hero-screen-section {
+    padding: 30px 10px !important;
+  }
+  
+  .arabic-welcome-text {
+    font-size: 2rem !important;
+  }
+} 

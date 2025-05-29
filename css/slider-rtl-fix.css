@@ -1,254 +1,286 @@
-/* ULTIMATE SIMPLE 3-CARD SLIDER FIX */
+/* ULTIMATE SIMPLE 3-CARD SLIDER FIX - CRASH SAFE VERSION */
 
 /* Container setup */
 .section-3 {
-  direction: rtl !important;
-  text-align: right !important;
-  overflow: hidden !important;
+  direction: rtl;
+  text-align: right;
+  overflow: hidden;
 }
 
 .slider01_comp {
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  overflow: hidden !important;
-  direction: ltr !important;
-  position: relative !important;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  direction: ltr;
+  position: relative;
 }
 
 .slider01_mask {
-  width: 100% !important;
-  overflow: hidden !important;
-  position: relative !important;
-  height: auto !important;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: auto;
 }
 
 /* FORCE EXACTLY 3 CARDS VISIBLE */
 .w-slider-mask .w-slider-nav,
 .slider01_list {
-  display: flex !important;
-  flex-direction: row !important;
-  transition: transform 0.5s ease !important;
-  align-items: stretch !important;
-  width: 100% !important;
-  transform: translateX(0) !important;
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.5s ease;
+  align-items: stretch;
+  width: 100%;
+  transform: translateX(0);
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Each slide is exactly 1/3 width - NO EXCEPTIONS */
 .slider01_slide {
-  flex: 0 0 33.333333% !important;
-  width: 33.333333% !important;
-  min-width: 33.333333% !important;
-  max-width: 33.333333% !important;
-  margin: 0 !important;
-  padding: 0 10px !important;
-  box-sizing: border-box !important;
-  display: block !important;
-  position: relative !important;
-  direction: rtl !important;
-  min-height: 400px !important;
-  list-style: none !important;
-  transform: none !important;
-  float: none !important;
-  clear: none !important;
+  flex: 0 0 33.333333%;
+  width: 33.333333%;
+  min-width: 33.333333%;
+  max-width: 33.333333%;
+  margin: 0;
+  padding: 0 10px;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  direction: rtl;
+  min-height: 400px;
+  list-style: none;
+  transform: none;
+  float: none;
+  clear: none;
 }
 
-/* Override ANY Webflow inline styles */
-.slider01_slide[style] {
+/* Override ANY Webflow inline styles - but safer */
+.slider01_slide[style*="width"] {
   flex: 0 0 33.333333% !important;
   width: 33.333333% !important;
-  min-width: 33.333333% !important;
-  max-width: 33.333333% !important;
+}
+
+.slider01_slide[style*="transform"] {
   transform: none !important;
-  display: block !important;
 }
 
 /* Mission cards - perfect fit */
 .about-us-mission-card {
-  direction: rtl !important;
-  text-align: right !important;
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0 !important;
-  box-sizing: border-box !important;
-  min-height: 380px !important;
-  background: linear-gradient(135deg, rgba(88, 187, 79, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%) !important;
-  border: 2px solid rgba(88, 187, 79, 0.3) !important;
-  border-radius: 20px !important;
-  padding: 25px 20px !important;
-  position: relative !important;
-  overflow: hidden !important;
-  backdrop-filter: blur(15px) !important;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-start !important;
+  direction: rtl;
+  text-align: right;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 380px;
+  background: linear-gradient(135deg, rgba(88, 187, 79, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+  border: 2px solid rgba(88, 187, 79, 0.3);
+  border-radius: 20px;
+  padding: 25px 20px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .about-us-mission-card:hover {
-  transform: translateY(-8px) scale(1.02) !important;
-  border-color: rgba(88, 187, 79, 0.6) !important;
-  box-shadow: 0 20px 60px rgba(88, 187, 79, 0.2) !important;
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(88, 187, 79, 0.6);
+  box-shadow: 0 20px 60px rgba(88, 187, 79, 0.2);
 }
 
 .our-mission-icon {
-  width: 50px !important;
-  height: 50px !important;
-  filter: brightness(0) saturate(100%) invert(55%) sepia(85%) saturate(463%) hue-rotate(80deg) brightness(103%) contrast(95%) !important;
-  margin-bottom: 15px !important;
-  transition: all 0.3s ease !important;
-  flex-shrink: 0 !important;
+  width: 50px;
+  height: 50px;
+  filter: brightness(0) saturate(100%) invert(55%) sepia(85%) saturate(463%) hue-rotate(80deg) brightness(103%) contrast(95%);
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .about-us-mission-card:hover .our-mission-icon {
-  transform: scale(1.1) rotate(5deg) !important;
+  transform: scale(1.1) rotate(5deg);
 }
 
 .about-us-mission-card h3 {
-  color: #58bb4f !important;
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  margin: 0 0 12px 0 !important;
-  text-shadow: 0 2px 10px rgba(88, 187, 79, 0.3) !important;
-  flex-shrink: 0 !important;
+  color: #58bb4f;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 12px 0;
+  text-shadow: 0 2px 10px rgba(88, 187, 79, 0.3);
+  flex-shrink: 0;
 }
 
 .about-us-mission-card:hover h3 {
-  color: #ffffff !important;
-  text-shadow: 0 2px 15px rgba(88, 187, 79, 0.5) !important;
+  color: #ffffff;
+  text-shadow: 0 2px 15px rgba(88, 187, 79, 0.5);
 }
 
 .about-us-mission-card .mission-card-paragraph {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 14px !important;
-  line-height: 1.5 !important;
-  margin: 0 !important;
-  flex-grow: 1 !important;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1;
 }
 
 .about-us-mission-card:hover .mission-card-paragraph {
-  color: rgba(255, 255, 255, 1) !important;
+  color: rgba(255, 255, 255, 1);
 }
 
 /* Hide arrows */
 .w-slider-arrow-left,
 .w-slider-arrow-right {
-  display: none !important;
+  display: none;
 }
 
 /* Pagination */
 .slider_pagination {
-  direction: ltr !important;
-  text-align: center !important;
-  margin-top: 30px !important;
-  padding: 20px 0 !important;
+  direction: ltr;
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px 0;
 }
 
 .w-slider-dot {
-  background: rgba(255, 255, 255, 0.3) !important;
-  width: 12px !important;
-  height: 12px !important;
-  border-radius: 50% !important;
-  margin: 0 6px !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  border: none !important;
-  outline: none !important;
+  background: rgba(255, 255, 255, 0.3);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
 }
 
 .w-slider-dot:hover {
-  background: rgba(88, 187, 79, 0.7) !important;
-  transform: scale(1.1) !important;
+  background: rgba(88, 187, 79, 0.7);
+  transform: scale(1.1);
 }
 
 .w-slider-dot.w-active {
-  background: #58bb4f !important;
-  transform: scale(1.3) !important;
-  box-shadow: 0 0 20px rgba(88, 187, 79, 0.5) !important;
+  background: #58bb4f;
+  transform: scale(1.3);
+  box-shadow: 0 0 20px rgba(88, 187, 79, 0.5);
 }
 
-/* FORCE OVERRIDE WEBFLOW TRANSFORMS */
+/* SAFER OVERRIDE FOR WEBFLOW TRANSFORMS */
 .w-slider-mask[style*="transform"] {
   transform: none !important;
 }
 
-.slider01_list[style*="transform"] {
-  transform: translateX(0) !important;
+.slider01_list[style*="transform"]:not([data-slider-updating="true"]) {
+  /* Only override if not being updated by our script */
 }
 
 /* Responsive - 2 cards on tablet */
 @media screen and (max-width: 991px) {
   .slider01_slide {
-    flex: 0 0 50% !important;
-    width: 50% !important;
-    min-width: 50% !important;
-    max-width: 50% !important;
-    padding: 0 8px !important;
+    flex: 0 0 50%;
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
+    padding: 0 8px;
   }
   
-  .slider01_slide[style] {
+  .slider01_slide[style*="width"] {
     flex: 0 0 50% !important;
     width: 50% !important;
-    min-width: 50% !important;
-    max-width: 50% !important;
   }
   
   .about-us-mission-card {
-    padding: 20px 15px !important;
-    min-height: 350px !important;
+    padding: 20px 15px;
+    min-height: 350px;
   }
   
   .about-us-mission-card h3 {
-    font-size: 18px !important;
+    font-size: 18px;
   }
   
   .about-us-mission-card .mission-card-paragraph {
-    font-size: 13px !important;
+    font-size: 13px;
   }
 }
 
 /* Responsive - 1 card on mobile */
 @media screen and (max-width: 767px) {
-  .slider01_slide {
-    flex: 0 0 100% !important;
-    width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 15px !important;
+  .section-3 {
+    padding: 40px 0;
   }
   
-  .slider01_slide[style] {
+  .slider01_comp {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  
+  .slider01_mask {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .slider01_list {
+    width: 100%;
+  }
+  
+  .slider01_slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+  
+  .slider01_slide[style*="width"] {
     flex: 0 0 100% !important;
     width: 100% !important;
-    min-width: 100% !important;
-    max-width: 100% !important;
   }
   
   .about-us-mission-card {
-    padding: 20px 15px !important;
-    min-height: 320px !important;
+    padding: 25px 20px;
+    min-height: 350px;
+    margin: 0 auto;
+    max-width: 320px;
   }
   
   .about-us-mission-card h3 {
-    font-size: 16px !important;
+    font-size: 18px;
+    margin-bottom: 15px;
   }
   
   .about-us-mission-card .mission-card-paragraph {
-    font-size: 12px !important;
+    font-size: 14px;
+    line-height: 1.6;
   }
   
   .our-mission-icon {
-    width: 40px !important;
-    height: 40px !important;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 20px;
+  }
+  
+  /* Mobile pagination styling */
+  .slider_pagination {
+    margin-top: 25px;
+    padding: 15px 0;
+  }
+  
+  .w-slider-dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
   }
 }
 
-/* NUCLEAR OPTION - Override everything */
+/* SAFER NUCLEAR OPTION - Only override critical properties */
 .w-slider-mask[style],
 .slider01_list[style],
 .slider01_slide[style] {
@@ -257,8 +289,38 @@
 
 .slider01_list,
 .w-slider-nav {
-  list-style: none !important;
-  list-style-type: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  list-style: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Prevent crashes during viewport changes */
+@media screen and (max-width: 1200px) {
+  .slider01_comp {
+    transition: none; /* Disable transitions during resize */
+  }
+}
+
+/* Emergency fallback for broken sliders */
+.slider01_slide:not([style]),
+.slider01_slide[style=""] {
+  flex: 0 0 33.333333%;
+  width: 33.333333%;
+}
+
+@media screen and (max-width: 991px) {
+  .slider01_slide:not([style]),
+  .slider01_slide[style=""] {
+    flex: 0 0 50%;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .slider01_slide:not([style]),
+  .slider01_slide[style=""] {
+    flex: 0 0 100%;
+    width: 100%;
+  }
 } 

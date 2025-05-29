@@ -1,0 +1,71 @@
+/* Typewriter Animation for Hero Heading */
+@keyframes blinkCursor {
+  0%, 100% { border-right-color: transparent; }
+  50% { border-right-color: #5ab94e; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes deleteText {
+  from { width: 100%; }
+  to { width: 0; }
+}
+
+.typewriter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  direction: rtl;
+}
+
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  position: relative;
+  opacity: 1 !important;
+  border-right: 2px solid transparent;
+  animation: blinkCursor 0.7s infinite;
+  font-size: 60px;
+  line-height: 70px;
+  font-weight: 700;
+}
+
+.typewriter-text .green-dots {
+  color: #5ab94e; /* Green color for the dots matching the brand color */
+}
+
+/* Hide all texts initially */
+.typewriter-text {
+  display: none;
+  width: 0;
+}
+
+/* Active text state */
+.typewriter-text.active {
+  display: inline-block;
+}
+
+/* Typing animation */
+.typewriter-text.typing {
+  animation: typewriter 3s steps(40, end) forwards, blinkCursor 0.7s infinite;
+}
+
+/* Deleting animation */
+.typewriter-text.deleting {
+  animation: deleteText 1.5s steps(40, end) forwards, blinkCursor 0.7s infinite;
+}
+
+/* Hero heading style */
+.hero-screen-heading {
+  font-size: 60px;
+  line-height: 70px;
+  font-weight: 700;
+  text-align: right;
+} 

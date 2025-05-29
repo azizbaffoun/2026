@@ -764,7 +764,7 @@
 <body>
   <div class="intro-container">
     <!-- Video Element -->
-    <video class="intro-video" autoplay muted playsinline>
+    <video class="intro-video" autoplay muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
       <source src="ball-uhd_3840_2160_25fps.mp4" type="video/mp4">
       <source src="ball-hd_1920_1080_25fps.mp4" type="video/mp4">
       <source src="entry.mp4" type="video/mp4">
@@ -837,10 +837,52 @@
       // Manual Video Speed Control
       const VIDEO_SPEED = 1.0; // Change this value: 1.0 = normal, 2.0 = 2x faster, 0.5 = half speed
       
+      // Mobile detection
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      // Force autoplay on mobile
+      function forceVideoPlay() {
+        const playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            console.log('Video autoplay successful');
+          }).catch(error => {
+            console.log('Autoplay prevented, trying alternative approach:', error);
+            
+            // If autoplay fails, try to play on any user interaction
+            const playOnInteraction = () => {
+              video.play().then(() => {
+                console.log('Video started after user interaction');
+                document.removeEventListener('touchstart', playOnInteraction);
+                document.removeEventListener('click', playOnInteraction);
+              }).catch(e => console.log('Video play failed:', e));
+            };
+            
+            document.addEventListener('touchstart', playOnInteraction, { once: true });
+            document.addEventListener('click', playOnInteraction, { once: true });
+          });
+        }
+      }
+      
       // Set video playback rate when loaded
       video.addEventListener('loadedmetadata', function() {
         video.playbackRate = VIDEO_SPEED;
         console.log(`Soccer video speed set to ${VIDEO_SPEED}x`);
+        
+        // Try to force play on mobile
+        if (isMobile) {
+          setTimeout(() => {
+            forceVideoPlay();
+          }, 100);
+        }
+      });
+
+      // Additional mobile autoplay attempts
+      video.addEventListener('canplay', function() {
+        if (isMobile && video.paused) {
+          forceVideoPlay();
+        }
       });
 
       // Show loading text
@@ -907,6 +949,11 @@
       // Video event listeners
       video.addEventListener('loadeddata', function() {
         console.log('Soccer video loaded successfully');
+        
+        // Additional mobile autoplay attempt
+        if (isMobile && video.paused) {
+          forceVideoPlay();
+        }
       });
 
       video.addEventListener('timeupdate', function() {
@@ -964,6 +1011,17 @@
         }
       });
 
+      // Add touch handler for mobile
+      document.addEventListener('touchstart', function() {
+        if (video.paused) {
+          forceVideoPlay();
+        }
+        if (!video.classList.contains('transition-started')) {
+          video.classList.add('transition-started');
+          startSoccerTransition();
+        }
+      });
+
       // Add keyboard handler for immediate navigation (skip intro)
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
@@ -973,7 +1031,18 @@
           }
         }
       });
+
+      // Fallback: If video doesn't start within 3 seconds on mobile, skip to website
+      if (isMobile) {
+        setTimeout(() => {
+          if (video.paused && !video.classList.contains('transition-started')) {
+            console.log('Video autoplay failed on mobile, skipping to website');
+            startSoccerTransition();
+          }
+        }, 3000);
+      }
     });
   </script>
+  <script src="js/mobile-video-fix.js"></script>
 </body>
 </html> 

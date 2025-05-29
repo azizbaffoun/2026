@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .log { background: #f0f0f0; padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .error { background: #ffebee; color: #c62828; }
+        .success { background: #e8f5e8; color: #2e7d32; }
+        .info { background: #e3f2fd; color: #1565c0; }
+    </style>
+</head>
+<body>
+    <h1>Firebase Connection Test</h1>
+    <div id="logs"></div>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+    <script>
+        const logs = document.getElementById('logs');
+        
+        function addLog(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `log ${type}`;
+            div.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+            logs.appendChild(div);
+            console.log(message);
+        }
+        
+        // Your Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyCp8lAoWk02iuAUGSn3E30RA9uj-5Tos5E",
+            authDomain: "vsport-e86e0.firebaseapp.com",
+            databaseURL: "https://vsport-e86e0-default-rtdb.firebaseio.com",
+            projectId: "vsport-e86e0",
+            storageBucket: "vsport-e86e0.appspot.com",
+            messagingSenderId: "531520967244",
+            appId: "1:531520967244:web:b4c86af4a22e67f0d59ae9",
+            measurementId: "G-85BSNTP37S"
+        };
+        
+        addLog("🚀 Starting Firebase test...");
+        
+        try {
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+            addLog("✅ Firebase initialized successfully", 'success');
+            
+            // Test different collection names
+            const collectionsToTest = ['players', 'Players', 'team', 'Team', 'members', 'Members'];
+            
+            async function testCollections() {
+                addLog("🔍 Testing different collection names...");
+                
+                for (const collectionName of collectionsToTest) {
+                    try {
+                        addLog(`📂 Checking collection: ${collectionName}`);
+                        
+                        const snapshot = await db.collection(collectionName).get();
+                        
+                        if (snapshot.empty) {
+                            addLog(`⚠️ Collection '${collectionName}' is empty`);
+                        } else {
+                            addLog(`✅ Found ${snapshot.size} documents in '${collectionName}'`, 'success');
+                            
+                            // Show the actual data structure
+                            snapshot.forEach((doc, index) => {
+                                const data = doc.data();
+                                addLog(`📄 Document ${index + 1} (ID: ${doc.id}):`, 'info');
+                                addLog(`<pre>${JSON.stringify(data, null, 2)}</pre>`, 'info');
+                            });
+                        }
+                    } catch (error) {
+                        addLog(`❌ Error accessing collection '${collectionName}': ${error.message}`, 'error');
+                    }
+                }
+                
+                // Also try to list all collections (if permissions allow)
+                try {
+                    addLog("🔍 Attempting to list all collections...");
+                    const collections = await db.listCollections();
+                    if (collections.length > 0) {
+                        addLog(`📚 Available collections: ${collections.map(c => c.id).join(', ')}`, 'success');
+                    } else {
+                        addLog("⚠️ No collections found or insufficient permissions");
+                    }
+                } catch (error) {
+                    addLog(`⚠️ Cannot list collections: ${error.message}`);
+                }
+            }
+            
+            testCollections();
+            
+        } catch (error) {
+            addLog(`❌ Firebase initialization failed: ${error.message}`, 'error');
+        }
+    </script>
+</body>
+</html> 

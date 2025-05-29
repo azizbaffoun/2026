@@ -1,0 +1,294 @@
+/* Arabic Welcome Animation 
+ * Makes Arabic text feel alive with dynamic effects
+ * Compatible with RTL layouts
+ */
+
+/**
+ * Arabic Welcome Animation Styles
+ * These styles create animated welcome text effects
+ */
+
+/* Container for the welcome text */
+.arabic-welcome-container {
+  position: relative !important;
+  display: inline-block !important;
+  direction: rtl !important;
+  z-index: 5 !important;
+  min-height: 80px !important;
+  min-width: 150px !important;
+  margin: 20px auto !important;
+  text-align: center !important;
+  max-width: 100% !important;
+}
+
+/* The main welcome text */
+.arabic-welcome-text {
+  font-size: 4rem !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  text-align: center !important;
+  position: relative !important;
+  z-index: 10 !important;
+  text-shadow: 0 0 15px rgba(88, 187, 79, 0.5) !important;
+  animation: welcomePulse 3s ease-in-out infinite !important;
+  direction: rtl !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Glowing background effect */
+.arabic-welcome-glow {
+  position: absolute !important;
+  width: 120% !important;
+  height: 120% !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: radial-gradient(circle, rgba(88, 187, 79, 0.3) 0%, rgba(88, 187, 79, 0) 70%) !important;
+  border-radius: 50% !important;
+  z-index: 0 !important;
+  animation: glowPulse 4s ease-in-out infinite alternate !important;
+}
+
+/* Particles container */
+.arabic-welcome-particles {
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+/* Individual particles */
+.arabic-welcome-particle {
+  position: absolute !important;
+  width: 8px !important;
+  height: 8px !important;
+  background-color: rgba(88, 187, 79, 0.8) !important;
+  border-radius: 50% !important;
+  transform: translate(0, 0) !important;
+  animation: floatParticle var(--duration, 7s) ease-in-out infinite alternate !important;
+  animation-delay: var(--delay, 0s) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  opacity: 0.6 !important;
+  box-shadow: 0 0 10px rgba(88, 187, 79, 0.5) !important;
+}
+
+/* Animated strokes/lines */
+.arabic-welcome-stroke {
+  position: absolute !important;
+  width: 100% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, rgba(88, 187, 79, 0) 0%, rgba(88, 187, 79, 0.8) 50%, rgba(88, 187, 79, 0) 100%) !important;
+  top: 50% !important;
+  left: 0 !important;
+  transform: translateY(-50%) rotate(var(--rotation, 0deg)) !important;
+  animation: strokeFlow 6s ease-in-out infinite !important;
+  animation-delay: var(--delay, 0s) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+}
+
+/* Individual Arabic letters */
+.arabic-letter {
+  display: inline-block !important;
+  animation: letterFloat 3s ease-in-out infinite alternate !important;
+  animation-delay: calc(var(--index, 0) * 0.1s) !important;
+  transform: rotate(var(--rotation, 0deg)) !important;
+  will-change: transform !important;
+}
+
+/* 3D effects container */
+.arabic-welcome-3d {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  perspective: 800px !important;
+  z-index: 0 !important;
+}
+
+/* 3D floating planes */
+.arabic-welcome-plane {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(135deg, rgba(88, 187, 79, 0.1) 0%, rgba(88, 187, 79, 0) 70%) !important;
+  transform-style: preserve-3d !important;
+  transform: 
+    rotateX(var(--rotate-x, 60deg)) 
+    rotateY(var(--rotate-y, 30deg))
+    translateZ(var(--translate-z, -100px)) !important;
+  animation: planeTilt 8s ease-in-out infinite alternate !important;
+  animation-delay: var(--delay, 0s) !important;
+  border-radius: 20px !important;
+  opacity: 0.5 !important;
+}
+
+/* Keyframe Animations */
+@keyframes welcomePulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: 
+      translate(
+        var(--translate-x, 0px), 
+        var(--translate-y, 0px)
+      );
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: 
+      translate(
+        var(--translate-end-x, 0px), 
+        var(--translate-end-y, 0px)
+      );
+    opacity: 0.3;
+  }
+}
+
+@keyframes strokeFlow {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) rotate(var(--rotation, 0deg)) scaleX(0.3);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-50%) rotate(var(--rotation, 0deg)) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) rotate(var(--rotation, 0deg)) scaleX(0.3);
+  }
+}
+
+@keyframes letterFloat {
+  0% {
+    transform: translateY(0) rotate(var(--rotation, 0deg));
+  }
+  100% {
+    transform: translateY(-5px) rotate(var(--rotation, 0deg));
+  }
+}
+
+@keyframes planeTilt {
+  0% {
+    transform: 
+      rotateX(var(--rotate-x, 60deg)) 
+      rotateY(var(--rotate-y, 30deg))
+      translateZ(var(--translate-z, -100px));
+    opacity: 0.3;
+  }
+  100% {
+    transform: 
+      rotateX(calc(var(--rotate-x, 60deg) + 10deg)) 
+      rotateY(calc(var(--rotate-y, 30deg) + 15deg))
+      translateZ(calc(var(--translate-z, -100px) + 30px));
+    opacity: 0.5;
+  }
+}
+
+/* Responsive styles */
+@media screen and (max-width: 991px) {
+  .arabic-welcome-text {
+    font-size: 3.5rem !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .arabic-welcome-text {
+    font-size: 3rem !important;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .arabic-welcome-text {
+    font-size: 2.5rem !important;
+  }
+  
+  .arabic-welcome-particle {
+    width: 6px !important;
+    height: 6px !important;
+  }
+}
+
+/* Ensure the welcome container doesn't interfere with other elements */
+.arabic-welcome-container * {
+  pointer-events: none !important;
+}
+
+/* Make sure our animations don't break section layouts */
+section .arabic-welcome-container {
+  position: relative !important;
+  width: auto !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  display: block !important;
+  margin: 20px auto !important;
+}
+
+/* Fix for RTL layouts */
+[dir="rtl"] .arabic-welcome-container,
+html[dir="rtl"] .arabic-welcome-container {
+  direction: rtl !important;
+}
+
+/* Ensure our container doesn't break grid layouts */
+.w-layout-grid .arabic-welcome-container,
+.grid .arabic-welcome-container,
+.row .arabic-welcome-container,
+.w-row .arabic-welcome-container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Prevent animation from hiding other content */
+.arabic-welcome-container {
+  position: relative !important;
+  clear: both !important;
+  float: none !important;
+}
+
+/* Fix for absolute positioned elements that might get hidden */
+.arabic-welcome-container.hero-welcome {
+  position: absolute !important;
+  top: 30% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 50 !important;
+} 

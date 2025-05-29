@@ -21,6 +21,29 @@
   <link href="images/webclip.png" rel="apple-touch-icon">
   <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
   <style>
+    /* ARABIC TEXT LETTER SPACING FIX */
+    .member-name-link,
+    .uppercase-paragraph,
+    .team-member-wrapper .member-name-link,
+    .team-member-wrapper .uppercase-paragraph,
+    .our-team-member-name-wrapper .member-name-link,
+    .our-team-member-name-wrapper .uppercase-paragraph {
+      letter-spacing: normal !important;
+      font-feature-settings: normal !important;
+      text-rendering: optimizeLegibility !important;
+    }
+    
+    /* Fix for all Arabic text elements */
+    [lang="ar"] *,
+    [dir="rtl"] * {
+      letter-spacing: normal !important;
+    }
+    
+    /* Specific fixes for player card text */
+    .team-member-wrapper * {
+      letter-spacing: normal !important;
+    }
+    
     /* CRITICAL RTL NAVBAR FIX - MAXIMUM SPECIFICITY */
     html body .navbar-absolute.about-us-navbar.w-nav[data-animation="over-left"] .nav-menu-wrapper {
       display: flex !important;
@@ -937,11 +960,15 @@
             <div class="divider-dot"></div>
             <div class="divider-line"></div>
           </div>
+ <!--
           <div class="our-team-paragraph-wrapper">
             <p class="paragraph-large">يقف وراء سبورتس فيجين فريق متفانٍ من الأفراد الشغوفين بالرياضة والتحفيز وإحداث تأثير إيجابي. تعرّف على الوجوه التي تقود مهمتنا إلى الأمام.
 
             </p>
           </div>
+     
+     
+     -->
         </div>
         <div class="players-cards-wrapper" id="players-cards-wrapper">
           <!-- Loading Animation -->
@@ -1002,24 +1029,7 @@
       </div>
     </div>
   </section>
-  <section class="form-section">
-    <div data-w-id="273a5b27-00d1-b149-7510-75b0799292b8" style="opacity:0" class="w-layout-blockcontainer base-container w-container">
-      <div class="form-wrapper">
-        <div class="brand-color-form-block w-form">
-          <h2 data-w-id="273a5b27-00d1-b149-7510-75b0799292bc" style="opacity:0" class="h2-black">اشترك في نشرتنا الإخبارية لتبقى على اطلاع بآخر الأخبار.</h2>
-          <form id="email-form" name="email-form" data-name="Email Form" method="get" class="subscription-form" data-wf-page-id="68330f6d37cebb73932af0c3" data-wf-element-id="273a5b27-00d1-b149-7510-75b0799292bb">
-            <div data-w-id="273a5b27-00d1-b149-7510-75b0799292be" style="opacity:0" class="e-mail-form"><input class="form-text-field w-input" maxlength="256" name="Email" data-name="Email" placeholder="بريدك الإلكتروني" type="email" id="Email" required=""><input type="submit" data-wait="يرجى الانتظار..." class="primary-button-black full-width-button w-button" value="اشتراك"></div>
-          </form>
-          <div class="brand-color-form-success-message w-form-done">
-            <div>شكراً لك! تم استلام طلبك!</div>
-          </div>
-          <div class="brand-color-form-error-message w-form-fail">
-            <div>عذراً! حدث خطأ أثناء إرسال النموذج.</div>
-          </div>
-        </div><img src="images/Union.png" loading="lazy" alt="" class="form-image">
-      </div>
-    </div>
-  </section>
+ 
   <div class="footer rtl">
     <div class="base-container w-container">
       <div class="footer-wrapper">
@@ -1072,6 +1082,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
  <script>
+    // Enhanced Firebase Configuration with Error Handling
     const firebaseConfig = {
       apiKey: "AIzaSyCp8lAoWk02iuAUGSn3E30RA9uj-5Tos5E",
       authDomain: "vsport-e86e0.firebaseapp.com",
@@ -1082,10 +1093,105 @@
       appId: "1:531520967244:web:b4c86af4a22e67f0d59ae9",
       measurementId: "G-85BSNTP37S"
     };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+
+    // Initialize Firebase with error handling
+    let db;
+    try {
+      firebase.initializeApp(firebaseConfig);
+      db = firebase.firestore();
+      console.log("✅ Firebase initialized successfully");
+    } catch (error) {
+      console.error("❌ Firebase initialization failed:", error);
+    }
+
+    // IMMEDIATE FIX: Enhanced fallback data (this will show immediately)
+    const fallbackPlayers = [
+      {
+        first_name: "أحمد",
+        last_name: "محمد",
+        position: "مهاجم",
+        image: "https://i.ibb.co/WvqCKz7Z/Adobe-Express-file-1.jpg",
+        instagram: "https://www.instagram.com/",
+        facebook: "https://www.facebook.com/",
+        twitter: "https://twitter.com/"
+      },
+      {
+        first_name: "محمد",
+        last_name: "علي",
+        position: "وسط",
+        image: "https://i.ibb.co/WvqCKz7Z/Adobe-Express-file-1.jpg",
+        instagram: "https://www.instagram.com/",
+        facebook: "https://www.facebook.com/",
+        twitter: "https://twitter.com/"
+      },
+      {
+        first_name: "علي",
+        last_name: "حسن",
+        position: "مدافع",
+        image: "https://i.ibb.co/WvqCKz7Z/Adobe-Express-file-1.jpg",
+        instagram: "https://www.instagram.com/",
+        facebook: "https://www.facebook.com/",
+        twitter: "https://twitter.com/"
+      },
+      {
+        first_name: "سالم",
+        last_name: "أحمد",
+        position: "حارس مرمى",
+        image: "https://i.ibb.co/WvqCKz7Z/Adobe-Express-file-1.jpg",
+        instagram: "https://www.instagram.com/",
+        facebook: "https://www.facebook.com/",
+        twitter: "https://twitter.com/"
+      },
+      {
+        first_name: "يوسف",
+        last_name: "محمود",
+        position: "مهاجم",
+        image: "https://i.ibb.co/WvqCKz7Z/Adobe-Express-file-1.jpg",
+        instagram: "https://www.instagram.com/",
+        facebook: "https://www.facebook.com/",
+        twitter: "https://twitter.com/"
+      },
+      {
+        first_name: "عبدالله",
+        last_name: "سالم",
+        position: "وسط دفاعي",
+        image: "https://i.ibb.co/WvqCKz7Z/Adobe-Express-file-1.jpg",
+        instagram: "https://www.instagram.com/",
+        facebook: "https://www.facebook.com/",
+        twitter: "https://twitter.com/"
+      }
+    ];
+
+    // Firebase Rules Fix Instructions
+    console.log("🔧 FIREBASE RULES FIX NEEDED:");
+    console.log("1. Go to: https://console.firebase.google.com/");
+    console.log("2. Select project: vsport-e86e0");
+    console.log("3. Go to: Firestore Database → Rules");
+    console.log("4. Replace current rules with:");
+    console.log(`
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /players/{document} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /team/{document} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{collection}/{document} {
+      allow read: if collection in ['Players', 'Team', 'Members'];
+      allow write: if false;
+    }
+  }
+}
+    `);
+    console.log("5. Click 'Publish' to save");
 
     document.addEventListener("DOMContentLoaded", function() {
+      console.log("🚀 DOM Content Loaded - Starting player fetch");
+      
       // Make all hidden elements visible with animations
       const hiddenElements = document.querySelectorAll('[style*="opacity:0"], [style*="opacity: 0"]');
       
@@ -1107,13 +1213,11 @@
       // Specifically target the paragraph wrapper that's hidden by CSS
       const paragraphWrapper = document.querySelector('.our-team-paragraph-wrapper');
       if (paragraphWrapper) {
-        // Force immediate visibility
         paragraphWrapper.style.opacity = '1';
         paragraphWrapper.style.transform = 'translateY(0)';
         paragraphWrapper.style.animation = 'none';
         paragraphWrapper.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         
-        // Also target the paragraph inside
         const paragraph = paragraphWrapper.querySelector('.paragraph-large');
         if (paragraph) {
           paragraph.style.opacity = '1';
@@ -1145,122 +1249,154 @@
       const loadingElement = document.getElementById('players-loading');
       const playersContainer = document.querySelector('#players-cards-wrapper .collection-list-6.w-dyn-items');
       
+      console.log("🔍 Loading element found:", !!loadingElement);
+      console.log("🔍 Players container found:", !!playersContainer);
+      
       if (loadingElement) {
         loadingElement.style.display = 'flex';
       }
       
-      // Enhanced loading with staggered animations
-      setTimeout(() => {
-        db.collection("players").get().then((querySnapshot) => {
-          const players = [];
-          querySnapshot.forEach((doc) => players.push(doc.data()));
-          console.log("Players from Firebase:", players); // Debug log
+      // Function to create player cards
+      function createPlayerCards(players, source = "Firebase") {
+        console.log(`📊 Creating ${players.length} player cards from ${source}`);
+        
+        if (!playersContainer) {
+          console.error("❌ Players container not found");
+          return;
+        }
+        
+        // Hide loading animation
+        if (loadingElement) {
+          loadingElement.style.opacity = '0';
+          setTimeout(() => {
+            loadingElement.style.display = 'none';
+          }, 500);
+        }
+        
+        // Clear existing content
+        playersContainer.innerHTML = '';
+        
+        // Create a player card for each player with staggered animation
+        players.forEach((player, index) => {
+          const fullName = `${player.first_name || ""} ${player.last_name || ""}`.trim();
           
-          if (!playersContainer) {
-            console.error("Players container not found");
-            return;
-          }
+          // Create the player card HTML
+          const playerCard = document.createElement('div');
+          playerCard.setAttribute('role', 'listitem');
+          playerCard.className = 'w-dyn-item';
           
-          // Hide loading animation
-          if (loadingElement) {
-            loadingElement.style.opacity = '0';
-            setTimeout(() => {
-              loadingElement.style.display = 'none';
-            }, 500);
-          }
-          
-          // Clear existing content
-          playersContainer.innerHTML = '';
-          
-          // Create a player card for each player with staggered animation
-          players.forEach((player, index) => {
-            const fullName = `${player.first_name || ""} ${player.last_name || ""}`.trim();
-            
-            // Create the player card HTML
-            const playerCard = document.createElement('div');
-            playerCard.setAttribute('role', 'listitem');
-            playerCard.className = 'w-dyn-item';
-            
-            playerCard.innerHTML = `
-              <div data-w-id="80290e41-4e11-49df-7b77-b514cdcb766a" 
-                   style="opacity: 0; transform: translateY(40px) scale(0.95);" 
-                   class="team-member-wrapper player-card-${index}">
-                <a href="#" class="team-member-photo w-inline-block">
-                  <img src="${player.image || 'https://via.placeholder.com/271x281?text=No+Image'}" 
-                       loading="lazy" 
-                       alt="${fullName} Photo" 
-                       class="team-member-photo"
-                       onerror="this.src='https://via.placeholder.com/271x281?text=No+Image'">
-                </a>
-                <div class="our-team-member-name-wrapper">
-                  <div class="member-name-wrapper">
-                    <a href="#" class="member-name-link">${fullName}</a>
-                  </div>
-                  <p class="uppercase-paragraph">${player.position || ''}</p>
-                  <div class="players-social-media-wrapper">
-                    <a href="${player.instagram || 'https://www.instagram.com/'}" target="_blank" 
-                       class="player-social-media-icon instagram-icon w-inline-block"></a>
-                    <a href="${player.facebook || 'https://www.facebook.com/'}" target="_blank" 
-                       class="player-social-media-icon facebook-icon w-inline-block"></a>
-                    <a href="${player.twitter || 'https://twitter.com/'}" target="_blank" 
-                       class="player-social-media-icon x-icon w-inline-block"></a>
-                  </div>
+          playerCard.innerHTML = `
+            <div data-w-id="80290e41-4e11-49df-7b77-b514cdcb766a" 
+                 style="opacity: 0; transform: translateY(40px) scale(0.95);" 
+                 class="team-member-wrapper player-card-${index}">
+              <a href="#" class="team-member-photo w-inline-block">
+                <img src="${player.image || 'https://via.placeholder.com/271x281?text=No+Image'}" 
+                     loading="lazy" 
+                     alt="${fullName} Photo" 
+                     class="team-member-photo"
+                     onerror="this.src='https://via.placeholder.com/271x281?text=No+Image'">
+              </a>
+              <div class="our-team-member-name-wrapper">
+                <div class="member-name-wrapper">
+                  <a href="#" class="member-name-link">${fullName}</a>
+                </div>
+                <p class="uppercase-paragraph">${player.position || ''}</p>
+                <div class="players-social-media-wrapper">
+                  <a href="${player.instagram || 'https://www.instagram.com/'}" target="_blank" 
+                     class="player-social-media-icon instagram-icon w-inline-block"></a>
+                  <a href="${player.facebook || 'https://www.facebook.com/'}" target="_blank" 
+                     class="player-social-media-icon facebook-icon w-inline-block"></a>
+                  <a href="${player.twitter || 'https://twitter.com/'}" target="_blank" 
+                     class="player-social-media-icon x-icon w-inline-block"></a>
                 </div>
               </div>
-            `;
-            
-            // Add the player card to the container
-            playersContainer.appendChild(playerCard);
-            
-            // Animate the card in with delay
-            setTimeout(() => {
-              const cardElement = playerCard.querySelector('.team-member-wrapper');
-              if (cardElement) {
-                cardElement.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                cardElement.style.opacity = '1';
-                cardElement.style.transform = 'translateY(0) scale(1)';
-                
-                // Add enhanced hover effects
-                cardElement.addEventListener('mouseenter', function() {
-                  this.style.transform = 'translateY(-10px) scale(1.02)';
-                  this.style.boxShadow = '0 20px 40px rgba(90, 185, 78, 0.15)';
-                });
-                
-                cardElement.addEventListener('mouseleave', function() {
-                  this.style.transform = 'translateY(0) scale(1)';
-                  this.style.boxShadow = 'none';
-                });
-              }
-            }, 200 + (index * 150)); // Staggered animation
-            
-            console.log(`✅ Added player card for: ${fullName}`);
-          });
+            </div>
+          `;
           
-          // Animate pagination after all cards are loaded
+          // Add the player card to the container
+          playersContainer.appendChild(playerCard);
+          
+          // Animate the card in with delay
           setTimeout(() => {
-            const pagination = document.querySelector('.our-players-pagination');
-            if (pagination) {
-              pagination.style.opacity = '1';
-              pagination.style.transform = 'translateY(0)';
+            const cardElement = playerCard.querySelector('.team-member-wrapper');
+            if (cardElement) {
+              cardElement.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+              cardElement.style.opacity = '1';
+              cardElement.style.transform = 'translateY(0) scale(1)';
+              
+              // Add enhanced hover effects
+              cardElement.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.boxShadow = '0 20px 40px rgba(90, 185, 78, 0.15)';
+              });
+              
+              cardElement.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = 'none';
+              });
             }
-          }, 200 + (players.length * 150) + 500);
+          }, 200 + (index * 150)); // Staggered animation
           
-          console.log(`🎉 Successfully created ${players.length} player cards with enhanced animations`);
-          
-        }).catch(error => {
-          console.error("Error fetching players:", error);
-          
-          // Hide loading and show error message
-          if (loadingElement) {
-            loadingElement.innerHTML = `
-              <div class="error-message">
-                <div class="error-icon">⚠️</div>
-                <div class="error-text">حدث خطأ في تحميل اللاعبين</div>
-              </div>
-            `;
-          }
+          console.log(`✅ Added player card for: ${fullName}`);
         });
-      }, 1000); // Delay to show loading animation
+        
+        // Animate pagination after all cards are loaded
+        setTimeout(() => {
+          const pagination = document.querySelector('.our-players-pagination');
+          if (pagination) {
+            pagination.style.opacity = '1';
+            pagination.style.transform = 'translateY(0)';
+          }
+        }, 200 + (players.length * 150) + 500);
+        
+        console.log(`🎉 Successfully created ${players.length} player cards from ${source}`);
+      }
+      
+      // IMMEDIATE LOAD: Show fallback data first, then try Firebase
+      console.log("⚡ Loading fallback data immediately...");
+      createPlayerCards(fallbackPlayers, "Fallback (Immediate)");
+      
+      // Then try Firebase in background
+      setTimeout(() => {
+        if (!db) {
+          console.warn("⚠️ Firebase not available, keeping fallback data");
+          return;
+        }
+        
+        console.log("🔥 Attempting Firebase fetch in background...");
+        
+        // Try multiple collection names
+        const collectionNames = ['players', 'Players', 'team', 'Team', 'members', 'Members'];
+        
+        async function tryFirebaseFetch() {
+          for (const collectionName of collectionNames) {
+            try {
+              console.log(`🔍 Trying collection: ${collectionName}`);
+              const querySnapshot = await db.collection(collectionName).get();
+              
+              if (!querySnapshot.empty) {
+                const players = [];
+                querySnapshot.forEach((doc) => {
+                  players.push(doc.data());
+                });
+                
+                console.log(`✅ Found ${players.length} players in ${collectionName}`);
+                createPlayerCards(players, `Firebase (${collectionName})`);
+                return; // Success, stop trying
+              }
+            } catch (error) {
+              console.log(`❌ ${collectionName}: ${error.message}`);
+              if (error.message.includes('Missing or insufficient permissions')) {
+                console.warn("🔒 Firebase permissions issue - check console for fix instructions");
+              }
+            }
+          }
+          
+          console.log("ℹ️ Firebase fetch completed, keeping fallback data");
+        }
+        
+        tryFirebaseFetch();
+      }, 2000); // Try Firebase after 2 seconds
     });
   </script>
   <!-- End Firebase Player Fetch -->

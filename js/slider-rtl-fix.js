@@ -1,35 +1,21 @@
 // Perfect RTL 3-Slide Carousel - Complete Fix
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, waiting for Webflow...');
-  
   // Wait for Webflow to settle, then take complete control
   setTimeout(function() {
-    console.log('Starting carousel initialization...');
-    
     const slider = document.querySelector('.slider01_comp');
     const mask = document.querySelector('.slider01_mask');
     const slides = document.querySelectorAll('.slider01_slide');
     const dotsContainer = document.querySelector('.slider_pagination');
     
     if (!slider || !mask || !slides.length || !dotsContainer) {
-      console.error('Required elements not found:', {
-        slider: !!slider,
-        mask: !!mask, 
-        slides: slides.length,
-        dotsContainer: !!dotsContainer
-      });
       return;
     }
-    
-    console.log(`Found ${slides.length} slides. Creating 3-slide carousel...`);
     
     let currentGroup = 0;
     const totalGroups = 3; // Always 3 groups for 7 slides
     
     // STEP 1: Completely reset and rebuild structure
     function initializeCarousel() {
-      console.log('Resetting carousel structure...');
-      
       // Clear mask and create new container
       mask.innerHTML = '';
       
@@ -56,8 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Set up each slide with perfect 3-slide display
       slides.forEach((slide, index) => {
-        console.log(`Setting up slide ${index + 1}`);
-        
         slide.style.cssText = `
           width: calc(100% / ${slides.length}) !important;
           min-width: calc(100% / ${slides.length}) !important;
@@ -98,14 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       
       mask.appendChild(slidesContainer);
-      console.log('Carousel structure rebuilt');
       return slidesContainer;
     }
     
     // STEP 2: Create custom pagination with exactly 3 dots
     function createCustomPagination() {
-      console.log('Creating custom pagination...');
-      
       dotsContainer.innerHTML = '';
       dotsContainer.style.cssText = `
         display: flex !important;
@@ -140,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
         dot.addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
-          console.log(`Dot ${i} clicked`);
           slideToGroup(i);
         });
         
@@ -158,19 +138,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         dotsContainer.appendChild(dot);
       }
-      
-      console.log(`Created ${totalGroups} pagination dots`);
     }
     
     // STEP 3: Handle sliding between groups
     function slideToGroup(groupIndex) {
-      console.log(`Sliding to group ${groupIndex}`);
-      
       const slidesContainer = document.querySelector('.custom-slides-container');
       const dots = document.querySelectorAll('.custom-dot');
       
       if (!slidesContainer) {
-        console.error('Slides container not found');
         return;
       }
       
@@ -190,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function() {
         translateX = -57.14; // (4/7) * 100
       }
       
-      console.log(`Applying transform: translateX(${translateX}%)`);
       slidesContainer.style.transform = `translateX(${translateX}%)`;
       
       // Update pagination dots - FIXED VERSION
@@ -207,29 +181,31 @@ document.addEventListener('DOMContentLoaded', function() {
           dot.classList.remove('active-dot');
         }
       });
-      
-      console.log(`Successfully slid to group ${groupIndex}, dot ${groupIndex} is now active`);
     }
     
     // STEP 4: Initialize everything
-    console.log('Initializing carousel...');
     const slidesContainer = initializeCarousel();
     createCustomPagination();
     slideToGroup(0);
     
-    // STEP 5: Prevent Webflow interference with aggressive monitoring
-    let interventionCount = 0;
+    // STEP 5: Use more efficient observation strategy
     const observer = new MutationObserver(function(mutations) {
+      let needsReset = false;
+      
       mutations.forEach(function(mutation) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-          const target = mutation.target;
+          needsReset = true;
+        }
+      });
+      
+      if (needsReset) {
+        // Throttle fixes to avoid infinite loops
+        if (!observer.fixing) {
+          observer.fixing = true;
           
-          if (target.classList.contains('slider01_slide')) {
-            interventionCount++;
-            console.log(`Webflow interference detected #${interventionCount}, fixing...`);
-            
-            // Force our styles back immediately
-            target.style.cssText = `
+          // Apply fixes in a single batch
+          slides.forEach(slide => {
+            slide.style.cssText = `
               width: calc(100% / ${slides.length}) !important;
               min-width: calc(100% / ${slides.length}) !important;
               max-width: calc(100% / ${slides.length}) !important;
@@ -242,30 +218,63 @@ document.addEventListener('DOMContentLoaded', function() {
               transform: none !important;
               direction: rtl !important;
             `;
-          }
+          });
           
-          if (target.classList.contains('slider01_mask')) {
-            target.style.transform = 'none !important';
-          }
+          mask.style.transform = 'none !important';
+          
+          // Reset flag after a short delay
+          setTimeout(() => {
+            observer.fixing = false;
+          }, 100);
         }
-      });
+      }
     });
     
-    // Monitor all slides and mask
-    slides.forEach(slide => {
-      observer.observe(slide, { 
-        attributes: true, 
-        attributeFilter: ['style', 'aria-hidden'] 
-      });
+    // Watch for Webflow interference but with reduced sensitivity
+    observer.observe(slider, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+      attributeFilter: ['style'],
     });
-    observer.observe(mask, { attributes: true, attributeFilter: ['style'] });
     
-    console.log('3-slide carousel setup complete! Try clicking the dots.');
+    // Add arrow controls
+    const leftArrow = document.querySelector('.slider_arrow.is-left');
+    const rightArrow = document.querySelector('.slider_arrow.w-slider-arrow-right');
     
-    // Add window resize handler
+    if (leftArrow) {
+      leftArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        slideToGroup(Math.max(0, currentGroup - 1));
+      });
+    }
+    
+    if (rightArrow) {
+      rightArrow.addEventListener('click', function(e) {
+        e.preventDefault();
+        slideToGroup(Math.min(totalGroups - 1, currentGroup + 1));
+      });
+    }
+    
+    // Handle responsive behavior better
+    let resizeTimeout;
     window.addEventListener('resize', function() {
-      setTimeout(() => slideToGroup(currentGroup), 100);
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        // Reinitialize only if necessary
+        if (window.innerWidth <= 767 && slider.dataset.mobile !== 'true') {
+          slider.dataset.mobile = 'true';
+          initializeCarousel();
+          createCustomPagination();
+          slideToGroup(0);
+        } else if (window.innerWidth > 767 && slider.dataset.mobile === 'true') {
+          slider.dataset.mobile = 'false';
+          initializeCarousel();
+          createCustomPagination();
+          slideToGroup(0);
+        }
+      }, 250); // Throttle resize events
     });
     
-  }, 1000); // Increased wait time to 1 second
+  }, 1000); // Increased delay to ensure Webflow is fully loaded
 }); 

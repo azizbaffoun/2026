@@ -1,0 +1,67 @@
+/* Typing Animation Styles */
+.typing-text {
+  display: inline-block;
+  position: relative;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background-color: #fff;
+  margin-left: 5px;
+  animation: blink 0.7s infinite;
+  vertical-align: middle;
+}
+
+/* Green color for dots - this should match your brand color */
+.green-dots {
+  color: #5ab94e; /* Adjust this to match your exact brand green color */
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Ensure Arabic text has proper RTL alignment */
+.hero-screen-heading {
+  direction: rtl;
+  text-align: right;
+  font-size: 4.5rem;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  transition: opacity 0.5s ease;
+}
+
+/* Fix Rectangle Positioning in Hero Section */
+.hero-screen-section .rectangle {
+  transform: none !important;
+  opacity: 1 !important;
+  position: relative !important;
+  display: block !important;
+}
+
+/* Reset any problematic transforms on rectangles */
+.banner-heading-wrapper .rectangle,
+.banner-photo-wrapper .rectangle,
+.banner-paragraph-wrapper .rectangle,
+.divider .rectangle {
+  transform: translateY(0px) !important;
+}
+
+/* Ensure hero section content is visible */
+.hero-screen-wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+.home-1-banner {
+  position: relative;
+  z-index: 4;
+} 
