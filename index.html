@@ -7,8 +7,7 @@
   <style>
     @font-face {
       font-family: 'Riyad Bank';
-      src: url('fonts/font/RiyadBank-Regular.woff2') format('woff2'),
-           url('fonts/font/RiyadBank-Regular.woff') format('woff');
+      src: url('fonts/font/riyad-bank-Regular.ttf') format('truetype');
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -16,8 +15,7 @@
 
     @font-face {
       font-family: 'Riyad Bank';
-      src: url('fonts/font/RiyadBank-Bold.woff2') format('woff2'),
-           url('fonts/font/RiyadBank-Bold.woff') format('woff');
+      src: url('fonts/font/riyad-bank-Bold.ttf') format('truetype');
       font-weight: 700;
       font-style: normal;
       font-display: swap;
@@ -937,6 +935,8 @@
                   
                   // Navigate to home page after fade
                   setTimeout(() => {
+                    // Set flag to indicate intro was completed
+                    sessionStorage.setItem('introCompleted', 'true');
                     window.location.href = 'home-3-rtl.html';
                   }, 800);
                 }, 300);
