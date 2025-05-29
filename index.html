@@ -21,6 +21,19 @@
       font-display: swap;
     }
 
+    /* Font loading test - remove this after testing */
+    .font-test {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 10px;
+      font-size: 12px;
+      z-index: 9999;
+      border-radius: 5px;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -761,6 +774,9 @@
 </head>
 <body>
   <div class="intro-container">
+    <!-- Font Loading Test Element -->
+
+
     <!-- Video Element -->
     <video class="intro-video" autoplay muted playsinline preload="auto" webkit-playsinline="true" x5-playsinline="true">
       <source src="ball-uhd_3840_2160_25fps.mp4" type="video/mp4">
@@ -782,8 +798,7 @@
       <img src="images/Sports-vision-logo.svg" alt="Sports Vision Logo" class="brand-logo">
       <h1 class="brand-title"> سبورتس  فيجن</h1>
       <p class="brand-slogan">
-        <span class="brand-accent">حيث يبدأ النجاح،</span><br>
-        ونرسم الطريق للاحتراف.
+رحلتك تبدأ من هنا
       </p>
     </div>
     
@@ -831,6 +846,43 @@
       const introContainer = document.querySelector('.intro-container');
       const loadingText = document.querySelector('.loading-text');
       const brandOverlay = document.querySelector('.brand-overlay');
+
+      // Font loading detection
+      const fontStatus = document.getElementById('font-status');
+      
+      // Check if font is loaded
+      function checkFont() {
+        if (document.fonts && document.fonts.check) {
+          const riyadBankLoaded = document.fonts.check('1em "Riyad Bank"');
+          fontStatus.textContent = riyadBankLoaded ? 'Riyad Bank: ✓ Loaded' : 'Riyad Bank: ✗ Not loaded';
+          
+          if (!riyadBankLoaded) {
+            console.log('Riyad Bank font not loaded, checking font files...');
+            // Check if font files are accessible
+            fetch('fonts/font/riyad-bank-Regular.ttf')
+              .then(response => {
+                if (response.ok) {
+                  fontStatus.textContent += ' (File accessible)';
+                } else {
+                  fontStatus.textContent += ' (File not found)';
+                }
+              })
+              .catch(() => {
+                fontStatus.textContent += ' (File error)';
+              });
+          }
+        } else {
+          fontStatus.textContent = 'Font API not supported';
+        }
+      }
+      
+      // Check font loading after a delay
+      setTimeout(checkFont, 1000);
+      
+      // Also check when fonts are loaded
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(checkFont);
+      }
 
       // Manual Video Speed Control
       const VIDEO_SPEED = 1.0; // Change this value: 1.0 = normal, 2.0 = 2x faster, 0.5 = half speed

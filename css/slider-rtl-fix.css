@@ -217,30 +217,81 @@
   }
   
   .slider01_comp {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
     padding: 0 20px;
+    overflow: hidden !important;
   }
   
   .slider01_mask {
-    width: 100%;
-    overflow: hidden;
+    width: 100% !important;
+    overflow: hidden !important;
+    touch-action: pan-x !important;
   }
   
   .slider01_list {
-    width: 100%;
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  /* Container for smooth mobile sliding */
+  .custom-slides-container {
+    width: 100% !important;
+    display: flex !important;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    will-change: transform !important;
   }
   
   .slider01_slide {
-    flex: 0 0 100%;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    padding: 0 15px;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 15px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: stretch !important;
   }
   
   .slider01_slide[style*="width"] {
     flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Force single card display even with inline styles */
+  .slider01_slide[style] {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* NUCLEAR OPTION - Override JavaScript-generated inline styles */
+  .about-us-banner-section .slider01_slide[style*="14.2857"],
+  .about-us-banner-section .slider01_slide[style*="calc(14.2857%"],
+  .about-us-banner-section .slider01_slide[style*="width: calc(14.2857%)"],
+  .slider01_slide[style*="14.2857"],
+  .slider01_slide[style*="calc(14.2857%"],
+  .slider01_slide[style*="width: calc(14.2857%)"] {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  
+  /* Override any percentage-based widths on mobile */
+  .slider01_slide[style*="%"] {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  
+  /* Override container width calculations */
+  .custom-slides-container[style*="width"] {
     width: 100% !important;
   }
   
@@ -249,6 +300,8 @@
     min-height: 350px;
     margin: 0 auto;
     max-width: 320px;
+    width: 100%;
+    flex: 1;
   }
   
   .about-us-mission-card h3 {
@@ -271,12 +324,153 @@
   .slider_pagination {
     margin-top: 25px;
     padding: 15px 0;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+    text-align: center !important;
+    position: relative !important;
   }
   
-  .w-slider-dot {
+  /* Mobile-specific pagination centering - STRONGER RULES */
+  .section-3 .slider_pagination {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 30px auto 0 auto !important;
+    padding: 20px 0 !important;
+    text-align: center !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: relative !important;
+  }
+  
+  /* Force center the pagination container on mobile */
+  .section-3 .w-slider-nav {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 20px 0 !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: translateX(0) !important;
+  }
+  
+  /* Override any positioning on mobile dots container */
+  .section-3 .slider01_comp {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  .w-slider-dot, .custom-dot {
     width: 10px;
     height: 10px;
     margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* Mobile-specific dots - perfectly centered */
+  .mobile-dot {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    transform: scale(1) !important;
+    margin: 0 4px !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    display: inline-block !important;
+  }
+  
+  .mobile-dot:hover {
+    background: rgba(88, 187, 79, 0.7) !important;
+    transform: scale(1.1) !important;
+  }
+  
+  .mobile-dot.active-mobile-dot {
+    background: rgb(88, 187, 79) !important;
+    transform: scale(1.2) !important;
+    box-shadow: 0 0 15px rgba(88, 187, 79, 0.5) !important;
+  }
+  
+  /* Hide desktop dots on mobile when mobile dots are present */
+  .slider_pagination:has(.mobile-dot) .custom-dot {
+    display: none !important;
+  }
+  
+  /* Extra centering for the pagination container */
+  .w-slider-nav {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 20px 0 !important;
+  }
+  
+  /* Additional mobile-specific overrides */
+  .about-us-banner-section .slider01_comp {
+    width: 100% !important;
+  }
+  
+  .about-us-banner-section .slider01_slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+  }
+  
+  /* Improve touch interaction */
+  .about-us-banner-section {
+    touch-action: pan-x !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* Extra small mobile - ensure single card on all devices */
+@media screen and (max-width: 480px) {
+  .slider01_comp,
+  .about-us-banner-section .slider01_comp {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 10px !important;
+  }
+  
+  .slider01_slide,
+  .about-us-banner-section .slider01_slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 10px !important;
+  }
+  
+  .about-us-mission-card {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px 15px;
+  }
+  
+  .about-us-mission-card h3 {
+    font-size: 16px;
+  }
+  
+  .about-us-mission-card .mission-card-paragraph {
+    font-size: 13px;
   }
 }
 
